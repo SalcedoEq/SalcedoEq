@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página no encontrada - Salcedo Equipment</title>
+    <meta name="description" content="La página que buscas no existe. Regresa a la página principal de Salcedo Equipment.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/style.css">
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .error-header {
+            background: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 1rem 0;
+        }
+
+        .error-header .container {
+            display: flex;
+            align-items: center;
+        }
+
+        .error-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #333772 0%, #6892e6 50%, #7c5ff4 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .error-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .error-code {
+            font-size: 8rem;
+            font-weight: 300;
+            line-height: 1;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .error-title {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .error-description {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .error-btn {
+            background: #0f62fe;
+            color: white;
+            border: none;
+            padding: 0.875rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 400;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+        }
+
+        .error-btn:hover {
+            background: #0353e9;
+        }
+
+        .error-btn.secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .error-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .error-suggestions {
+            background: #f4f4f4;
+            padding: 3rem 0;
+        }
+
+        .suggestions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .suggestion-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+            text-decoration: none;
+            color: #161616;
+            transition: all 0.3s ease;
+        }
+
+        .suggestion-item:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .suggestion-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1rem;
+            fill: #0f62fe;
+        }
+
+        .suggestion-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .suggestion-desc {
+            font-size: 0.875rem;
+            color: #525252;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 5rem;
+            }
+
+            .error-title {
+                font-size: 2rem;
+            }
+
+            .error-description {
+                font-size: 1.125rem;
+            }
+
+            .error-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .error-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body class="error-page">
+    <!-- Simple Header -->
+    <header class="error-header">
+        <div class="container">
+            <a href="/" aria-label="Volver a la página principal">
+                <img src="https://ext.same-assets.com/3701663695/479826087.svg" alt="IBM" class="logo">
+            </a>
+        </div>
+    </header>
+
+    <!-- Error Main Content -->
+    <main class="error-main">
+        <div class="container">
+            <div class="error-content">
+                <div class="error-code">404</div>
+                <h1 class="error-title">Página no encontrada</h1>
+                <p class="error-description">
+                    Lo sentimos, la página que buscas no existe o ha sido movida.
+                    Te ayudamos a encontrar lo que necesitas.
+                </p>
+                <div class="error-actions">
+                    <a href="/" class="error-btn">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8.5 1L15 7.5L8.5 14v-3H2V11h6.5V8L4 8v2.5L8.5 6v3H15L8.5 1z"/>
+                        </svg>
+                        Ir a la página principal
+                    </a>
+                    <button onclick="history.back()" class="error-btn secondary">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M7 3L1.5 8.5L7 14v-3h6.5V11H7V8l4.5 0v2.5L7 6v3H1.5L7 3z"/>
+                        </svg>
+                        Regresar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Suggestions Section -->
+    <section class="error-suggestions">
+        <div class="container">
+            <h2 class="section-title">¿Qué estás buscando?</h2>
+            <div class="suggestions-grid">
+                <a href="/" class="suggestion-item">
+                    <svg class="suggestion-icon" viewBox="0 0 48 48">
+                        <path d="M24 4L4 14v20l20 10 20-10V14L24 4zm0 6l12 6-12 6-12-6 12-6zm-16 8.8l14 7v14.4l-14-7V18.8zm32 0v14.4l-14 7V25.8l14-7z"/>
+                    </svg>
+                    <h3 class="suggestion-title">elemento 1</h3>
+                    <p class="suggestion-desc">descubre elemento 1</p>
+                </a>
+
+                <a href="/" class="suggestion-item">
+                    <svg class="suggestion-icon" viewBox="0 0 48 48">
+                        <path d="M24 8c-8.8 0-16 7.2-16 16s7.2 16 16 16 16-7.2 16-16S32.8 8 24 8zm0 28c-6.6 0-12-5.4-12-12s5.4-12 12-12 12 5.4 12 12-5.4 12-12 12z"/>
+                        <circle cx="24" cy="24" r="4"/>
+                    </svg>
+                    <h3 class="suggestion-title">ELEMENTO 2</h3>
+                    <p class="suggestion-desc">DESCUBRE ELENTO 2</p>
+                </a>
+
+                <a href="/" class="suggestion-item">
+                    <svg class="suggestion-icon" viewBox="0 0 48 48">
+                        <path d="M40 20H8c-2.2 0-4 1.8-4 4v16c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V24c0-2.2-1.8-4-4-4zM8 24h32v16H8V24z"/>
+                        <path d="M12 8h24v8H12V8z"/>
+                    </svg>
+                    <h3 class="suggestion-title">ELEMENTO 3</h3>
+                    <p class="suggestion-desc">DESCUBRE ELEMNTO 3</p>
+                </a>
+
+                <a href="/" class="suggestion-item">
+                    <svg class="suggestion-icon" viewBox="0 0 48 48">
+                        <path d="M24 4L6 16v20l18 8 18-8V16L24 4zm0 6l12 8v16l-12 6-12-6V18l12-8z"/>
+                        <path d="M24 16l-8 4v8l8 4 8-4v-8l-8-4z"/>
+                    </svg>
+                    <h3 class="suggestion-title">ELEMENTO 4</h3>
+                    <p class="suggestion-desc">DESCUBRE ELEMENTO 4</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="/">Contactar con Salcedo Equipment</a></li>
+                        <li><a href="/">Soporte técnico</a></li>
+                        <li><a href="/">Borrar</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/">Privacidad</a></li>
+                        <li><a href="/">Condiciones de uso</a></li>
+                        <li><a href="/">Accesibilidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-links">
+                    <span>© 2025 Salcedo Investments</span>
+                </div>
+                <div class="footer-country">Lima • Perú</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Redirect to home if user tries to go back and there's no history
+        if (document.referrer === '') {
+            document.querySelector('.error-btn.secondary').addEventListener('click', () => {
+                window.location.href = '/';
+            });
+        }
+    </script>
+</body>
+</html>
