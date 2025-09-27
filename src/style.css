@@ -87,7 +87,7 @@ body {
     z-index: 1;
 }
 /* Show the dropdown menu on hover */
-.nav-item dropdown:hover .dropdown-content {
+.dropdown-icon:hover .dropdown-content {
   display: block;
 }
 .header-right {
