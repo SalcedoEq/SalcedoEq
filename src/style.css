@@ -74,8 +74,18 @@ body {
     fill: currentColor;
     width: 12px;
     height: 6px;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
 }
-
+.dropdown-content {
+    fill: currentColor;
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
 .header-right {
     display: flex;
     align-items: center;
