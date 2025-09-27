@@ -8,7 +8,7 @@
 body {
     font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
     line-height: 1.6;
-    color: #161616;
+    color: #101010;
     background-color: #ffffff;
 }
 
@@ -21,7 +21,7 @@ body {
 /* Header */
 .header {
     background: #ffffff;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #a4a4a4;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -57,7 +57,7 @@ body {
 .nav-item {
     font-size: 14px;
     font-weight: 400;
-    color: #161616;
+    color: #101010;
     cursor: pointer;
     padding: 0.5rem 0;
     display: flex;
@@ -67,7 +67,7 @@ body {
 }
 
 .nav-item:hover {
-    color: #0f62fe;
+    color: #204080;
 }
 
 .dropdown-icon {
@@ -87,7 +87,7 @@ body {
     border: none;
     padding: 0.5rem;
     cursor: pointer;
-    color: #161616;
+    color: #101010;
     border-radius: 4px;
     transition: background-color 0.15s ease;
 }
@@ -98,7 +98,7 @@ body {
 
 /* Hero Banner */
 .hero-banner {
-    background: linear-gradient(135deg, #e8f4fd 0%, #d1ecf1 100%);
+    background: linear-gradient(135deg, #e8ebf2 0%, #d2d8e5 100%);
     padding: 1rem 0;
 }
 
@@ -112,7 +112,7 @@ body {
 .hero-content h2 {
     font-size: 1.125rem;
     font-weight: 600;
-    color: #161616;
+    color: #101010;
     margin: 0;
 }
 
@@ -125,7 +125,7 @@ body {
 }
 
 .arrow-icon {
-    color: #0f62fe;
+    color: #204080;
     flex-shrink: 0;
 }
 
@@ -133,7 +133,7 @@ body {
 .ai-roi-section {
     position: relative;
     padding: 4rem 0;
-    background: linear-gradient(135deg, #333772 0%, #6892e6 50%, #7c5ff4 100%);
+    background: linear-gradient(135deg, #204080 0%, #6892e6 50%, #302080 100%);
     color: white;
     overflow: hidden;
 }
@@ -155,7 +155,7 @@ body {
 }
 
 .cta-button {
-    background: #0f62fe;
+    background: #204080;
     color: white;
     border: none;
     padding: 0.875rem 1.5rem;
@@ -167,7 +167,7 @@ body {
 }
 
 .cta-button:hover {
-    background: #0353e9;
+    background: #204080;
 }
 
 .multilingual-bg {
@@ -215,7 +215,7 @@ body {
     font-size: 2rem;
     font-weight: 400;
     margin-bottom: 2rem;
-    color: #161616;
+    color: #101010;
 }
 
 .news-list {
@@ -231,13 +231,13 @@ body {
 }
 
 .news-item a {
-    color: #0f62fe;
+    color: #204080;
     text-decoration: none;
     transition: color 0.15s ease;
 }
 
 .news-item a:hover {
-    color: #0353e9;
+    color: #204080;
     text-decoration: underline;
 }
 
@@ -302,13 +302,13 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #161616;
+    color: #101010;
     margin-bottom: 1rem;
     flex: 1;
 }
 
 .arrow {
-    color: #0f62fe;
+    color: #204080;
     align-self: flex-end;
 }
 
@@ -329,7 +329,7 @@ body {
 .contact-content h2 {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #161616;
+    color: #101010;
     margin: 0;
 }
 
@@ -342,7 +342,7 @@ body {
 }
 
 .contact-content .arrow {
-    color: #0f62fe;
+    color: #204080;
     width: 24px;
     height: 24px;
 }
@@ -362,7 +362,7 @@ body {
 .insights-column h3 {
     font-size: 1.75rem;
     font-weight: 400;
-    color: #161616;
+    color: #101010;
     margin-bottom: 1.5rem;
 }
 
@@ -381,14 +381,14 @@ body {
 }
 
 .insights-links a {
-    color: #0f62fe;
+    color: #204080;
     text-decoration: none;
     font-size: 1rem;
     transition: color 0.15s ease;
 }
 
 .insights-links a:hover {
-    color: #0353e9;
+    color: #204080;
     text-decoration: underline;
 }
 
@@ -407,7 +407,7 @@ body {
 }
 
 .section-intro a {
-    color: #0f62fe;
+    color: #204080;
     text-decoration: none;
 }
 
@@ -454,7 +454,7 @@ body {
 .tech-card h3 {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #161616;
+    color: #101010;
     margin: 0;
 }
 
@@ -467,7 +467,7 @@ body {
 }
 
 .tech-card .arrow {
-    color: #0f62fe;
+    color: #204080;
     align-self: flex-end;
 }
 
@@ -486,7 +486,7 @@ body {
 .about-column h3 {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #161616;
+    color: #101010;
     margin-bottom: 1rem;
 }
 
@@ -505,20 +505,20 @@ body {
 }
 
 .about-links a {
-    color: #0f62fe;
+    color: #204080;
     text-decoration: none;
     font-size: 1rem;
     transition: color 0.15s ease;
 }
 
 .about-links a:hover {
-    color: #0353e9;
+    color: #204080;
     text-decoration: underline;
 }
 
 /* Footer */
 .footer {
-    background: #161616;
+    background: #101010;
     color: #ffffff;
     padding: 3rem 0 1.5rem;
 }
@@ -566,7 +566,7 @@ body {
 }
 
 .footer-bottom {
-    border-top: 1px solid #393939;
+    border-top: 1px solid #313131;
     padding-top: 1.5rem;
     display: flex;
     justify-content: space-between;
@@ -709,7 +709,7 @@ body {
 .mobile-nav-item {
     padding: 0.75rem 1rem;
     font-size: 1rem;
-    color: #161616;
+    color: #101010;
     border-bottom: 1px solid #f4f4f4;
     cursor: pointer;
     transition: background-color 0.15s ease;
