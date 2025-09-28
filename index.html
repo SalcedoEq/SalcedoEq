@@ -18,8 +18,7 @@
                 <img src="/logos/logo_web.webp" alt="SalcedoEq" class="logo">
                 <nav class="nav">
                     <div class="nav-item dropdown">
-                        <span>Productos<svg class="dropdown-icon" width="12" height="6" viewBox="0 0 12 6"><path d="M6 6L0 0h12z"/></svg></span>
-                        <a>LINK 4</a>
+                        <button class="dropbtn">PRODUCTOS<svg class="dropdown-icon" width="12" height="6" viewBox="0 0 12 6"><path d="M6 6L0 0h12z"/></svg></button>
                         <div class="dropdown-content">
                             <a>LINK 1</a>
                             <a>LINK 2</a>
@@ -28,16 +27,16 @@
                     </div>
                         
                     <div class="nav-item dropdown">
-                        <span>ELEMENTO 2 <svg class="dropdown-icon" width="12" height="6" viewBox="0 0 12 6"><path d="M6 6L0 0h12z"/></svg></span>
+                        <span>PORTAFOLIO<svg class="dropdown-icon" width="12" height="6" viewBox="0 0 12 6"><path d="M6 6L0 0h12z"/></svg></span>
                     </div>
                     <div class="nav-item dropdown">
-                        <span>ELEMENTO 3<svg class="dropdown-icon" width="12" height="6" viewBox="0 0 12 6"><path d="M6 6L0 0h12z"/></svg></span>
+                        <span>RECOMENDADO<svg class="dropdown-icon" width="12" height="6" viewBox="0 0 12 6"><path d="M6 6L0 0h12z"/></svg></span>
                     </div>
-                    <div class="nav-item"><a href="/">ELEMENTO 4</a></div>
+                    <div class="nav-item"><a href="/">INSIGHTS</a></div>
                     <div class="nav-item dropdown">
-                        <span>SOPORTE<svg class="dropdown-icon" width="12" height="6" viewBox="0 0 12 6"><path d="M6 6L0 0h12z"/></svg></span>
+                        <span>CONSULTORIA<svg class="dropdown-icon" width="12" height="6" viewBox="0 0 12 6"><path d="M6 6L0 0h12z"/></svg></span>
                     </div>
-                    <div class="nav-item">ELEMENTO 5</div>
+                    <div class="nav-item">SOPORTE</div>
                 </nav>
             </div>
             <div class="header-right">
@@ -47,12 +46,15 @@
                 <button class="icon-btn desktop-only">
                     <svg width="20" height="20" viewBox="0 0 20 20"><path d="M8 14.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13zM13.25 12.25L17 16" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
                 </button>
+                <!-- Busqueda -->
                 <button class="icon-btn desktop-only">
                     <svg width="20" height="20" viewBox="0 0 20 20"><path d="M6 10h8M10 6v8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
                 </button>
+                <!-- no se -->
                 <button class="icon-btn desktop-only">
                     <svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 10h16M10 2a15.3 15.3 0 0 1 4 8 15.3 15.3 0 0 1-4 8 15.3 15.3 0 0 1-4-8 15.3 15.3 0 0 1 4-8z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
                 </button>
+                <!-- lenguaje -->
                 <button class="icon-btn desktop-only">
                     <svg width="20" height="20" viewBox="0 0 20 20"><path d="M10 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM4 20v-1a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v1" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
                 </button>
@@ -62,12 +64,12 @@
         <!-- Mobile Menu -->
         <div class="mobile-menu">
             <div class="mobile-menu-content">
-                <div class="mobile-nav-item">ELEMENTO 1</div>
-                <div class="mobile-nav-item">ELEMENTO 2</div>
-                <div class="mobile-nav-item">ELEMENTO 3</div>
-                <div class="mobile-nav-item">ELEMENTO 4</div>
-                <div class="mobile-nav-item">Soporte</div>
-                <div class="mobile-nav-item">ELEMENTO 5</div>
+                <div class="mobile-nav-item">PRODUCTOS</div>
+                <div class="mobile-nav-item">PORTAFOLIO</div>
+                <div class="mobile-nav-item">RECOMENDADO</div>
+                <div class="mobile-nav-item">INSIGHTS</div>
+                <div class="mobile-nav-item">CONSULTORIA</div>
+                <div class="mobile-nav-item">SOPORTE</div>
             </div>
         </div>
     </header>
@@ -104,7 +106,6 @@
                     <span>جهاز طبي</span> <!-- arabe-->
                     <span>Dispositif médical</span> <!-- frances-->
                     <span>Alat kesehatan</span> <!-- indonesio-->
-                  
                     <span>Creiamo insieme un business più X</span> <!-- italiano-->
                     <span>携手共创更智能的 X</span> <!-- chino simplificado-->
                 </div>
@@ -126,7 +127,7 @@
             </div>
         </section>
 
-        <!-- Recommendations Section -->
+        <!-- Recommendations Section 
         <section class="recommendations-section">
             <div class="container">
                 <h2 class="section-title">Recomendado para usted</h2>
@@ -182,11 +183,11 @@
                 </div>
             </div>
         </section>
-
+        -->
         <!-- Contact Section -->
         <section class="contact-section">
-            <div class="container">
-                <div class="contact-content">
+            <div class="container" >
+                <div class="contact-content" onclick="wa.me/51987654321">
                     <h2>Contactar con Salcedo Euipment</h2>
                     <p>Busque respuestas a preguntas sobre productos, ventas, soporte y todo lo demás de Salcedo Equipment</p>
                     <svg class="arrow" width="24" height="24" viewBox="0 0 24 24">
@@ -202,22 +203,22 @@
                 <h2 class="section-title">Insights y herramientas</h2>
                 <div class="insights-grid">
                     <div class="insights-column">
-                        <h3>Para Cliente 1</h3>
+                        <h3>Equipamiento medico</h3>
                         <ul class="insights-links">
-                            <li><a href="#">Opcion 1</a></li>
-                            <li><a href="#">Opcion 2</a></li>
-                            <li><a href="#">Opcion 3</a></li>
-                            <li><a href="#">Opcion 4</a></li>
+                            <li><a href="#">Compra de instrumental</a></li>
+                            <li><a href="#">Compra de equipos medicos</a></li>
+                            <li><a href="#">Mantenimiento de equipos medicos</a></li>
+                            <li><a href="#">Reparacion de equipos medicos</a></li>
                         </ul>
                     </div>
                     <div class="insights-column">
-                        <h3>Para Cliente 2</h3>
-                        <p>Descripcion</p>
+                        <h3>Gestion hospitalaria</h3>
+                        <p>Se realizará abordado desde las normativas correpondientes para lograr certificaciones y afines</p>
                         <ul class="insights-links">
-                            <li><a href="#">Opcion 1</a></li>
-                            <li><a href="#">Opcion 2</a></li>
-                            <li><a href="#">Opcion 3</a></li>
-                            <li><a href="#">Opcion 4</a></li>
+                            <li><a href="#">Plan de mantenimiento preventivo</a></li>
+                            <li><a href="#">Plan de mantenimiento correctivo</a></li>
+                            <li><a href="#">Evaluacion de obsolecencia</a></li>
+                            <li><a href="#">Evaluacion de procesos clinicos</a></li>
                         </ul>
                     </div>
                 </div>
@@ -229,15 +230,15 @@
             <div class="container">
                 <h2 class="section-title">Consultoría</h2>
                 <p class="section-intro">
-                    Desde <a href="#">la IA de próxima generación</a> hasta <a href="#">las soluciones de nube híbrida</a> de vanguardia y la extensa pericia de <a href="#">Salcedo Equpment Consulting</a>, Salcedo Equipment tiene todo lo necesario para ayudarlo a reinventar la manera de funcionar de su empresa en la era de la IA.
+                    Desde <a href="#">equipameinto medico</a> hasta <a href="#">las soluciones de gestion hospitalaria</a> de vanguardia y la extensa pericia de <a href="#">Salcedo Equpment</a>, Salcedo Investements E.I.R.L. tiene todo lo necesario para ayudarlo a renovar y mejorar la manera de funcionar de su empresa en la era de la reestructuracion medica-hospitalaria.
                 </p>
                 <div class="technology-grid">
                     <div class="tech-card">
                         <div class="tech-icon">
                             <img src="https://ext.same-assets.com/3701663695/1808683326.svg" alt="AI Solutions">
                         </div>
-                        <h3>Solucion 1</h3>
-                        <p>Descripción</p>
+                        <h3>Plan mant. preventivo</h3>
+                        <p>Evaluacion tecnica + preventivo</p>
                         <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
                             <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5"/>
                         </svg>
@@ -246,8 +247,8 @@
                         <div class="tech-icon">
                             <img src="https://ext.same-assets.com/3701663695/4142566065.svg" alt="DevOps">
                         </div>
-                        <h3>Solucion 2</h3>
-                        <p>Descripción</p>
+                        <h3>Plan mant. correctivo</h3>
+                        <p>Evaluacion tecnica + correctivo</p>
                         <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
                             <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5"/>
                         </svg>
@@ -256,8 +257,8 @@
                         <div class="tech-icon">
                             <img src="https://ext.same-assets.com/3701663695/331598258.svg" alt="Consulting">
                         </div>
-                        <h3>Solucion 3</h3>
-                        <p>Descripción</p>
+                        <h3>Plan mant. completo</h3>
+                        <p>Evaluacion tecnica + preventivo + correctivo</p>
                         <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
                             <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5"/>
                         </svg>
