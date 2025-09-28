@@ -220,7 +220,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 8rem;
+    font-size: 4rem;
     font-weight: 300;
     opacity: 0.1;
     white-space: nowrap;
@@ -232,7 +232,7 @@ body {
 
 .bg-text span {
     color: white;
-    font-size: clamp(2rem, 8vw, 8rem);
+    font-size: clamp(2rem, 4vw, 4rem);
 }
 
 .ai-roi-section .container {
