@@ -772,3 +772,255 @@ body {
         display: none;
     }
 }
+
+/* new header/
+
+/* Accesibilidad y estados */
+.dropbtn[aria-expanded="true"] .dropdown-icon { transform: rotate(180deg); }
+.dropdown-icon { transition: transform .2s ease; }
+
+/* Dropdown por defecto oculto, visible con clase .open o focus/hover */
+.dropdown .dropdown-content { display: none; position: absolute; z-index: 20; }
+.dropdown.open .dropdown-content { display: block; }
+
+/* Menú móvil visible con clase .open */
+.mobile-menu[hidden] { display: none !important; }
+.mobile-menu.open { display: block !important; }
+
+/* Header sticky con sombra al hacer scroll */
+.header.is-stuck { box-shadow: 0 6px 20px rgba(0,0,0,.08); }
+
+/* Mejora foco teclado */
+.nav a:focus, .dropbtn:focus, .dropdown-content a:focus, .dropdown-content button:focus {
+  outline: 2px solid #4da3ff; outline-offset: 2px;
+}
+/* Botón de dropdown con look limpio */
+.dropbtn {
+  background: transparent;
+  border: 0;
+  padding: 8px 10px;
+  font: inherit;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  line-height: 1;
+}
+
+/* Icono con animación */
+.dropdown-icon { transition: transform .2s ease; }
+.dropbtn[aria-expanded="true"] .dropdown-icon { transform: rotate(180deg); }
+
+/* Contenedor dropdown (por si faltaba) */
+.nav-item.dropdown { position: relative; }
+.dropdown .dropdown-content {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 220px;
+  background: #fff;
+  color: #111;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.12);
+  padding: 8px;
+  display: none;
+  z-index: 20;
+}
+
+/* Hover fallback (funciona incluso sin JS) */
+.dropdown:hover .dropdown-content { display: block; }
+
+/* Estado abierto vía JS */
+.dropdown.open .dropdown-content { display: block; }
+
+/* Accesibilidad foco */
+.dropdown-content a,
+.dropdown-content button {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+.dropdown-content a:hover,
+.dropdown-content button:hover,
+.dropdown-content a:focus,
+.dropdown-content button:focus {
+  background: #f3f4f6;
+  outline: 2px solid #4da3ff;
+  outline-offset: 2px;
+}
+
+/* Posicionamiento y stacking */
+.header { position: sticky; top: 0; z-index: 1000; }
+.header, .header * { overflow: visible; }      /* evita que el menú se corte */
+.nav { overflow: visible; }
+
+.nav-item.dropdown { position: relative; }
+
+/* Panel */
+.dropdown .dropdown-content {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 220px;
+  background: #fff;
+  color: #111;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.12);
+  padding: 8px;
+  display: none;
+  z-index: 2000;                 /* por encima del header */
+}
+
+/* Fallback por hover (funciona sin JS) */
+.nav-item.dropdown:hover .dropdown-content { display: block; }
+
+/* Estado abierto por JS (click/touch) */
+.nav-item.dropdown.open .dropdown-content { display: block; }
+
+/* Botón limpio (que no parezca <select>) */
+.dropbtn {
+  background: transparent;
+  border: 0;
+  padding: 8px 10px;
+  font: inherit;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  line-height: 1;
+}
+.dropdown-icon { transition: transform .2s ease; }
+.dropbtn[aria-expanded="true"] .dropdown-icon { transform: rotate(180deg); }
+
+/* El panel no debe tener hueco respecto al botón */
+.nav-item.dropdown { position: relative; }
+
+/* Panel */
+.dropdown .dropdown-content{
+  position: absolute;
+  top: 100%;                 /* pegado al botón */
+  left: 0;
+  margin-top: 8px;           /* espacio visual SIN crear gap real gracias al ::before */
+  min-width: 240px;
+  background: #fff;
+  color: #111;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.12);
+  padding: 8px;
+  display: none;
+  z-index: 2000;
+}
+
+/* “Puente” invisible para que no se cierre cuando pasas del botón al panel */
+.dropdown .dropdown-content::before{
+  content: "";
+  position: absolute;
+  top: -10px;                /* cubre el hueco */
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
+/* Estados de apertura */
+.nav-item.dropdown.open .dropdown-content{ display:block; }
+/* (si quieres mantener también hover como fallback) */
+/* .nav-item.dropdown:hover .dropdown-content{ display:block; } */
+
+.dropbtn {
+  background: transparent; border: 0; padding: 10px 12px;
+  font: inherit; color: inherit; display: inline-flex; align-items: center; gap: 6px;
+  cursor: pointer; appearance: none; -webkit-appearance: none;
+}
+.dropdown-icon{ transition: transform .2s ease; }
+.dropbtn[aria-expanded="true"] .dropdown-icon{ transform: rotate(180deg); }
+
+/* Items del panel */
+.dropdown-content a, .dropdown-content button{
+  display:block; padding:10px 12px; border-radius:8px; text-align:left;
+}
+.dropdown-content a:hover,
+.dropdown-content button:hover,
+.dropdown-content a:focus,
+.dropdown-content button:focus{
+  background:#f3f4f6; outline:2px solid #4da3ff; outline-offset:2px;
+}
+
+/* Asegurar stacking y evitar recortes */
+.header { position: sticky; top: 0; z-index: 1000; }
+.header, .nav { overflow: visible; }
+
+/* CONTEXTO: el header tiene fondo claro (#fff) y borde inferior */
+:root{
+  --header-bg: #ffffff;
+  --header-border: #e6e8ee;
+  --submenu-text: #111;
+}
+
+/* Asegura stacking y sin recortes */
+.header { position: sticky; top: 0; z-index: 1000; background: var(--header-bg); }
+.header, .nav { overflow: visible; }
+
+.nav-item.dropdown { position: relative; }
+
+/* Botón limpio */
+.dropbtn {
+  background: transparent; border: 0; padding: 12px 14px;
+  font: inherit; color: inherit; display: inline-flex; align-items: center; gap: 6px;
+  cursor: pointer; appearance: none; -webkit-appearance: none;
+  border-bottom: 2px solid transparent;
+}
+.dropbtn:focus { outline: 2px solid #4da3ff; outline-offset: 2px; }
+.dropbtn[aria-expanded="true"] { border-bottom-color: #4da3ff; } /* subrayado activo */
+.dropdown-icon { transition: transform .2s ease; }
+.dropbtn[aria-expanded="true"] .dropdown-icon { transform: rotate(180deg); }
+
+/* ===== Dropdown “integrado” ===== */
+.dropdown .dropdown-content{
+  position: absolute;
+  top: calc(100% - 1px);     /* pega al borde del header */
+  left: 0;
+  min-width: 260px;          /* ajusta según tu tipografía */
+  background: var(--header-bg);
+  color: var(--submenu-text);
+
+  /* sin “ventana”: */
+  border: 0;
+  border-top: 1px solid var(--header-border);
+  border-radius: 0;
+  box-shadow: none;
+
+  padding: 10px 0;
+  display: none;
+  z-index: 2000;
+}
+
+/* “puente” anti-gap entre botón y panel */
+.dropdown .dropdown-content::before{
+  content:""; position:absolute;
+  top: -8px; left: 0; right: 0; height: 8px;
+}
+
+/* Items */
+.dropdown-content a, .dropdown-content button{
+  display:block; padding: 10px 16px;
+  color: inherit; text-decoration: none; border-radius: 0;
+}
+.dropdown-content a:hover,
+.dropdown-content button:hover{
+  background: #f5f6fa;
+}
+
+/* Estado abierto por JS */
+.nav-item.dropdown.open .dropdown-content { display:block; }
+
+/* (Opcional) hover como fallback si el JS no carga */
+/* .nav-item.dropdown:hover .dropdown-content { display:block; } *
