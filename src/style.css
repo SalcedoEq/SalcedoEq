@@ -437,7 +437,7 @@ nav {
 
 
 /*moviles*/
-@media (width <= 40em) {
+@media (width <= 730px) {
     /*header*/
     nav {
         background-color: #fff;

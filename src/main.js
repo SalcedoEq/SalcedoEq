@@ -10,7 +10,7 @@ const closeAppear = document.querySelector(".close-menu-toggle")
 const mobileMenuDisappear = document.querySelector(".mobile-menu-toggle")
 
 function updateInerStatus () {
-  if (window.innerWidth <= 640 && !navMenu.classList.contains("inert")){
+  if (window.innerWidth <= 730 && !navMenu.classList.contains("inert")){
     navMenu.setAttribute("inert", ""); 
     openMobileMenu.setAttribute("aria-expanded", "false");
   }
