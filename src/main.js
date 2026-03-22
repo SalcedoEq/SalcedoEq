@@ -1,209 +1,217 @@
-// Utils
-const s  = (sel, root=document) => root.querySelector(sel);
-const ss = (sel, root=document) => Array.from(root.querySelectorAll(sel));
 
-// ---- Sticky header
-const header = s('.header[data-sticky]');
-let lastY = 0;
-const onScroll = () => {
-  const y = window.scrollY || 0;
-  header?.classList.toggle('is-stuck', y > 8);
-  lastY = y;
+/*header----------------------*/
+/*menu hamburguesa */
+const openMobileMenu = document.querySelector(".mobile-menu-toggle")
+const closeMobileMenu = document.querySelector(".close-menu-toggle")
+const navMenu = document.querySelector(".nav")
+const overlay = document.querySelector(".overlay")
+const navIntern = document.querySelectorAll(".nav a")
+const closeAppear = document.querySelector(".close-menu-toggle")
+const mobileMenuDisappear = document.querySelector(".mobile-menu-toggle")
+
+function updateInerStatus () {
+  if (window.innerWidth <= 640 && !navMenu.classList.contains("inert")){
+    navMenu.setAttribute("inert", ""); 
+    openMobileMenu.setAttribute("aria-expanded", "false");
+  }
+  else {
+    navMenu.removeAttribute("inert");
+    openMobileMenu.setAttribute("aria-expanded", "true");
+
+  }
+}
+
+updateInerStatus();
+window.addEventListener("resize",updateInerStatus)
+
+openMobileMenu.addEventListener("click", () =>{
+  closeMenu ()
+  navMenu.classList.add("active");
+  overlay.classList.add("active");
+  closeAppear.classList.add("active");
+  mobileMenuDisappear.classList.add("inactive");
+  navMenu.removeAttribute("inert");
+  openMobileMenu.setAttribute("aria-expanded", "true");
+});
+
+function closeMenu () {
+  navMenu.classList.remove("active");
+  overlay.classList.remove("active");
+  closeAppear.classList.remove("active");
+  mobileMenuDisappear.classList.remove("inactive");
+  dropdownProducto.classList.remove("active");
+  dropdownPortafolio.classList.remove("active");
+  dropdownRecomendado.classList.remove("active");
+  dropdownConsultoria.classList.remove("active");
+  navProducto.setAttribute("aria-expanded", "false");
+  navProducto.classList.remove("active");
+  navPortafolio.setAttribute("aria-expanded", "false");
+  navPortafolio.classList.remove("active");
+  navRecomendado.setAttribute("aria-expanded", "false");
+  navRecomendado.classList.remove("active");
+  navConsultoria.setAttribute("aria-expanded", "false");
+  navConsultoria.classList.remove("active");
+  searchBar.classList.remove("active");
+  hideSearch.classList.remove("inactive");
+  overlaySearch.classList.remove("active");
+  updateInerStatus();
 };
-window.addEventListener('scroll', onScroll, { passive: true });
-onScroll();
 
-// ---- Dropdowns (click/touch + teclado)
-function closeAllDropdowns(except=null) {
-  ss('.dropdown').forEach(dd => {
-    if (dd !== except) {
-      dd.classList.remove('open');
-      const btn = dd.querySelector('.dropbtn');
-      if (btn) btn.setAttribute('aria-expanded', 'false');
-    }
-  });
-}
-ss('.dropdown .dropbtn').forEach(btn => {
-  const dropdown = btn.closest('.dropdown');
-  const panel = dropdown.querySelector('.dropdown-content');
+closeMobileMenu.addEventListener("click", closeMenu);
+overlay.addEventListener("click", closeMenu);
 
-  // Abrir/cerrar por click
-  btn.addEventListener('click', (e) => {
-    const isOpen = dropdown.classList.contains('open');
-    closeAllDropdowns(dropdown);
-    dropdown.classList.toggle('open', !isOpen);
-    btn.setAttribute('aria-expanded', String(!isOpen));
-    if (!isOpen) {
-      // focus primer item
-      const first = panel?.querySelector('[role="menuitem"]');
-      first?.focus();
-    }
-    e.stopPropagation();
-  });
-
-  // Teclado: Down abre; Esc cierra
-  btn.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowDown') {
-      dropdown.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-      panel?.querySelector('[role="menuitem"]')?.focus();
-    }
-    if (e.key === 'Escape') {
-      dropdown.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.focus();
-    }
-  });
-
-  // Navegación dentro del menú
-  panel?.addEventListener('keydown', (e) => {
-    const items = ss('#' + panel.id + ' [role="menuitem"]');
-    const i = items.indexOf(document.activeElement);
-    if (e.key === 'ArrowDown') { e.preventDefault(); items[(i+1) % items.length]?.focus(); }
-    if (e.key === 'ArrowUp')   { e.preventDefault(); items[(i-1+items.length) % items.length]?.focus(); }
-    if (e.key === 'Escape')    { dropdown.classList.remove('open'); btn.setAttribute('aria-expanded','false'); btn.focus(); }
-  });
-});
-
-// Cerrar al hacer click fuera
-document.addEventListener('click', () => closeAllDropdowns());
-
-// ---- Menú móvil
-const mobileToggle = s('.mobile-menu-toggle');
-const mobileMenu = s('#mobile-menu');
-function setMobile(open) {
-  if (!mobileMenu) return;
-  mobileMenu.classList.toggle('open', open);
-  mobileMenu.hidden = !open;
-  mobileToggle?.setAttribute('aria-expanded', String(open));
-}
-mobileToggle?.addEventListener('click', (e) => {
-  const open = !mobileMenu.classList.contains('open');
-  setMobile(open);
-  e.stopPropagation();
-});
-document.addEventListener('click', (e) => {
-  if (!mobileMenu?.contains(e.target) && !mobileToggle?.contains(e.target)) setMobile(false);
-});
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') setMobile(false);
-});
-
-// ---- Idioma (demo)
-ss('[data-lang]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const lang = btn.dataset.lang;
-    console.log('Idioma seleccionado:', lang);
-    closeAllDropdowns();
-  });
-});
-
-// Helpers
-const s  = (s, r=document) => r.querySelector(s);
-const ss = (s, r=document) => Array.from(r.querySelectorAll(s));
-
-console.log('main.js cargado ✅'); // Debe verse en consola
-
-// Cerrar todos menos uno
-function closeAll(except=null){
-  ss('.nav-item.dropdown').forEach(dd=>{
-    if(dd!==except){
-      dd.classList.remove('open');
-      dd.querySelector('.dropbtn')?.setAttribute('aria-expanded','false');
-    }
-  });
-}
-
-// Activar por click/touch
-ss('.nav-item.dropdown .dropbtn').forEach(btn=>{
-  const dd = btn.closest('.nav-item.dropdown');
-  btn.addEventListener('click', (e)=>{
-    const open = dd.classList.contains('open');
-    closeAll(dd);
-    dd.classList.toggle('open', !open);
-    btn.setAttribute('aria-expanded', String(!open));
-    e.stopPropagation();
-  });
-});
-
-// Cerrar al hacer click fuera y con ESC
-document.addEventListener('click', ()=> closeAll());
-document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeAll(); });
-
-// Helpers
-const s  = (selector, root = document) => root.querySelector(selector);
-const ss = (selector, root = document) => Array.from(root.querySelectorAll(selector));
-
-console.log('main.js cargado ✅');
-
-// Cerrar todos los menús menos uno
-function closeAll(except = null) {
-  ss('.nav-item.dropdown').forEach(dd => {
-    if (dd !== except) {
-      dd.classList.remove('open');
-      dd.querySelector('.dropbtn')?.setAttribute('aria-expanded', 'false');
-    }
-  });
-}
-
-// Inicializar cada dropdown
-ss('.nav-item.dropdown').forEach(dd => {
-  const btn   = dd.querySelector('.dropbtn');
-  const panel = dd.querySelector('.dropdown-content');
-  let hideT   = null;
-
-  // Abrir menú
-  function open() {
-    closeAll(dd);
-    dd.classList.add('open');
-    btn?.setAttribute('aria-expanded', 'true');
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape"){
+    closeMenu();
   }
-
-  // Cerrar menú
-  function close() {
-    dd.classList.remove('open');
-    btn?.setAttribute('aria-expanded', 'false');
-  }
-
-  // Cierre retardado (para permitir pasar al panel)
-  function delayedClose() {
-    clearTimeout(hideT);
-    hideT = setTimeout(close, 160);
-  }
-
-  // Click/tap: abrir o cerrar
-  btn?.addEventListener('click', e => {
-    e.stopPropagation();
-    const isOpen = dd.classList.contains('open');
-    if (isOpen) close();
-    else open();
-  });
-
-  // Hover-intent: mantener abierto mientras el mouse está en el botón o panel
-  btn?.addEventListener('mouseenter', open);
-  panel?.addEventListener('mouseenter', () => {
-    clearTimeout(hideT);
-    open();
-  });
-
-  btn?.addEventListener('mouseleave', delayedClose);
-  panel?.addEventListener('mouseleave', delayedClose);
-
-  // Accesibilidad por teclado
-  btn?.addEventListener('keydown', e => {
-    if (e.key === 'ArrowDown') {
-      open();
-      panel?.querySelector('[role="menuitem"], a, button')?.focus();
-    }
-    if (e.key === 'Escape') {
-      close();
-      btn.focus();
-    }
-  });
 });
 
-// Cerrar al hacer click fuera o presionar Esc
-document.addEventListener('click', () => closeAll());
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeAll();
+navIntern.forEach((link) => {
+  link.addEventListener("click",closeMenu);
 });
+
+/*desplegables----------------------*/
+
+const navProducto = document.querySelector(".dp-productos");
+const navPortafolio = document.querySelector(".dp-portafolio");
+const navRecomendado = document.querySelector(".dp-recomendado");
+const navConsultoria = document.querySelector(".dp-consultoria");
+
+const dropdownProducto = document.querySelector(".dc-productos");
+const dropdownPortafolio = document.querySelector(".dc-portafolio");
+const dropdownRecomendado = document.querySelector(".dc-recomendado");
+const dropdownConsultoria = document.querySelector(".dc-consultoria");
+
+navProducto.addEventListener("click", () =>{
+  navMenu.classList.add("active");
+  closeAppear.classList.add("active");
+  mobileMenuDisappear.classList.add("inactive");
+  dropdownPortafolio.classList.remove("active");
+  navPortafolio.classList.remove("active");
+  dropdownRecomendado.classList.remove("active");
+  navRecomendado.classList.remove("active");
+  dropdownConsultoria.classList.remove("active");
+  navConsultoria.classList.remove("active");
+  dropdownProducto.classList.add("active");
+  navProducto.setAttribute("aria-expanded", "true");
+  navProducto.classList.add("active");
+  overlay.classList.add("active");
+});
+
+navPortafolio.addEventListener("click", () =>{
+  navMenu.classList.add("active");
+  closeAppear.classList.add("active");
+  mobileMenuDisappear.classList.add("inactive");
+  dropdownProducto.classList.remove("active");
+  navRecomendado.classList.remove("active");
+  dropdownRecomendado.classList.remove("active");
+  navConsultoria.classList.remove("active");
+  dropdownConsultoria.classList.remove("active");
+  navProducto.classList.remove("active");
+  dropdownPortafolio.classList.add("active");
+  navPortafolio.setAttribute("aria-expanded", "true");
+  navPortafolio.classList.add("active");
+  overlay.classList.add("active");
+});
+
+navRecomendado.addEventListener("click", () =>{
+  navMenu.classList.add("active");
+  closeAppear.classList.add("active");
+  mobileMenuDisappear.classList.add("inactive");
+  dropdownProducto.classList.remove("active");
+  navConsultoria.classList.remove("active");
+  dropdownPortafolio.classList.remove("active");
+  navProducto.classList.remove("active");
+  dropdownConsultoria.classList.remove("active");
+  navPortafolio.classList.remove("active");
+  dropdownRecomendado.classList.add("active");
+  navRecomendado.setAttribute("aria-expanded", "true");
+  navRecomendado.classList.add("active");
+  overlay.classList.add("active");
+});
+
+navConsultoria.addEventListener("click", () =>{
+  navMenu.classList.add("active");
+  closeAppear.classList.add("active");
+  mobileMenuDisappear.classList.add("inactive");
+  dropdownProducto.classList.remove("active");
+  navProducto.classList.remove("active");
+  dropdownPortafolio.classList.remove("active");
+  navPortafolio.classList.remove("active");
+  dropdownRecomendado.classList.remove("active");
+  navRecomendado.classList.remove("active");
+  dropdownConsultoria.classList.add("active");
+  navConsultoria.setAttribute("aria-expanded", "true");
+  navConsultoria.classList.add("active");
+  overlay.classList.add("active");
+});
+
+/*desplegables----------------------*/
+/*header----------------------*/
+
+
+/*search*/
+const openSearch = document.querySelector(".shearch-menu");
+const searchBar = document.querySelector(".search-form");
+const overlaySearch = document.querySelector(".overlaySearch");
+
+
+openSearch.addEventListener("click", () =>{
+  closeMenu();
+  searchBar.classList.add("active");
+  hideSearch.classList.add("inactive");
+  overlaySearch.classList.add("active");
+});
+
+overlaySearch.addEventListener("click", () =>{
+    closeMenu();
+});
+
+/*search----------------------------*/
+/*login----------------------------*/
+const openLogin = document.querySelector(".login-unloged");
+const loginSystem = document.querySelector(".login-center");
+const hideMenu = document.querySelector(".nav")
+const hideMovilMenu = document.querySelector(".mobile-menu-toggle")
+const hideSearch = document.querySelector(".shearch-menu")
+const closeLogin = document.querySelector(".overlayLogin")
+const loginTry = document.querySelector(".login-btn");
+const loginErr = document.querySelector(".login-error");
+
+openLogin.addEventListener("click", () =>{
+  closeMenu();
+  loginSystem.classList.add("active");
+  openLogin.classList.add("active");
+  hideMenu.classList.add("unactive");
+  hideMovilMenu.classList.add("inactive");
+  hideSearch.classList.add("inactive");
+  closeLogin.classList.add("active");
+});
+
+closeLogin.addEventListener("click", () =>{
+  loginSystem.classList.remove("active");
+  openLogin.classList.remove("active");
+  hideMenu.classList.remove("unactive");
+  hideMovilMenu.classList.remove("inactive");
+  hideSearch.classList.remove("inactive");
+  closeLogin.classList.remove("active");
+  loginErr.classList.remove("active");
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape"){
+    loginSystem.classList.remove("active");
+    openLogin.classList.remove("active");
+    hideMenu.classList.remove("unactive");
+    hideMovilMenu.classList.remove("inactive");
+    hideSearch.classList.remove("inactive");
+    closeLogin.classList.remove("active");
+    loginErr.classList.remove("active");
+  }
+});
+
+loginTry.addEventListener("click", () =>{
+  loginErr.classList.add("active");
+});
+
+/*login----------------------------*/

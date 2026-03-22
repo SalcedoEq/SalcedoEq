@@ -2,151 +2,535 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
+    box-sizing: border-box;    
     font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
-    line-height: 1.6;
-    color: #101010;
-    background-color: #ffffff;
+}/*estilo por defecto*/
+
+/*quitar estilos a links*/
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+} 
+
+/*quitar estilos a botones*/
+button {
+    border: 0;
+    cursor: pointer;
 }
 
-.container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
+/*auxiliares*/
+/*a::after {
+        background-color: var(--cds-layer-accent-01, #a4a4a4);
+        block-size: 1.5rem;
+        content: "";
+        display: block;
+        inline-size: 0.0625rem;
+        inset-inline-end: -0.1875rem;
+        position: absolute;
+    }
 
-/* Header */
-.header {
-    background: #ffffff;
-    border-bottom: 1px solid #a4a4a4;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+::after {
+    box-sizing: inherit;
+}*/
 
-.header-container {
+/*header login and search*/
+/*header*/
+header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 48px;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 1rem;
+    border-bottom: 1px solid #a4a4a4;
 }
 
-.header-left {
+.logo-container {
     display: flex;
-    align-items: center;
-    gap: 2rem;
 }
 
 .logo {
     height: 45px;
     width: auto;
+    display:block;
 }
-/* nav panel */
-.nav {
+
+.logo-container :is(input, textarea, button, a, nav):focus {
+    border-color: #1f4181 ;
+    outline-color: #1f4181;
+ }
+
+ .header-container {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-}
-.nav a {
-    color: #101010;
-    text-decoration: none;
+    justify-content: space-between;
+    flex-grow: 2;
+    overflow: hidden;
 }
 
-.nav-item {
-    font-size: 14px;
-    font-weight: 400;
-    color: #101010;
-    cursor: pointer;
-    padding: 0.5rem 0;
+.header-container button,svg{
+    color: #a6a6a6;
+}
+.header-container :is(input, textarea, button, a, nav):focus {
+    border-color: #1f4181 ;
+    outline-color: #1f4181;
+ }
+
+
+.header-left{
     display: flex;
     align-items: center;
-    gap: 0.25rem;
-    transition: color 0.15s ease;
+    justify-content: space-between; 
+    overflow:hidden;
 }
 
-.nav-item:hover {
-    color: #204080;
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
 }
 
-/* Dropdown */
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
+.dropbtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    flex-grow: 1;
+    background:#fff;
+    transition: color 0.3s;
+    gap: 1rem;
+    list-style: none;
+    width: auto;
+    height: 46px;
+    font-size: 20px;
+    font-weight: 100;
+    padding: 10px;
+ }
 
-.dropdown .dropbtn {
-  color: #101010;
-  background-color: inherit;
-  font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
+.nav button:hover{
+    color: #101010;
+    background: #f4f4f4;
 }
-
-.dropdown-icon {
-    fill: currentColor;
-    width: 12px;
-    height: 6px;
-}
-.dropdown-content {
-    fill: currentColor;
-    display: none;
-    position: absolute;
-    background-color: #ffffff;
-    z-index: 1;
-}
-.dropdown-content a {
-  float: none;
-  color: #101010;
-  text-decoration: none;
-  display: block;
-}
-/* Show the dropdown menu on hover */
-.dropdown-icon:hover .dropdown-content {
-  display: block;
-}
-
 
 .header-right {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: flex-end ;
+    overflow: visible;
 }
 
 .icon-btn {
-    background: none;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-    color: #101010;
-    border-radius: 4px;
-    transition: background-color 0.15s ease;
-}
-
-.icon-btn:hover {
-    background-color: #f4f4f4;
-}
-
-/* Hero Banner */
-.hero-banner {
-    background: linear-gradient(135deg, #e8ebf2 0%, #d2d8e5 100%);
-    padding: 1rem 0;
-}
-
-.hero-content {
+    background:#fff;
+    transition: color 0.3s;
+    gap: 1rem;
+    list-style: none;
+    padding: 10px 10px;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+}
+
+.header-right button:hover{
+    background: #f4f4f4;
+    color: #101010;
+}
+
+.dropdown-content{
+    display: none;
+}
+
+.mobile-menu-toggle, .close-menu-toggle {
+    position: fixed;
+    left: -100%;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: width 0.3s;
+}
+
+.overlay.active{
+    opacity: 1;
+    top:46px;
+    visibility: visible;
+    z-index: 500;
+}
+
+.mobile-menu-toggle.inactive {
+    display: none;
+}
+
+.close-menu-toggle.active {
+    z-index: 1000;
+    display: flex;
+}
+
+.dropdown-content a{
+        background-color: #fff;
+        color: #a6a6a6;
+        font-size: 20px;
+        padding: 10px 10px;
+        font-weight: 100;
+}
+
+.dropdown-content a:hover{
+        background-color: #f4f4f4;
+        color: #101010;
+}
+
+/*submenues*/
+.dropdown-content {
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        position: fixed;
+        z-index: 1000;  
+        top:-100%;
+        width: 100vw;
+        height: auto;
+        transition: left 0.3s ease-in-out;
+}
+
+.dc-productos.active {
+    top: 46px;
+}
+.dc-portafolio.active {
+    top: 46px;
+}
+.dc-recomendado.active {
+    top: 46px;
+}
+.dc-consultoria.active {
+    top: 46px;
+}
+
+.dp-productos.active svg{
+    transform: rotate(180deg);
+}
+.dp-portafolio.active svg{
+    transform: rotate(180deg);
+}
+.dp-recomendado.active svg{
+    transform: rotate(180deg);
+}
+.dp-consultoria.active svg{
+    transform: rotate(180deg);
+}
+/*submenues---------------------------------*/
+
+/*search*/
+ .search-form {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    display: none;
+    z-index: 1000;
+ }
+ .search-form svg{  
+    color: #748cb9;
+ }
+
+ .search-input {
+    font-size: 20px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    left: -100px;
+    height: 30px;
+    width: 250px;
+ }
+ 
+ .search-form.active {
+    display: flex;
+ }
+
+.overlaySearch {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.overlaySearch.active{
+    opacity: 1;
+    visibility: visible;
+    top: 46px;
+    z-index: 500;
+}
+/*search----------------------------*/
+
+/*login*/
+.login-center {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+    z-index: 1000;
+    top: -100%;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    transition: margin-left 0.3s ease-in-out;
+
+}
+
+.login-center.active{
+    opacity: 1;
+    visibility: visible;
+    top: 45px;
+    z-index: 1000;
+}
+
+.login-unloged.active svg{
+    color: #748cb9;
+}
+
+.nav.unactive {
+    visibility: hidden;
+}
+
+.shearch-menu.inactive {
+    display: none;
+}
+
+
+.overlayLogin {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.overlayLogin.active{
+    opacity: 1;
+    visibility: visible;
+    top: 46px;
+    z-index: 500;
+}
+
+.login {
+    display: grid;
+    gap: 1em;
+    place-items: center;
+    width: min(50%,500px);
+    height: min(50%,auto);
+    padding: 2em;
+    padding-top: 1em;
+    z-index: 1000;
+    background: #fff;
+    border-radius: 1em;
+    visibility: visible;
+}
+
+.login-header {
+    display: flex;
+    flex-direction: column;
+    gap:1em;
+}
+
+.login-title {
+    font-size: 1.5em;
+    font-weight: 400;
+    color: #1f4181;
+}
+
+.login-description {
+    font-size: 1em;
+    color: #748cb9;
+}
+
+ .login-form {
+    display: grid;
+    row-gap: 1em;
+    width: 90%;
+ }
+
+ .form-group {
+    display: flex;
+    flex-direction: column;
+ }
+
+ .login-form label{
+    color: #1f4181;
+    font-size: 1em;
+ }
+
+ .form-group :is(input, textarea){
+    padding: 1em 0.5em;
+    border-radius: .5em;
+    font-size: 1em;
+    outline: 0;
+    background: transparent;
+    border: 1px solid #a6a6a6;
+    caret-color: #1f4181;
+ }
+
+ .form-group :is(input, textarea, button, a, label):focus {
+    border-color: #1f4181 ;
+    outline-color: #1f4181;
+ }
+
+ .login-form :is(input, textarea)::selection{
+    background: #1f4181;
+    color: #fff;
+ }
+
+ .login-form input[tipe="checkbox"]{
+    accent-color: #1f4181;
+ }
+
+ .keep-login {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+ }
+
+ .login-btn {
+    font-size: 1em;
+    font-weight: 200;
+    padding-block: 1em;
+    color: #1f4181;
+    border: 0;
+    border-radius: .5em;
+    cursor: pointer;
+ }
+
+ .login-btn:hover{
+    background: #1f4181;
+    color: #fff;
+ }
+
+ .form-group:has([required]) label::after {
+    content: "*";
+    color: red;
+    font-size: .75em;
+ }
+
+.login-error p {
+    font-size: .80em;
+    color: red;
+}
+.login-error a:hover {
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.login-error {
+    display: none;
+}
+.login-error.active {
+    display: block;
+}
+/*login-----------------------------------*/
+
+
+/*moviles*/
+@media (width <= 40em) {
+    /*header*/
+    nav {
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        position: fixed;
+        z-index: 1000;
+        top: 46px;
+        left: -100%;
+        width: min(100%, 210px);
+        height: 100dvh;
+        transition: left 0.3s ease-in-out;
+    }
+    nav.active {
+        left: 0;
+    }
+    .mobile-menu-toggle{
+        position: relative;
+        left: 0;
+        width: 45px;
+        display: flex;
+    }
+    /*menus desplegables*/
+
+    .close-menu-toggle.active{
+        position: relative;
+        left: 0;
+    }
+    .dropbtn {
+        width: 100%;
+        flex: 5;
+    }
+    /*flechitas*/
+    .dropbtn svg {
+        transform: rotate(-90deg);
+    }
+    .dp-productos.active svg{
+        transform: rotate(90deg);
+    }
+    .dp-portafolio.active svg{
+        transform: rotate(90deg);
+    }
+    .dp-recomendado.active svg{
+        transform: rotate(90deg);
+    }
+    .dp-consultoria.active svg{
+        transform: rotate(90deg);
+    }
+    /*submenues movil*/
+    .dropdown-content.active {
+        left: 210px;
+    }
+    .overlay.active{
+        opacity: 1;
+        top:0px;
+        visibility: visible;
+        z-index: 500;
+    }
+    /*search*/
+     .search-input {
+        position: fixed;
+        top:52.5px;
+        left: auto;
+     }
+    /*login*/
+    .login{   
+    width: min(100%,400px);
+    }
+
+}
+
+/*header login and search----------------------*/
+
+/*footer*/
+/*footer---------------------------------------*/
+/*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
+/*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
+/*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
+
+/*hero baner*/
+.hero-banner {
+    background: linear-gradient(135deg, #e8ebf2 0%, #1f4181 100%);
+    padding: 1rem;
+    height: 56px;
+}
+.hero-banner:hover {
+    background: linear-gradient(135deg, #e8ebf2 100%, #d2d8e5 100%);
+}
+.hero-content {
+    display: flex;
+    align-self: center;
     justify-content: space-between;
-    gap: 1rem;
 }
 
 .hero-content h2 {
-    font-size: 1.125rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 500;
     color: #101010;
     margin: 0;
 }
@@ -159,11 +543,26 @@ body {
     margin-left: 1rem;
 }
 
-.arrow-icon {
-    color: #204080;
-    flex-shrink: 0;
+.hero-content a:hover {
+    font-style: italic;
+    text-decoration: underline;
 }
 
+.arrow-icon {
+    color: #204080;
+    margin-right: 2rem;
+}
+
+.arrow-icon:hover {
+    color: #204080;
+    margin-right: 1rem;
+    margin-top: -1rem;
+}
+
+/*hero baner---------------------------------------------*/
+
+
+/*main content*/
 /* AI ROI Section */
 .ai-roi-section {
     position: relative;
@@ -762,265 +1161,4 @@ body {
     display: flex;
 }
 
-/* Enhanced Mobile Responsiveness */
-@media (max-width: 1024px) {
-    .mobile-menu-toggle {
-        display: flex;
-    }
-
-    .desktop-only {
-        display: none;
-    }
-}
-
-/* new header/
-
-/* Accesibilidad y estados */
-.dropbtn[aria-expanded="true"] .dropdown-icon { transform: rotate(180deg); }
-.dropdown-icon { transition: transform .2s ease; }
-
-/* Dropdown por defecto oculto, visible con clase .open o focus/hover */
-.dropdown .dropdown-content { display: none; position: absolute; z-index: 20; }
-.dropdown.open .dropdown-content { display: block; }
-
-/* Menú móvil visible con clase .open */
-.mobile-menu[hidden] { display: none !important; }
-.mobile-menu.open { display: block !important; }
-
-/* Header sticky con sombra al hacer scroll */
-.header.is-stuck { box-shadow: 0 6px 20px rgba(0,0,0,.08); }
-
-/* Mejora foco teclado */
-.nav a:focus, .dropbtn:focus, .dropdown-content a:focus, .dropdown-content button:focus {
-  outline: 2px solid #4da3ff; outline-offset: 2px;
-}
-/* Botón de dropdown con look limpio */
-.dropbtn {
-  background: transparent;
-  border: 0;
-  padding: 8px 10px;
-  font: inherit;
-  color: inherit;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  line-height: 1;
-}
-
-/* Icono con animación */
-.dropdown-icon { transition: transform .2s ease; }
-.dropbtn[aria-expanded="true"] .dropdown-icon { transform: rotate(180deg); }
-
-/* Contenedor dropdown (por si faltaba) */
-.nav-item.dropdown { position: relative; }
-.dropdown .dropdown-content {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  min-width: 220px;
-  background: #fff;
-  color: #111;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.12);
-  padding: 8px;
-  display: none;
-  z-index: 20;
-}
-
-/* Hover fallback (funciona incluso sin JS) */
-.dropdown:hover .dropdown-content { display: block; }
-
-/* Estado abierto vía JS */
-.dropdown.open .dropdown-content { display: block; }
-
-/* Accesibilidad foco */
-.dropdown-content a,
-.dropdown-content button {
-  display: block;
-  padding: 8px 10px;
-  border-radius: 8px;
-}
-.dropdown-content a:hover,
-.dropdown-content button:hover,
-.dropdown-content a:focus,
-.dropdown-content button:focus {
-  background: #f3f4f6;
-  outline: 2px solid #4da3ff;
-  outline-offset: 2px;
-}
-
-/* Posicionamiento y stacking */
-.header { position: sticky; top: 0; z-index: 1000; }
-.header, .header * { overflow: visible; }      /* evita que el menú se corte */
-.nav { overflow: visible; }
-
-.nav-item.dropdown { position: relative; }
-
-/* Panel */
-.dropdown .dropdown-content {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  min-width: 220px;
-  background: #fff;
-  color: #111;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.12);
-  padding: 8px;
-  display: none;
-  z-index: 2000;                 /* por encima del header */
-}
-
-/* Fallback por hover (funciona sin JS) */
-.nav-item.dropdown:hover .dropdown-content { display: block; }
-
-/* Estado abierto por JS (click/touch) */
-.nav-item.dropdown.open .dropdown-content { display: block; }
-
-/* Botón limpio (que no parezca <select>) */
-.dropbtn {
-  background: transparent;
-  border: 0;
-  padding: 8px 10px;
-  font: inherit;
-  color: inherit;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  line-height: 1;
-}
-.dropdown-icon { transition: transform .2s ease; }
-.dropbtn[aria-expanded="true"] .dropdown-icon { transform: rotate(180deg); }
-
-/* El panel no debe tener hueco respecto al botón */
-.nav-item.dropdown { position: relative; }
-
-/* Panel */
-.dropdown .dropdown-content{
-  position: absolute;
-  top: 100%;                 /* pegado al botón */
-  left: 0;
-  margin-top: 8px;           /* espacio visual SIN crear gap real gracias al ::before */
-  min-width: 240px;
-  background: #fff;
-  color: #111;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0,0,0,.12);
-  padding: 8px;
-  display: none;
-  z-index: 2000;
-}
-
-/* “Puente” invisible para que no se cierre cuando pasas del botón al panel */
-.dropdown .dropdown-content::before{
-  content: "";
-  position: absolute;
-  top: -10px;                /* cubre el hueco */
-  left: 0;
-  right: 0;
-  height: 10px;
-}
-
-/* Estados de apertura */
-.nav-item.dropdown.open .dropdown-content{ display:block; }
-/* (si quieres mantener también hover como fallback) */
-/* .nav-item.dropdown:hover .dropdown-content{ display:block; } */
-
-.dropbtn {
-  background: transparent; border: 0; padding: 10px 12px;
-  font: inherit; color: inherit; display: inline-flex; align-items: center; gap: 6px;
-  cursor: pointer; appearance: none; -webkit-appearance: none;
-}
-.dropdown-icon{ transition: transform .2s ease; }
-.dropbtn[aria-expanded="true"] .dropdown-icon{ transform: rotate(180deg); }
-
-/* Items del panel */
-.dropdown-content a, .dropdown-content button{
-  display:block; padding:10px 12px; border-radius:8px; text-align:left;
-}
-.dropdown-content a:hover,
-.dropdown-content button:hover,
-.dropdown-content a:focus,
-.dropdown-content button:focus{
-  background:#f3f4f6; outline:2px solid #4da3ff; outline-offset:2px;
-}
-
-/* Asegurar stacking y evitar recortes */
-.header { position: sticky; top: 0; z-index: 1000; }
-.header, .nav { overflow: visible; }
-
-/* CONTEXTO: el header tiene fondo claro (#fff) y borde inferior */
-:root{
-  --header-bg: #ffffff;
-  --header-border: #e6e8ee;
-  --submenu-text: #111;
-}
-
-/* Asegura stacking y sin recortes */
-.header { position: sticky; top: 0; z-index: 1000; background: var(--header-bg); }
-.header, .nav { overflow: visible; }
-
-.nav-item.dropdown { position: relative; }
-
-/* Botón limpio */
-.dropbtn {
-  background: transparent; border: 0; padding: 12px 14px;
-  font: inherit; color: inherit; display: inline-flex; align-items: center; gap: 6px;
-  cursor: pointer; appearance: none; -webkit-appearance: none;
-  border-bottom: 2px solid transparent;
-}
-.dropbtn:focus { outline: 2px solid #4da3ff; outline-offset: 2px; }
-.dropbtn[aria-expanded="true"] { border-bottom-color: #4da3ff; } /* subrayado activo */
-.dropdown-icon { transition: transform .2s ease; }
-.dropbtn[aria-expanded="true"] .dropdown-icon { transform: rotate(180deg); }
-
-/* ===== Dropdown “integrado” ===== */
-.dropdown .dropdown-content{
-  position: absolute;
-  top: calc(100% - 1px);     /* pega al borde del header */
-  left: 0;
-  min-width: 260px;          /* ajusta según tu tipografía */
-  background: var(--header-bg);
-  color: var(--submenu-text);
-
-  /* sin “ventana”: */
-  border: 0;
-  border-top: 1px solid var(--header-border);
-  border-radius: 0;
-  box-shadow: none;
-
-  padding: 10px 0;
-  display: none;
-  z-index: 2000;
-}
-
-/* “puente” anti-gap entre botón y panel */
-.dropdown .dropdown-content::before{
-  content:""; position:absolute;
-  top: -8px; left: 0; right: 0; height: 8px;
-}
-
-/* Items */
-.dropdown-content a, .dropdown-content button{
-  display:block; padding: 10px 16px;
-  color: inherit; text-decoration: none; border-radius: 0;
-}
-.dropdown-content a:hover,
-.dropdown-content button:hover{
-  background: #f5f6fa;
-}
-
-/* Estado abierto por JS */
-.nav-item.dropdown.open .dropdown-content { display:block; }
-
-/* (Opcional) hover como fallback si el JS no carga */
-/* .nav-item.dropdown:hover .dropdown-content { display:block; } *
+/*main content------------------------------*/
