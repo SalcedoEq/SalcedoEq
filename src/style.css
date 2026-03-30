@@ -47,6 +47,13 @@ header{
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #a4a4a4;
+    background: #fff;
+}
+
+header.active{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo-container {
@@ -106,13 +113,16 @@ nav {
     width: auto;
     height: 46px;
     font-size: 20px;
-    font-weight: 100;
+    font-weight: 400;
     padding: 10px;
  }
 
 .nav button:hover{
     color: #101010;
     background: #f4f4f4;
+}
+header svg:hover{
+    color: #101010;
 }
 
 .header-right {
@@ -182,7 +192,7 @@ nav {
         color: #a6a6a6;
         font-size: 20px;
         padding: 10px 10px;
-        font-weight: 100;
+        font-weight: 400;
 }
 
 .dropdown-content a:hover{
@@ -232,12 +242,24 @@ nav {
 /*submenues---------------------------------*/
 
 /*search*/
+.close-shearch-menu {
+    position: fixed;
+    right: -100%;
+}
+
+.close-shearch-menu.active {
+    position: fixed;
+    right: 45px;
+}
+
  .search-form {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     display: none;
     z-index: 1000;
+    border-color: #1f4181 ;
+    outline-color: #1f4181;
  }
  .search-form svg{  
     color: #748cb9;
@@ -245,11 +267,21 @@ nav {
 
  .search-input {
     font-size: 20px;
-    padding-left: 1rem;
-    padding-right: 1rem;
     left: -100px;
     height: 30px;
     width: 250px;
+    border-radius: 1em;
+    padding-left: .5rem;
+    border: 1px solid #a6a6a6;
+    caret-color: #1f4181;
+ }
+
+ .shearch-btn svg:hover {
+    color: #748cb9;
+ }
+ .search-input::selection{
+    background: #1f4181;
+    color: #fff;
  }
  
  .search-form.active {
@@ -305,7 +337,7 @@ nav {
 }
 
 .shearch-menu.inactive {
-    display: none;
+    visibility: hidden;
 }
 
 
@@ -442,7 +474,7 @@ nav {
 
 
 /*moviles*/
-@media (width <= 730px) {
+@media (width <= 768px) {
     /*header*/
     nav {
         background-color: #fff;
@@ -503,10 +535,18 @@ nav {
         z-index: 500;
     }
     /*search*/
-     .search-input {
+     .search-form {
         position: fixed;
-        top:52.5px;
-        left: auto;
+        top:50px;
+        right: 45px;
+        background: #fff;
+        border-radius: 1.5rem;
+        padding-left: .5rem;
+        gap: .5rem;
+     }
+     .shearch-btn {
+        border-radius: 50%;
+        background: none;
      }
     /*login*/
     .login{   
@@ -726,7 +766,7 @@ nav {
 
 .ai-roi-section .container {
     position: relative;
-    z-index: 1;
+    z-index: 0;/*1*/
 }
 
 /* News Section */

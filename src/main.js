@@ -8,9 +8,10 @@ const overlay = document.querySelector(".overlay")
 const navIntern = document.querySelectorAll(".nav a")
 const closeAppear = document.querySelector(".close-menu-toggle")
 const mobileMenuDisappear = document.querySelector(".mobile-menu-toggle")
+const headerActive = document.querySelector("header")
 
 function updateInerStatus () {
-  if (window.innerWidth <= 730 && !navMenu.classList.contains("inert")){
+  if (window.innerWidth <= 768 && !navMenu.classList.contains("inert")){
     navMenu.setAttribute("inert", ""); 
     openMobileMenu.setAttribute("aria-expanded", "false");
   }
@@ -26,6 +27,7 @@ window.addEventListener("resize",updateInerStatus)
 
 openMobileMenu.addEventListener("click", () =>{
   closeMenu ()
+  headerActive.classList.add("active");
   navMenu.classList.add("active");
   overlay.classList.add("active");
   closeAppear.classList.add("active");
@@ -35,6 +37,7 @@ openMobileMenu.addEventListener("click", () =>{
 });
 
 function closeMenu () {
+  headerActive.classList.remove("active");
   navMenu.classList.remove("active");
   overlay.classList.remove("active");
   closeAppear.classList.remove("active");
@@ -51,6 +54,7 @@ function closeMenu () {
   navRecomendado.classList.remove("active");
   navConsultoria.setAttribute("aria-expanded", "false");
   navConsultoria.classList.remove("active");
+  closeSearch.classList.remove("active");
   searchBar.classList.remove("active");
   hideSearch.classList.remove("inactive");
   overlaySearch.classList.remove("active");
@@ -83,6 +87,7 @@ const dropdownRecomendado = document.querySelector(".dc-recomendado");
 const dropdownConsultoria = document.querySelector(".dc-consultoria");
 
 navProducto.addEventListener("click", () =>{
+  headerActive.classList.add("active");
   navMenu.classList.add("active");
   closeAppear.classList.add("active");
   mobileMenuDisappear.classList.add("inactive");
@@ -99,6 +104,7 @@ navProducto.addEventListener("click", () =>{
 });
 
 navPortafolio.addEventListener("click", () =>{
+  headerActive.classList.add("active");
   navMenu.classList.add("active");
   closeAppear.classList.add("active");
   mobileMenuDisappear.classList.add("inactive");
@@ -115,6 +121,7 @@ navPortafolio.addEventListener("click", () =>{
 });
 
 navRecomendado.addEventListener("click", () =>{
+  headerActive.classList.add("active");
   navMenu.classList.add("active");
   closeAppear.classList.add("active");
   mobileMenuDisappear.classList.add("inactive");
@@ -131,6 +138,7 @@ navRecomendado.addEventListener("click", () =>{
 });
 
 navConsultoria.addEventListener("click", () =>{
+  headerActive.classList.add("active");
   navMenu.classList.add("active");
   closeAppear.classList.add("active");
   mobileMenuDisappear.classList.add("inactive");
@@ -147,6 +155,10 @@ navConsultoria.addEventListener("click", () =>{
 });
 
 /*desplegables----------------------*/
+
+/*mantener header*/
+
+
 /*header----------------------*/
 
 
@@ -154,13 +166,20 @@ navConsultoria.addEventListener("click", () =>{
 const openSearch = document.querySelector(".shearch-menu");
 const searchBar = document.querySelector(".search-form");
 const overlaySearch = document.querySelector(".overlaySearch");
+const closeSearch = document.querySelector(".close-shearch-menu");
 
 
 openSearch.addEventListener("click", () =>{
   closeMenu();
+  closeSearch.classList.add("active");
+  headerActive.classList.add("active");
   searchBar.classList.add("active");
   hideSearch.classList.add("inactive");
   overlaySearch.classList.add("active");
+});
+
+closeSearch.addEventListener("click", () =>{
+    closeMenu();
 });
 
 overlaySearch.addEventListener("click", () =>{
@@ -180,6 +199,7 @@ const loginErr = document.querySelector(".login-error");
 
 openLogin.addEventListener("click", () =>{
   closeMenu();
+  headerActive.classList.add("active");
   loginSystem.classList.add("active");
   openLogin.classList.add("active");
   hideMenu.classList.add("unactive");
@@ -189,6 +209,7 @@ openLogin.addEventListener("click", () =>{
 });
 
 closeLogin.addEventListener("click", () =>{
+  headerActive.classList.remove("active");
   loginSystem.classList.remove("active");
   openLogin.classList.remove("active");
   hideMenu.classList.remove("unactive");
@@ -200,6 +221,7 @@ closeLogin.addEventListener("click", () =>{
 
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape"){
+    headerActive.classList.remove("active");
     loginSystem.classList.remove("active");
     openLogin.classList.remove("active");
     hideMenu.classList.remove("unactive");
