@@ -8,6 +8,7 @@
     <meta name="description" content="Compre su equipo médico y biomédico, reciba servicios personalizados y una solución hecha a su medida. FACIL RAPIDO Y SEGURO / OFERTAS"> <!--descripcion de la pagina web IMPORTANTE PARA BUSQUEDAS-->
     <meta name="keywords" content="equipos médicos, equipos biomedicos, equipamiento, instrumental, Perú">
     <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="src/style.store.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -20,17 +21,597 @@
 <body>
     <!-- Scripts -->
     <script type="module" src="./src/main.js"></script>
+    <script type="module" src="./src/store.js"></script>
     <!-- Header -->
     <header>
-        HEADER
+        <!--LOGO Y MENU LATERAL-->
+        <div class="logo-container">
+            <!--menu lateral/resposive-->
+            <button class="icon-btn mobile-menu-toggle"
+                aria-label="Abrir menú"
+                aria-controls="mobile-menu"
+                aria-expanded="false">
+                <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <!--cerrar-->
+            <button class="icon-btn close-menu-toggle"
+                aria-label="Cerrar menú"
+                aria-controls="close-mobile-menu"
+                aria-expanded="false">
+                <svg width="25" height="25" viewBox="0 0 25 25" aria-hidden="true"><path d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z" fill="currentColor"></path></svg>
+            </button>
+            <a href="/#">
+                <img src="./logos/logo_web.webp" alt="SalcedoEq" class="logo">
+            </a>
+            <svg width="10" height="45" viewBox="0 0 12 45" aria-hidden="true"><path d="M7 50V6H8V40H7ZM11" fill="currentColor" stroke="none"></path></svg>
+        </div>
+        <!--NAVEGACION, Y BOTONES-->
+        <div class="header-container">
+            <div class="header-left">
+                <!--DESPLEGABLES-->
+                <nav class="nav" aria-label="Principal">
+                    <!-- TIENDA -->
+                    <div class="nav-item dropdown">
+                        <button class="dropbtn dp-productos"
+                            id="btn-productos"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            aria-controls="menu-productos">
+                            <a href='/tienda'>Tienda</a>
+                            <svg class="dropdown-icon di-menu" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path></svg>
+                        </button>
+                        <div class="dropdown-content dc-productos" id="menu-productos" role="menu" aria-labelledby="btn-productos">
+                            <a role="menuitem" tabindex="-1" href="/productos/monitor">Monitores</a>
+                            <a role="menuitem" tabindex="-1" href="/productos/esterilizacion">Esterilización</a>
+                            <a role="menuitem" tabindex="-1" href="/productos/imagenes">Ultrasonido</a>
+                        </div>
+                    </div>
+                    <!-- PORTAFOLIO -->
+                    <div class="nav-item dropdown">
+                        <button class="dropbtn dp-portafolio"
+                            id="btn-portafolio"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            aria-controls="menu-portafolio">
+                            <a href="/portafolio">Portafolio</a>
+                            <svg class="dropdown-icon di-portafolio" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path></svg>
+                        </button>
+                        <div class="dropdown-content dc-portafolio" id="menu-productos" role="menu" aria-labelledby="btn-productos">
+                            <a role="menuitem" tabindex="-1" href="/portafolio/hospital">Hospitales</a>
+                            <a role="menuitem" tabindex="-1" href="/portafolio/clinica">Clinicas</a>
+                            <a role="menuitem" tabindex="-1" href="/portafolio/academico">Academico</a>
+                        </div>
+                    </div>
+                    
+                    <!-- RECOMENDADO -->
+                    <div class="nav-item dropdown">
+                        <button class="dropbtn dp-recomendado"
+                            id="btn-recomendado"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            aria-controls="menu-recomendado">
+                            <a href="/recomendado">Recomendado</a>
+                            <svg class="dropdown-icon di-recomendado" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path></svg>
+                        </button>
+                        <div class="dropdown-content dc-recomendado id="menu-productos" role="menu" aria-labelledby="btn-productos">
+                            <a role="menuitem" tabindex="-1" href="/recomendado/top">Top</a>
+                            <a role="menuitem" tabindex="-1" href="/recomendado/nuevo">Nuevo</a>
+                        </div>
+                    </div>
+                    <!-- CONSULTORIA -->
+                    <div class="nav-item dropdown">
+                        <button class="dropbtn dp-consultoria"
+                            id="btn-v"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            aria-controls="menu-consultoria">
+                            <a href="/consultoria">Consultoria</a>
+                            <svg class="dropdown-icon di-consultoria" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path></svg>
+                        </button>
+                        <div class="dropdown-content dc-consultoria" id="menu-productos" role="menu" aria-labelledby="btn-productos">
+                            <a role="menuitem" tabindex="-1" href="/consultoria/especificaciones">EE.TT</a>
+                            <a role="menuitem" tabindex="-1" href="/consultoria/supervicion">Supervisión</a>
+                            <a role="menuitem" tabindex="-1" href="/consultoria/capacitacion">Capacitación</a>
+                        </div>
+                    </div>
+                    <!-- SOPORTE -->
+                    <div class="nav-item dropdown">
+                        <button class="dropbtn dp-portafolio"
+                            id="btn-portafolio"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            aria-controls="menu-portafolio">
+                            <a href="/soporte">Soporte</a>
+                        </button>
+                        <!--<div class="dropdown-content dc-consultoria" id="menu-productos" role="menu" aria-labelledby="btn-productos">
+                            <a role="menuitem" tabindex="-1" href="/consultoria/hospital">EE.TT</a>
+                            <a role="menuitem" tabindex="-1" href="/consultoria/clinica">Supervisión</a>
+                            <a role="menuitem" tabindex="-1" href="/consultoria/academico">Capacitación</a>
+                        </div>-->
+                    </div>
+                    
+                </nav>
+            </div>
+            <!--BOTONES-->
+            <div class="header-right">
+                <!--busqueda-->
+                <form class="search-form">
+                    <input class="search-input" type="text" placeholder="Buscar en nuestra tienda"> 
+                    <button class="icon-btn desktop-only shearch-btn" aria-label="Buscar">
+                        <svg width="24" height="25" viewBox="0 0 25 25" aria-hidden="true"><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z" fill="currentColor"></svg>
+                    </button>
+                </form>
+                <button class="icon-btn desktop-only shearch-menu" aria-label="Buscar">
+                    <svg width="24" height="25" viewBox="0 0 25 25" aria-hidden="true"><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z" fill="currentColor"/></svg>
+                </button>
+                <button class="icon-btn desktop-only close-shearch-menu" aria-label="Buscar">
+                    <svg width="24" height="25" viewBox="0 0 25 25" aria-hidden="true"><path d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z" fill="currentColor"/></svg>
+                </button>
+                <!-- login -->
+                <button class="icon-btn desktop-only login-unloged" aria-label="Cuenta">
+                    <svg width="25" height="25" viewBox="0 0 25 25" aria-hidden="true"><path d="M14 14.252V16.3414C13.3744 16.1203 12.7013 16 12 16C8.68629 16 6 18.6863 6 22H4C4 17.5817 7.58172 14 12 14C12.6906 14 13.3608 14.0875 14 14.252ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM12 11C14.21 11 16 9.21 16 7C16 4.79 14.21 3 12 3C9.79 3 8 4.79 8 7C8 9.21 9.79 11 12 11ZM19 17.5858L21.1213 15.4645L22.5355 16.8787L20.4142 19L22.5355 21.1213L21.1213 22.5355L19 20.4142L16.8787 22.5355L15.4645 21.1213L17.5858 19L15.4645 16.8787L16.8787 15.4645L19 17.5858Z" fill="currentColor"> </path></svg>
+                </button>
+            </div>
+            <div class="overlay">
+            </div>
+            <div class="overlaySearch">
+            </div>
+        </div>
     </header>
+
+    
+    <login class="login-center">
+        <div class="login">
+            <div class="login-header">
+                <h1 class="login-title">
+                    Entrar
+                </h1>
+                <p class="login-description">
+                    Disfruta de tus promociones y el soporte exclusivo de muestra plataforma.
+                    Porfavor, inicia sesion con tus datos de acceso.
+                </p>
+            </div>
+
+            <form class="login-form">
+                <div class="form-group">
+                    <label>Correo</label>
+                    <input type="email" placeholder="usuario123@dominio.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" placeholder="********" required>
+                </div>
+
+                <label class="keep-login">
+                    <input type="checkbox">
+                    <p>
+                        Mantener sesion iniciada
+                    </p>
+                </label>
+
+                <label class="login-error">
+                    <p>
+                        Usuario no registrado, 
+                        <a href="https://wa.me/+51956614346" target="blank">contacte con un asesor</a> 
+                    </p>
+                </label>
+
+                <button class="login-btn">INICIAR SESION</button>
+            </form>
+        </div>
+        <div class="overlayLogin">
+        </div>
+    </login>
     <!-- FIN DE HEADER -->
+    <!--BUSCADOR RAPIDO-->
+    <fastSearch>
+        <div class="fastSearch-heroBanner">
+            <div class="container">     
+                <div class="fastSearch-header">
+                    <h1 class="fastSearch-title">
+                        Escoge tu equipo en linea. Lo revisamos y entregamos segun sus requerimeintos.
+                    </h1>
+                </div>
+
+                <form class="fastSearch-form">
+                    <div class="form-group">
+                        <select>
+                            <option>Monitores</option>
+                            <option>Esterilización</option>
+                            <option>Ultrasonido</option>
+                            <option>Rayos-x</option>
+                            <option>Instrumental</option>
+                            <option>Otros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select>
+                            <option>0USD-100USD</option>
+                            <option>100USD-200USD</option>
+                            <option>200USD-500USD</option>
+                            <option>500USD-1000USD</option>
+                            <option>1000USD-2000USD</option>
+                            <option>&gt 2000USD</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select>
+                            <option>Mindray</option>
+                            <option>Dragüer</option>
+                            <option>Siemens</option>
+                            <option>NING-BO</option>
+                            <option>EDAN</option>
+                            <option>Otros</option>
+                        </select>
+                    </div>
+
+                    <label class="fastSearch-error">
+                        <p>
+                            No se econtraron coincidencias, 
+                            <a href="https://wa.me/+51956614346" target="blank">contacte con un asesor</a> para una atencion personalizada 
+                        </p>
+                    </label>
+                    <!-- filtro INICIO-->
+                    <button class="fastSearch-btn">APLICAR FILTRO</button>
+                    <!-- filtro FIN-->
+                </form>
+            </div>
+        </div>
+    </fastSearch>
+    <!--TIENDA-->
     <main>
-        main
+        <div class="container-store">
+            <div class="container">   
+                <!-- Sidebar INICIO -->
+                <div class="aSide">
+                    <!-- tipo INICIO -->
+                    <div class="filter-tipo filter-aSide">
+                        <h5 class="filters-title">Filtrar por tipo</h5>
+                        <form>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="tipe-all">
+                                <label class="filter-label" for="tipe-all">Todos</label>
+                                <span class="filter-quantity">1200</span>
+                            </div>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="marca-1">
+                                <label class="filter-label" for="marca-1">Monitores</label>
+                                <span class="filter-quantity">150</span>
+                            </div>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="marca-2">
+                                <label class="filter-label" for="marca-2">Esterilización</label>
+                                <span class="filter-quantity">295</span>
+                            </div>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="marca-3">
+                                <label class="filter-label" for="marca-3">Ultrasonido</label>
+                                <span class="filter-quantity">246</span>
+                            </div>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="marca-4">
+                                <label class="filter-label" for="marca-4">Rayos-x</label>
+                                <span class="filter-quantity">295</span>
+                            </div>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="marca-5">
+                                <label class="filter-label" for="marca-5">Instrumental</label>
+                                <span class="filter-quantity">145</span>
+                            </div>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="marca-6">
+                                <label class="filter-label" for="marca-6"> Otros</label>
+                                <span class="filter-quantity">69</span>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- tipo FIN -->
+                    
+                    <!-- precio INICIO -->
+                    <div class="filter-tipo filter-aSide">
+                        <h5 class="filters-title">Filtrar por precio</h5>
+                        <form>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="price-all">
+                                <label class="filter-label" for="price-all">All Price</label>
+                                <span class="filter-quantity">1200</span>
+                            </div>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="price-1">
+                                <label class="filter-label" for="price-1">$0 - $100</label>
+                                <span class="filter-quantity">150</span>
+                            </div>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="price-2">
+                                <label class="filter-label" for="price-2">$100 - $200</label>
+                                <span class="filter-quantity">295</span>
+                            </div>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="price-3">
+                                <label class="filter-label" for="price-3">$200 - $500</label>
+                                <span class="filter-quantity">246</span>
+                            </div>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="price-4">
+                                <label class="filter-label" for="price-4">$500 - $1000</label>
+                                <span class="filter-quantity">295</span>
+                            </div>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="price-5">
+                                <label class="filter-label" for="price-5">$1000 - $2000</label>
+                                <span class="filter-quantity">145</span>
+                            </div>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="price-6">
+                                <label class="filter-label" for="price-6"> &gt$2000</label>
+                                <span class="filter-quantity">69</span>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- precio FIN -->
+
+                    <!-- marca INICIO-->
+                    <div class="filter-tipo filter-aSide">
+                        <h5 class="filters-title">Filtrar por marca</h5>
+                        <form>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="brand-all">
+                                <label class="filter-label" for="brand-all">Todas las marcas</label>
+                                <span class="filter-quantity">1200</span>
+                            </div>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="brand-1">
+                                <label class="filter-label" for="brand-1">Mindray</label>
+                                <span class="filter-quantity">150</span>
+                            </div>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="brand-2">
+                                <label class="filter-label" for="brand-2">Dragüer</label>
+                                <span class="filter-quantity">295</span>
+                            </div>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="brand-3">
+                                <label class="filter-label" for="brand-3">Siemens</label>
+                                <span class="filter-quantity">246</span>
+                            </div>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="brand-4">
+                                <label class="filter-label" for="brand-4">NING-BO</label>
+                                <span class="filter-quantity">295</span>
+                            </div>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="brand-5">
+                                <label class="filter-label" for="brand-5">EDAN</label>
+                                <span class="filter-quantity">145</span>
+                            </div>
+                            <div class="form-group filter-checks">
+                                <input type="checkbox" class="filter-checkbox" checked id="brand-6">
+                                <label class="filter-label" for="brand-6">Otros</label>
+                                <span class="filter-quantity">69</span>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- marca FIN-->
+                    <!-- filtro INICIO-->
+                    <button class="fastSearch-btn">APLICAR FILTRO</button>
+                    <!-- filtro FIN-->
+                <!-- Sidebar FINAL -->
+            </div>  
+            <div class="container">
+                <!-- Shop Product Start -->
+                <div class="container-productos">
+                    <div class="row pb-3">
+                        <div class="col-12 pb-1">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <form action="">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search by name">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text bg-transparent text-primary">
+                                                <i class="fa fa-search"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="dropdown ml-4">
+                                    <button class="btn border dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                                Sort by
+                                            </button>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
+                                        <a class="dropdown-item" href="#">Latest</a>
+                                        <a class="dropdown-item" href="#">Popularity</a>
+                                        <a class="dropdown-item" href="#">Best Rating</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                            <div class="card product-item border-0 mb-4">
+                                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                    <img class="img-fluid w-100" src="img/product-1.jpg" alt="">
+                                </div>
+                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                    <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                    <div class="d-flex justify-content-center">
+                                        <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between bg-light border">
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                            <div class="card product-item border-0 mb-4">
+                                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                    <img class="img-fluid w-100" src="img/product-2.jpg" alt="">
+                                </div>
+                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                    <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                    <div class="d-flex justify-content-center">
+                                        <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between bg-light border">
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                            <div class="card product-item border-0 mb-4">
+                                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                    <img class="img-fluid w-100" src="img/product-3.jpg" alt="">
+                                </div>
+                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                    <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                    <div class="d-flex justify-content-center">
+                                        <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between bg-light border">
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                            <div class="card product-item border-0 mb-4">
+                                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                    <img class="img-fluid w-100" src="img/product-4.jpg" alt="">
+                                </div>
+                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                    <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                    <div class="d-flex justify-content-center">
+                                        <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between bg-light border">
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                            <div class="card product-item border-0 mb-4">
+                                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                    <img class="img-fluid w-100" src="img/product-5.jpg" alt="">
+                                </div>
+                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                    <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                    <div class="d-flex justify-content-center">
+                                        <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between bg-light border">
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                            <div class="card product-item border-0 mb-4">
+                                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                    <img class="img-fluid w-100" src="img/product-6.jpg" alt="">
+                                </div>
+                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                    <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                    <div class="d-flex justify-content-center">
+                                        <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between bg-light border">
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                            <div class="card product-item border-0 mb-4">
+                                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                    <img class="img-fluid w-100" src="img/product-7.jpg" alt="">
+                                </div>
+                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                    <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                    <div class="d-flex justify-content-center">
+                                        <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between bg-light border">
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                            <div class="card product-item border-0 mb-4">
+                                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                    <img class="img-fluid w-100" src="img/product-8.jpg" alt="">
+                                </div>
+                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                    <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                    <div class="d-flex justify-content-center">
+                                        <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between bg-light border">
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                            <div class="card product-item border-0 mb-4">
+                                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                    <img class="img-fluid w-100" src="img/product-1.jpg" alt="">
+                                </div>
+                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                    <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                    <div class="d-flex justify-content-center">
+                                        <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between bg-light border">
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 pb-1">
+                            <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center mb-3">
+                                <li class="page-item disabled">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                                </li>
+                            </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <!-- Shop Product End -->
+            </div>
+            <!-- Shop End -->
+        </div>
     </main>
 
     <footer>
         FOOTER
     </footer>
+    
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 </body>
     

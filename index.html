@@ -18,6 +18,9 @@
 
 
 <body>
+    <!--#############################################################-->
+    <!--#############################################################-->
+    <!--#############################################################-->
     <!-- Scripts -->
     <script type="module" src="./src/main.js"></script>
     <!-- Header -->
@@ -41,14 +44,23 @@
             <a href="/#">
                 <img src="./logos/logo_web.webp" alt="SalcedoEq" class="logo">
             </a>
-            <svg width="10" height="45" viewBox="0 0 12 45" aria-hidden="true"><path d="M7 50V6H8V40H7ZM11" fill="currentColor" stroke="none"></path></svg>
+            <svg width="10" height="45" viewBox="0 0 12 45" aria-hidden="true"><path d="M7 50V6H8V40H7Z" fill="currentColor" stroke="none"></path></svg>
         </div>
         <!--NAVEGACION, Y BOTONES-->
         <div class="header-container">
             <div class="header-left">
+                <!--mover nav a la izquierda-->
+                <div class="nav-izq-container">
+                    <button class="icon-btn nav-izq nav-scroll"
+                        aria-label="menú a la izquierda"
+                        aria-controls="move-menu-left"
+                        aria-expanded="false">
+                        <svg width="25" height="25" viewBox="0 0 25 25" aria-hidden="true"><path d="M8 12L14 6V18L8 12Z" fill="currentColor"></path></svg>
+                    </button>
+                </div>
                 <!--DESPLEGABLES-->
                 <nav class="nav" aria-label="Principal">
-                    <!-- PRODUCTOS -->
+                    <!-- TIENDA -->
                     <div class="nav-item dropdown">
                         <button class="dropbtn dp-productos"
                             id="btn-productos"
@@ -129,6 +141,16 @@
                     </div>
                     
                 </nav>
+                
+                <!--mover nav a la derecha-->
+                <div class="nav-der-container">
+                    <button class="icon-btn nav-der nav-scroll"
+                        aria-label="menú a la derecha"
+                        aria-controls="move-menu-rigth"
+                        aria-expanded="false">
+                        <svg width="25" height="25" viewBox="0 0 25 25" aria-hidden="true"><path d="M16 12L10 18V6L16 12Z" fill="currentColor"></path></svg>
+                    </button>
+                </div>
             </div>
             <!--BOTONES-->
             <div class="header-right">
@@ -201,7 +223,9 @@
     </login>
 
     <!-- FIN DE HEADER -->
-    
+    <!--#############################################################-->
+    <!--#############################################################-->
+    <!--#############################################################-->
     <!-- Hero Banner -->
     <section class="hero-banner">
         <div class="container">
@@ -447,32 +471,49 @@
     </main>
 
     
+    <!--#############################################################-->
+    <!--#############################################################-->
+    <!--#############################################################-->
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h4>Contacto</h4>
-                    <ul>
-                        <li><a href="/">Contactar con Salcedo Equipment</a></li>
-                        <li><a href="/">Soporte técnico</a></li>
-                    </ul>
+            <div class="footer-wrap">
+                <div class="footer-logo">
+                    <a href="/#">
+                        <img src="./logos/logo_web.webp" alt="SalcedoEq" class="footer-logo-img">
+                    </a>
                 </div>
-                <div class="footer-column">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="/">Privacidad</a></li>
-                        <li><a href="/">Condiciones de uso</a></li>
-                        <li><a href="/">Accesibilidad</a></li>
-                    </ul>
+                <div class="footer-content">
+                    <div class="footer-column">
+                        <h4>Contacto</h4>
+                        <ul>
+                            <li><a href="https://wa.me/+51956614346" target="blank">Contactar con Salcedo Equipment</a></li>
+                            <li><a href="/soporte">Soporte técnico</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="/legal/#privacity">Privacidad</a></li>
+                            <li><a href="/legal/#terms">Condiciones de uso</a></li>
+                            <li><a href="/legal/#accesibility">Accesibilidad</a></li>
+                        </ul>
+                    </div>
+                <div class="footer-bottom">
+                    <div class="footer-bottom-links">
+                        <span>© 2025 Salcedo Investments</span>
+                    </div>
+                    <div class="footer-country">Lima • Perú</div>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="footer-bottom-links">
-                    <span>© 2025 Salcedo Investments</span>
                 </div>
-                <div class="footer-country">Lima • Perú</div>
             </div>
         </div>
     </footer>
+    <!--fin FOOTER-->
+    <!--back to TOP-->
+    <!--fin back to TOP-->
+    <a href="#" class=" back-to-top"><svg width="25" height="25" viewBox="0 0 25 25" aria-hidden="true"><path d="M12 4.83582L5.79291 11.0429L7.20712 12.4571L12 7.66424L16.7929 12.4571L18.2071 11.0429L12 4.83582ZM12 10.4857L5.79291 16.6928L7.20712 18.107L12 13.3141L16.7929 18.107L18.2071 16.6928L12 10.4857Z" fill="currentColor"></path></svg></a>
+    <!--#############################################################-->
+    <!--#############################################################-->
+    <!--#############################################################-->
 </body>
