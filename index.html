@@ -67,7 +67,7 @@
                             aria-haspopup="true"
                             aria-expanded="false"
                             aria-controls="menu-productos">
-                            <a href='/tienda'>Tienda</a>
+                            <a href='/tienda-equipamiento'>Tienda</a>
                             <svg class="dropdown-icon di-menu" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path></svg>
                         </button>
                         <div class="dropdown-content dc-productos" id="menu-productos" role="menu" aria-labelledby="btn-productos">
@@ -242,11 +242,11 @@
     <!-- Main Content -->
     <main>
         <!-- ELEMTENTO 1 Section? -->
-        <section class="ai-roi-section">
+        <section class="main-banner-portafolio">
             <div class="container">
                 <h1 class="main-heading">Nuestro portafolio</h1>
-                <p class="main-subtext">Salcedo Equipment provee soluciones a la medida para tus proyectos: construccion, equipamiento y gestion.</p>
-                <button class="cta-button">VER PROYECTOS</button>
+                <p class="main-subtext">Salcedo Equipment provee soluciones a la medida para tus proyectos: construcción, equipamiento y gestión.</p>
+                <a href="/portafolio"><button class="btn portafolio-button">VER PROYECTOS</button></a>
             </div>
             <div class="multilingual-bg">
                 <div class="bg-text">
@@ -261,25 +261,45 @@
                     <span>Creiamo insieme un business più X</span> <!-- italiano-->
                     <span>携手共创更智能的 X</span> <!-- chino simplificado-->
                 </div>
-            </div>
-        </section>
-
-        <!-- News Section -->
-        <section class="news-section">
-            <div class="container">
-                <h2 class="section-title">NUESTROS PRODUCTOS</h2>
-                <div class="news-list">
-                    <article class="news-item">
-                        <h3><a href="#">Equipos medicos</a></h3>
-                    </article>
-                    <article class="news-item">
-                        <h3><a href="#">Mobiliario Medico</a></h3>
-                    </article>
+                <div class="bg-text-2">
+                    <span>Equipos medicos</span> <!-- español-->
+                    <span>Dispositivi medici</span> <!-- italiano-->
+                    <span>Medicinski pripomoček</span> <!-- esloveno-->
+                    <span>医疗设备</span> <!-- chino simplificado-->
+                    <span>Medical devices</span> <!-- ingles-->
+                    <span>جهاز طبي</span> <!-- arabe-->
+                    <span>Dispositif médical</span> <!-- frances-->
+                    <span>Alat kesehatan</span> <!-- indonesio-->
+                    <span>Creiamo insieme un business più X</span> <!-- italiano-->
+                    <span>携手共创更智能的 X</span> <!-- chino simplificado-->
                 </div>
             </div>
         </section>
 
-        <!-- Recommendations Section 
+        <!-- Mas frecuente Section (tienda) -->
+        <section class="frecuent">
+            <div class="container">
+                <h2 class="section-title">NUESTROS PRODUCTOS</h2>
+                <div class="store-prev">
+                    <div class="select-prev">
+                        <article class="store-item see-equipamiento">
+                            <h3><a class="store-hear-Eq active" href="/tienda-equipamiento" >Equipos medicos</a></h3>
+                        </article>
+                        <article class="store-item see-mobiliario">
+                            <h3><a class="store-hear-Mob" href="/tienda-mobiliario">Mobiliario Medico</a></h3>
+                        </article>
+                    </div>
+                    <div class="prev-tienda equipameinto-prev">
+                        carrusel 1
+                    </div>
+                    <div class="prev-tienda mobiliario-prev inactive">
+                        carrusel 2
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommendations Section un-used
         <section class="recommendations-section">
             <div class="container">
                 <h2 class="section-title">Recomendado para usted</h2>
@@ -336,12 +356,13 @@
             </div>
         </section>
         -->
+        
         <!-- Contact Section -->
         <section class="contact-section">
             <div class="container" >
-                <div class="contact-content" onclick="">
+                <div class="contact-content">
                     <h2><a href="https://wa.me/+51956614346" target="blank">Contactar con Salcedo Equipment</a></h2>
-                    <p>Busque respuestas a preguntas sobre productos, ventas, soporte y todo lo demás de Salcedo Equipment</p>
+                    <p>Busque respuestas a preguntas sobre productos, ventas, soporte y todo lo demás en su cuenta con Salcedo Equipment</p>
                     <svg class="arrow" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M7 17L17 7M17 7H7M17 7V17" fill="none" stroke="currentColor" stroke-width="2"></path>
                     </svg>
@@ -349,122 +370,136 @@
             </div>
         </section>
 
-        <!-- Insights Section -->
-        <section class="insights-section">
+        <!-- Servicios mas solicitados un-used
+        <section class="most-section">
             <div class="container">
-                <h2 class="section-title">Insights y herramientas</h2>
-                <div class="insights-grid">
-                    <div class="insights-column">
-                        <h3>Equipamiento medico</h3>
-                        <ul class="insights-links">
-                            <li><a href="#">Compra de instrumental</a></li>
-                            <li><a href="#">Compra de equipos medicos</a></li>
-                            <li><a href="#">Mantenimiento de equipos medicos</a></li>
-                            <li><a href="#">Reparacion de equipos medicos</a></li>
+                <h2 class="section-title">Servicios más solicitados - segun rubros</h2>
+                <div class="most-grid">
+                    <div class="most-column">
+                        <h3>Equipamiento médico</h3>
+                        <p>Explora nuestras tiendas, comparte tus requerimeintos y se elaborará un plan ajustado a tus necesidades</p>
+                        <ul class="most-links">
+                            <li><a href="/tienda-equipamiento">Compra de equipos e instrumental médico</a></li>
+                            <li><a href="/tienda-equipamiento">Compra de mobiliario médicos</a></li>
+                            <li><a href="/mantenimiento">Mantenimiento de equipos médicos</a></li>
+                            <li><a href="/mantenimiento#correctivo">Reparacion de equipos médicos</a></li>
                         </ul>
                     </div>
-                    <div class="insights-column">
-                        <h3>Gestion hospitalaria</h3>
-                        <p>Se realizará abordado desde las normativas correpondientes para lograr certificaciones y afines</p>
-                        <ul class="insights-links">
-                            <li><a href="#">Plan de mantenimiento preventivo</a></li>
-                            <li><a href="#">Plan de mantenimiento correctivo</a></li>
-                            <li><a href="#">Evaluacion de obsolecencia</a></li>
-                            <li><a href="#">Evaluacion de procesos clinicos</a></li>
+                    <div class="most-column">
+                        <h3>Gestión hospitalaria</h3>
+                        <p>Se realizará un proyecto abordado desde las normativas correpondientes para lograr certificaciones, recategorizaciones y afines</p>
+                        <ul class="most-links">
+                            <li><a href="/manteniento#preventivo">Plan de mantenimiento preventivo</a></li>
+                            <li><a href="/mantenimiento#correctivo">Plan de mantenimiento correctivo</a></li>
+                            <li><a href="/mantenimiento#obsolecencia">Evaluación de obsolecencia</a></li>
+                            <li><a href="/ingenieria-clinica">Evaluación de procesos clínicos</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- Technology Section -->
-        <section class="technology-section">
+        -->
+        
+        <!-- Consultoria Section -->
+        <section class="consultoria-section">
             <div class="container">
                 <h2 class="section-title">Consultoría</h2>
                 <p class="section-intro">
-                    Desde <a href="#">equipameinto medico</a> hasta <a href="#">las soluciones de gestion hospitalaria</a> de vanguardia y la extensa pericia de <a href="#">Salcedo Equpment</a>, Salcedo Investements E.I.R.L. tiene todo lo necesario para ayudarlo a renovar y mejorar la manera de funcionar de su empresa en la era de la reestructuracion medica-hospitalaria.
+                    Desde <a href="/tienda-equipamiento">equipamiento médico</a> hasta <a href="/ingenieria-clinica">soluciones de gestion hospitalaria</a> de vanguardia con la extensa pericia de <a href="/insitucional#nosotros">Salcedo Equipment</a>, Salcedo Investements E.I.R.L. tiene todo lo necesario para ayudarlo a renovar y optimizar el funcionamiento de su isntitución en la era de la reestructuracion medica-hospitalaria.
                 </p>
-                <div class="technology-grid">
-                    <div class="tech-card">
-                        <div class="tech-icon">
-                            <img src="https://ext.same-assets.com/3701663695/1808683326.svg" alt="AI Solutions">
+                <!--estructura tienda-->
+                <div class="consultoria-grid">
+                    <a href="#" class="consultoria-card">
+                        <div class="consultoria-icon" >
+                            <img src="\images\index-consultoria\preventivo.svg" alt="Mant. preventivo">
                         </div>
                         <h3>Plan mant. preventivo</h3>
-                        <p>Evaluacion tecnica + preventivo</p>
+                        <p class="consultoria-front">Evaluación técnica + preventivo</p>
+                        <p class="consultoria-back inactive">Tras una primera visita técnica, se podrá elaborar una ruta de trabajo, en coordinacion con la IPRESS</p>
+                        
                         <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
-                            <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            <a href="#">
+                                <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            </a>
                         </svg>
-                    </div>
-                    <div class="tech-card">
-                        <div class="tech-icon">
-                            <img src="https://ext.same-assets.com/3701663695/4142566065.svg" alt="DevOps">
+                    </a>
+                    <a href="#" class="consultoria-card">
+                        <div class="consultoria-icon">
+                            <img src="\images\index-consultoria\correctivo.svg" alt="Mant. correctivo">
                         </div>
                         <h3>Plan mant. correctivo</h3>
-                        <p>Evaluacion tecnica + correctivo</p>
+                        <p class="consultoria-front">Evaluación técnica + correctivo</p>
+                        <p class="consultoria-back inactive">Tras una primera visita técnica, se podrá elaborar una ruta de trabajo, en coordinacion con la IPRESS</p>
                         <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
                             <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5"/>
                         </svg>
-                    </div>
-                    <div class="tech-card">
-                        <div class="tech-icon">
-                            <img src="https://ext.same-assets.com/3701663695/331598258.svg" alt="Consulting">
+                    </a>
+                    <a href="#" class="consultoria-card">
+                        <div class="consultoria-icon">
+                            <img src="\images\index-consultoria\integral.svg" alt="Mant. integral">
                         </div>
-                        <h3>Plan mant. completo</h3>
-                        <p>Evaluacion tecnica + preventivo + correctivo</p>
+                        <h3>Plan mant. integral</h3>
+                        <p class="consultoria-front">Evaluación técnica + preventivo + correctivo</p>
+                        <p class="consultoria-back inactive">Tras una primera visita técnica, se podrá elaborar una ruta de trabajo, en coordinacion con la IPRESS</p>
                         <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
                             <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5"/>
                         </svg>
-                    </div>
-                    <div class="tech-card">
-                        <div class="tech-icon">
-                            <img src="https://ext.same-assets.com/3701663695/1490829097.svg" alt="Analytics">
+                    </a>
+                    <a href="#" class="consultoria-card">
+                        <div class="consultoria-icon">
+                            <img src="\images\index-consultoria\procesos.svg" alt="Analytics">
                         </div>
-                        <h3>Solucion 4</h3>
-                        <p>Descripción</p>
+                        <h3>Procesos clínicos</h3>
+                        <p class="consultoria-front">Evaluación técnica + intervención de IPRESS</p>
+                        <p class="consultoria-back inactive">Tras una primera visita técnica, se podrá elaborar una ruta de trabajo, en coordinacion con la IPRESS</p>
                         <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
                             <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5"/>
                         </svg>
-                    </div>
-                    <div class="tech-card">
-                        <div class="tech-icon">
-                            <img src="https://ext.same-assets.com/3701663695/1528168502.svg" alt="IT Automation">
+                    </a>
+                    <a href="#" class="consultoria-card">
+                        <div class="consultoria-icon">
+                            <img src="\images\index-consultoria\device.svg" alt="IT Automation">
                         </div>
-                        <h3>Solucion 5</h3>
-                        <p>Descripción</p>
+                        <h3>Compra de equipamiento médico</h3>
+                        <p class="consultoria-front">Evaluación de EE.TT + instalación + capacitaciones</p>
+                        <p class="consultoria-back inactive">Tras una primera visita técnica, se podrá elaborar una ruta de trabajo, en coordinacion con la IPRESS</p>
                         <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
                             <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5"/>
                         </svg>
-                    </div>
-                    <div class="tech-card">
-                        <div class="tech-icon">
-                            <img src="https://ext.same-assets.com/3701663695/1786331603.svg" alt="Computing">
+                    </a>
+                    <a href="#" class="consultoria-card">
+                        <div class="consultoria-icon">
+                            <img src="\images\index-consultoria\furniture.svg" alt="Computing">
                         </div>
-                        <h3>Solucion 6</h3>
-                        <p>Descripcion</p>
+                        <h3>Compra de mobiliario médico</h3>
+                        <p class="consultoria-front">Evaluación de EE.TT + instalación</p>
+                        <p class="consultoria-back inactive">Tras una primera visita técnica, se podrá elaborar una ruta de trabajo, en coordinacion con la IPRESS</p>
                         <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
                             <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5"/>
                         </svg>
-                    </div>
-                    <div class="tech-card">
-                        <div class="tech-icon">
-                            <img src="https://ext.same-assets.com/3701663695/279476823.svg" alt="Databases">
+                    </a>
+                    <a href="#" class="consultoria-card">
+                        <div class="consultoria-icon">
+                            <img src="\images\index-consultoria\reparacion.svg" alt="Databases">
                         </div>
-                        <h3>Solucion 7</h3>
-                        <p>Descripcion</p>
+                        <h3>Reparación de equipos médicos</h3>
+                        <p class="consultoria-front">Diagnóstico + reparación + metrología</p>
+                        <p class="consultoria-back inactive">Tras una primera visita técnica, se podrá elaborar una ruta de trabajo, en coordinacion con la IPRESS</p>
                         <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
                             <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5"/>
                         </svg>
-                    </div>
-                    <div class="tech-card">
-                        <div class="tech-icon">
-                            <img src="https://ext.same-assets.com/3701663695/2062588634.svg" alt="Security">
+                    </a>
+                    <a href="#" class="consultoria-card">
+                        <div class="consultoria-icon">
+                            <img src="\images\index-consultoria\personal.svg" alt="Security">
                         </div>
-                        <h3>Solucion 8</h3>
-                        <p>Descripción</p>
+                        <h3>Solución personalizada</h3>
+                        <p class="consultoria-front">Evaluación de la necesidad de la IPRESS + diseño e implementación de la solución</p>
+                        <p class="consultoria-back inactive">Tras una primera visita técnica, se podrá elaborar una ruta de trabajo, en coordinacion con la IPRESS</p>
                         <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
                             <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5"/>
                         </svg>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -476,35 +511,33 @@
     <!--#############################################################-->
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-wrap">
-                <div class="footer-logo">
-                    <a href="/#">
-                        <img src="./logos/logo_web.webp" alt="SalcedoEq" class="footer-logo-img">
-                    </a>
+        <div class="footer-wrap">
+            <div class="footer-logo">
+                <a href="/#">
+                    <img src="./logos/logo_web.webp" alt="SalcedoEq" class="footer-logo-img">
+                </a>
+            </div>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="https://wa.me/+51956614346" target="blank">Contactar con Salcedo Equipment</a></li>
+                        <li><a href="/soporte">Soporte técnico</a></li>
+                    </ul>
                 </div>
-                <div class="footer-content">
-                    <div class="footer-column">
-                        <h4>Contacto</h4>
-                        <ul>
-                            <li><a href="https://wa.me/+51956614346" target="blank">Contactar con Salcedo Equipment</a></li>
-                            <li><a href="/soporte">Soporte técnico</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Legal</h4>
-                        <ul>
-                            <li><a href="/legal/#privacity">Privacidad</a></li>
-                            <li><a href="/legal/#terms">Condiciones de uso</a></li>
-                            <li><a href="/legal/#accesibility">Accesibilidad</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/legal/#privacity">Privacidad</a></li>
+                        <li><a href="/legal/#terms">Condiciones de uso</a></li>
+                        <li><a href="/legal/#accesibility">Accesibilidad</a></li>
+                    </ul>
+                </div>
                 <div class="footer-bottom">
                     <div class="footer-bottom-links">
-                        <span>© 2025 Salcedo Investments</span>
+                        <span><a href="/inttitucional#nosotros">© 2025 Salcedo Investments</a></span>
                     </div>
                     <div class="footer-country">Lima • Perú</div>
-                </div>
                 </div>
             </div>
         </div>
