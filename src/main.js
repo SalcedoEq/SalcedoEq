@@ -1,14 +1,14 @@
 
 /*header----------------------*/
 /*menu hamburguesa */
-const openMobileMenu = document.querySelector(".mobile-menu-toggle")
-const closeMobileMenu = document.querySelector(".close-menu-toggle")
-const navMenu = document.querySelector(".nav")
-const overlay = document.querySelector(".overlay")
-const navIntern = document.querySelectorAll(".nav a")
-const closeAppear = document.querySelector(".close-menu-toggle")
-const mobileMenuDisappear = document.querySelector(".mobile-menu-toggle")
-const headerActive = document.querySelector("header")
+const openMobileMenu = document.querySelector(".mobile-menu-toggle");
+const closeMobileMenu = document.querySelector(".close-menu-toggle");
+const navMenu = document.querySelector(".nav");
+const overlay = document.querySelector(".overlay");
+const navIntern = document.querySelectorAll(".nav a");
+const closeAppear = document.querySelector(".close-menu-toggle");
+const mobileMenuDisappear = document.querySelector(".mobile-menu-toggle");
+const headerActive = document.querySelector("header");
 
 function updateInerStatus () {
   if (window.innerWidth <= 768 && !navMenu.classList.contains("inert")){
@@ -23,10 +23,10 @@ function updateInerStatus () {
 }
 
 updateInerStatus();
-window.addEventListener("resize",updateInerStatus)
+window.addEventListener("resize",updateInerStatus);
 
 openMobileMenu.addEventListener("click", () =>{
-  closeMenu ()
+  closeMenu ();
   headerActive.classList.add("active");
   navMenu.classList.add("active");
   overlay.classList.add("active");
@@ -279,10 +279,10 @@ overlaySearch.addEventListener("click", () =>{
 /*login----------------------------*/
 const openLogin = document.querySelector(".login-unloged");
 const loginSystem = document.querySelector(".login-center");
-const hideMenu = document.querySelector(".nav")
-const hideMovilMenu = document.querySelector(".mobile-menu-toggle")
-const hideSearch = document.querySelector(".shearch-menu")
-const closeLogin = document.querySelector(".overlayLogin")
+const hideMenu = document.querySelector(".nav");
+const hideMovilMenu = document.querySelector(".mobile-menu-toggle");
+const hideSearch = document.querySelector(".shearch-menu");
+const closeLogin = document.querySelector(".overlayLogin");
 const loginTry = document.querySelector(".login-btn");
 const loginErr = document.querySelector(".login-error");
 
@@ -334,7 +334,7 @@ loginTry.addEventListener("click", () =>{
 /*login----------------------------*/
 
 /*back to top*/
-const backButton = document.querySelector(".back-to-top")
+const backButton = document.querySelector(".back-to-top");
 
 window.addEventListener("scroll",()=> {
 
@@ -348,65 +348,3 @@ window.addEventListener("scroll",()=> {
 
 /*main content*/
 
-/*most frecuent*/
-const carruselChangeEqHear = document.querySelector(".see-equipamiento")
-const carruselChangeMobHear = document.querySelector(".see-mobiliario")
-const carruselChangeSeeEq = document.querySelector(".equipameinto-prev")
-const carruselChangeSeeMob = document.querySelector(".mobiliario-prev")
-const aUpdateEq = document.querySelector(".store-hear-Eq")
-const aUpdateMob = document.querySelector(".store-hear-Mob")
-
-carruselChangeEqHear.addEventListener("mouseenter", carruselChangeEq);
-carruselChangeMobHear.addEventListener("mouseenter", carruselChangeMob);
-
-function carruselChangeEq () {
-  carruselChangeSeeEq.classList.remove("inactive");
-  carruselChangeSeeMob.classList.add("inactive");
-  aUpdateEq.classList.add("active");
-  aUpdateMob.classList.remove("active");
-}
-function carruselChangeMob () {
-  carruselChangeSeeEq.classList.add("inactive");
-  carruselChangeSeeMob.classList.remove("inactive");
-  aUpdateEq.classList.remove("active");
-  aUpdateMob.classList.add("active");
-}
-
-/*most frecuent--------------------*/
-
-/* contact-secition*/
-
-let lastScroll2 = 0;
-
-const hearContact = document.querySelector(".contact-section");
-
-window.addEventListener("scroll",()=> {
-  const currentScroll2 = window.scrollY;
-  const currentDivScroll= hearContact.getBoundingClientRect().top;
-  if (currentScroll2>lastScroll2 && currentDivScroll<250 &&currentDivScroll>0) {
-    window.scrollBy(0,hearContact.getBoundingClientRect().top);
-  }
-  lastScroll2 = currentScroll2;
-})
-
-/*consultoria*/
-const cards = document.querySelectorAll(".consultoria-card");
-
-cards.forEach((card) => {
-    const front = card.querySelector(".consultoria-front");
-    const back = card.querySelector(".consultoria-back");
-    const icon = card.querySelector(".consultoria-icon");
-
-    card.addEventListener("mouseenter", () => {
-        front.classList.add("inactive");
-        back.classList.remove("inactive");
-        icon.classList.add("inactive");
-    });
-
-    card.addEventListener("mouseleave", () => {
-        front.classList.remove("inactive");
-        back.classList.add("inactive");
-        icon.classList.remove("inactive");
-    });
-});
-/*consultoria---------------------*/
