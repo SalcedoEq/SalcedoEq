@@ -59,31 +59,94 @@
     grid-column: 1 / span 2;
 }
 
-.form-group select{
-    font-size: var(--font-main-size);
-    color: var(--ligth-gray);
-    border-color: var(--ligth-gray);
-    border-radius: 1rem;
-    height: 3rem;
-    padding-left: 1rem;
-    appearance: none;
-    background-image: url(/images/otros/desplegar.svg);
-    background-repeat: no-repeat;
-    background-position: calc(95%);
-    background-size: 24px;
-    outline: 0;
-    transition: all 0.3s ease;
-    cursor: pointer;
+/*unknowed*/
+
+.form-group select,
+::picker(select) {
+  appearance: base-select;
 }
 
-.form-group select:hover {
-    border-color: var(--main-blue);
+
+.form-group select {
+  flex: 1;
+  border: 2px solid var(--ligth-gray);
+  background: var(--main-backgroud);
+  padding: 10px;
+  transition: 0.4s;
 }
 
-.form-group select:focus {
-    box-shadow: 0 0 0 .1rem var(--overlayCol);
+.form-group select:hover,
+select:focus {
+  border-color: var(--main-blue);
+}
+
+.form-group select::picker-icon {
+  color: var(--ligth-gray);
+  transition: 0.4s rotate;
+}
+.form-group select:open::picker-icon {
+  rotate: 180deg;
+}
+::picker(select) {
+  border: none;
+}
+.form-group option {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+
+  border: 2px solid var(--main-gray);
+  background: var(--main-backgroud);
+  padding: 10px;
+  transition: 0.4s;
+}
+.form-group option:first-of-type {
+  border-radius: 8px 8px 0 0;
+}
+
+.form-group option:last-of-type {
+  border-radius: 0 0 8px 8px;
+}
+
+.form-group ::picker(select) {
+  border-radius: 8px;
+}
+
+.form-group option:not(option:last-of-type) {
+  border-bottom: none;
+}
+
+
+.form-group option:hover,
+option:focus {
+  background: var(--hover-backgroud);
+  color: var(--font-hover);
+}
+
+.form-group option:checked {
+  font-weight: bold;
+}
+
+option::checkmark {
+  order: 1;
+  margin-left: auto;
+}
+
+@supports not (appearance: base-select) {
+  body::before {
+    content: "Your browser does not support `appearance: base-select`.";
     color: var(--font-hover);
+    background-color: var(--hover-backgroud);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 40%;
+    text-align: center;
+    padding: 1rem 0;
+    z-index: 1;
+  }
 }
+
 
 .fastSearch-error {
     display: none;
@@ -113,9 +176,13 @@
     color: var(--font-hover);
 }
 
+
+
 /*fast search---------------------------*/
 
 /*aSide Bar*/
+
+
 .filter-checks {
     display: block;
 }
