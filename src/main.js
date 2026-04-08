@@ -374,6 +374,21 @@ function carruselChangeMob () {
 
 /*most frecuent--------------------*/
 
+/* contact-secition*/
+
+let lastScroll2 = 0;
+
+const hearContact = document.querySelector(".contact-section");
+
+window.addEventListener("scroll",()=> {
+  const currentScroll2 = window.scrollY;
+  const currentDivScroll= hearContact.getBoundingClientRect().top;
+  if (currentScroll2>lastScroll2 && currentDivScroll<250 &&currentDivScroll>0) {
+    window.scrollBy(0,hearContact.getBoundingClientRect().top);
+  }
+  lastScroll2 = currentScroll2;
+})
+
 /*consultoria*/
 const cards = document.querySelectorAll(".consultoria-card");
 

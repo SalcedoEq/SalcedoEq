@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!--#############################################################-->
+    <!--#############################################################-->
+    <!--#############################################################-->
     <meta charset="UTF-8"> <!--codificacion-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--configuracion para responsivo-->
-    <title>Tienda - Salcedo Equipment</title> <!--titulo de la pestaña-->
+    <title>Tienda - Salcedo Equipment</title> <!--titulo de la pestaña EDITAR-->
     <link rel="shortcut icon" href="./logos/iconos/favicon.ico" /> <!--icono de la pstaña-->
-    <meta name="description" content="Compre su equipo médico y biomédico, reciba servicios personalizados y una solución hecha a su medida. FACIL RAPIDO Y SEGURO / OFERTAS"> <!--descripcion de la pagina web IMPORTANTE PARA BUSQUEDAS-->
-    <meta name="keywords" content="equipos médicos, equipos biomedicos, equipamiento, instrumental, Perú">
-    <link rel="stylesheet" href="src/style.css">
-    <link rel="stylesheet" href="src/style.store.css">
+    <meta name="description" content="Provee soluciones a la medida de tu proyecto: compre equipos médicos, instrumental y mobiliaros, reciba servicios personalizados y soluciónes diseñadas a su medida. FACIL RAPIDO Y SEGURO / OFERTAS"> <!--descripcion de la pagina web IMPORTANTE PARA BUSQUEDAS-->
+    <meta name="keywords" content="equipos médicos, equipos biomedicos, equipamiento, instrumental, ingenieria clinica, reparación electronica, , Perú">
+    <link rel="stylesheet" href="./src/style.css">
+    <link rel="stylesheet" href="./src/store.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <!--#############################################################-->
+    <!--#############################################################-->
+    <!--#############################################################-->
     
 </head>
 
 
 
 <body>
+    <!--#############################################################-->
+    <!--#############################################################-->
+    <!--#############################################################-->
     <!-- Scripts -->
     <script type="module" src="./src/main.js"></script>
     <script type="module" src="./src/store.js"></script>
@@ -43,11 +52,20 @@
             <a href="/#">
                 <img src="./logos/logo_web.webp" alt="SalcedoEq" class="logo">
             </a>
-            <svg width="10" height="45" viewBox="0 0 12 45" aria-hidden="true"><path d="M7 50V6H8V40H7ZM11" fill="currentColor" stroke="none"></path></svg>
+            <svg width="10" height="45" viewBox="0 0 12 45" aria-hidden="true"><path d="M7 50V6H8V40H7Z" fill="currentColor" stroke="none"></path></svg>
         </div>
         <!--NAVEGACION, Y BOTONES-->
         <div class="header-container">
             <div class="header-left">
+                <!--mover nav a la izquierda-->
+                <div class="nav-izq-container">
+                    <button class="icon-btn nav-izq nav-scroll"
+                        aria-label="menú a la izquierda"
+                        aria-controls="move-menu-left"
+                        aria-expanded="false">
+                        <svg width="25" height="25" viewBox="0 0 25 25" aria-hidden="true"><path d="M8 12L14 6V18L8 12Z" fill="currentColor"></path></svg>
+                    </button>
+                </div>
                 <!--DESPLEGABLES-->
                 <nav class="nav" aria-label="Principal">
                     <!-- TIENDA -->
@@ -57,7 +75,7 @@
                             aria-haspopup="true"
                             aria-expanded="false"
                             aria-controls="menu-productos">
-                            <a href='/tienda'>Tienda</a>
+                            <a href='/tienda-equipamiento'>Tienda</a>
                             <svg class="dropdown-icon di-menu" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path></svg>
                         </button>
                         <div class="dropdown-content dc-productos" id="menu-productos" role="menu" aria-labelledby="btn-productos">
@@ -131,6 +149,16 @@
                     </div>
                     
                 </nav>
+                
+                <!--mover nav a la derecha-->
+                <div class="nav-der-container">
+                    <button class="icon-btn nav-der nav-scroll"
+                        aria-label="menú a la derecha"
+                        aria-controls="move-menu-rigth"
+                        aria-expanded="false">
+                        <svg width="25" height="25" viewBox="0 0 25 25" aria-hidden="true"><path d="M16 12L10 18V6L16 12Z" fill="currentColor"></path></svg>
+                    </button>
+                </div>
             </div>
             <!--BOTONES-->
             <div class="header-right">
@@ -159,7 +187,6 @@
         </div>
     </header>
 
-    
     <login class="login-center">
         <div class="login">
             <div class="login-header">
@@ -202,20 +229,25 @@
         <div class="overlayLogin">
         </div>
     </login>
+
     <!-- FIN DE HEADER -->
+    <!--#############################################################-->
+    <!--#############################################################-->
+    <!--#############################################################-->
+
+
+
     <!--BUSCADOR RAPIDO-->
     <fastSearch id="fastSearch">
         <div class="fastSearch-heroBanner">
             <div class="container">     
                 <div class="fastSearch-header">
-                    <h1 class="fastSearch-title">
-                        Escoge tu equipo en linea. Lo revisamos y entregamos segun sus requerimeintos.
-                    </h1>
+                    Escoge tu equipo en linea. Lo revisamos y entregamos segun sus requerimeintos.
                 </div>
-
                 <form class="fastSearch-form">
-                    <div class="form-group">
+                    <div class="form-group form-tipo">
                         <select>
+                            <option hidden selected>TIPO</option>
                             <option>Monitores</option>
                             <option>Esterilización</option>
                             <option>Ultrasonido</option>
@@ -224,8 +256,9 @@
                             <option>Otros</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-precio">
                         <select>
+                            <option hidden selected>PRECIO</option>
                             <option>0USD-100USD</option>
                             <option>100USD-200USD</option>
                             <option>200USD-500USD</option>
@@ -234,8 +267,9 @@
                             <option>&gt 2000USD</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-marca">
                         <select>
+                            <option hidden selected>MARCA</option>
                             <option>Mindray</option>
                             <option>Dragüer</option>
                             <option>Siemens</option>
@@ -244,17 +278,17 @@
                             <option>Otros</option>
                         </select>
                     </div>
-
-                    <label class="fastSearch-error">
-                        <p>
-                            No se econtraron coincidencias, 
-                            <a href="https://wa.me/+51956614346" target="blank">contacte con un asesor</a> para una atencion personalizada 
-                        </p>
-                    </label>
                     <!-- filtro INICIO-->
-                    <button class="fastSearch-btn">APLICAR FILTRO</button>
-                    <!-- filtro FIN-->
+                    <button class="fastSearch-btn" type="submit">APLICAR FILTRO</button>
                 </form>
+                
+                        
+                <label class="fastSearch-error">
+                        No se econtraron coincidencias, 
+                        <a href="https://wa.me/+51956614346" target="blank">contacte con un asesor</a> para una atencion personalizada
+                </label>
+
+                <!-- filtro FIN-->
             </div>
         </div>
     </fastSearch>
@@ -608,10 +642,49 @@
         </div>
     </main>
 
-    <footer>
-        FOOTER
-    </footer>
     
-    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+    <!--#############################################################-->
+    <!--#############################################################-->
+    <!--#############################################################-->
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-wrap">
+            <div class="footer-logo">
+                <a href="/#">
+                    <img src="./logos/logo_web.webp" alt="SalcedoEq" class="footer-logo-img">
+                </a>
+            </div>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="https://wa.me/+51956614346" target="blank">Contactar con Salcedo Equipment</a></li>
+                        <li><a href="/soporte">Soporte técnico</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/legal/#privacity">Privacidad</a></li>
+                        <li><a href="/legal/#terms">Condiciones de uso</a></li>
+                        <li><a href="/legal/#accesibility">Accesibilidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-bottom">
+                    <div class="footer-bottom-links">
+                        <span><a href="/inttitucional#nosotros">© 2025 Salcedo Investments</a></span>
+                    </div>
+                    <div class="footer-country">Lima • Perú</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--fin FOOTER-->
+    <!--back to TOP-->
+    <!--fin back to TOP-->
+    <a href="#" class=" back-to-top"><svg width="25" height="25" viewBox="0 0 25 25" aria-hidden="true"><path d="M12 4.83582L5.79291 11.0429L7.20712 12.4571L12 7.66424L16.7929 12.4571L18.2071 11.0429L12 4.83582ZM12 10.4857L5.79291 16.6928L7.20712 18.107L12 13.3141L16.7929 18.107L18.2071 16.6928L12 10.4857Z" fill="currentColor"></path></svg></a>
+    <!--#############################################################-->
+    <!--#############################################################-->
+    <!--#############################################################-->
 </body>
     
