@@ -73,11 +73,13 @@
   background: var(--main-backgroud);
   padding: 10px;
   transition: 0.4s;
+  color: var(--ligth-gray);
 }
 
 .form-group select:hover,
 select:focus {
   border-color: var(--main-blue);
+  color: var(--font-hover);
 }
 
 .form-group select::picker-icon {
@@ -95,7 +97,7 @@ select:focus {
   justify-content: flex-start;
   gap: 20px;
 
-  border: 2px solid var(--main-gray);
+  border: 2px solid var(--ligth-gray);
   background: var(--main-backgroud);
   padding: 10px;
   transition: 0.4s;
@@ -121,6 +123,8 @@ select:focus {
 option:focus {
   background: var(--hover-backgroud);
   color: var(--font-hover);
+  border-color: var(--main-blue);
+  border-bottom: 2px solid;
 }
 
 .form-group option:checked {
@@ -146,7 +150,7 @@ option::checkmark {
     z-index: 1;
   }
 }
-
+/*fin uknow*/
 
 .fastSearch-error {
     display: none;
@@ -163,12 +167,12 @@ option::checkmark {
     background: var(--main-blue);
     color: var(--font-footer-color);
     border: none;
-    padding: 1rem 1.5rem;
     font-size: 1rem;
     font-weight: var(--font-main-weigth);
     border-radius: 0.5rem;
     cursor: pointer;
     transition: all 0.15s ease;
+    padding: 10px;
 }
 
 .fastSearch-btn:hover {
