@@ -290,7 +290,7 @@ if (searchBar) {
     e.preventDefault();
     const query = searchInputHeader.value.trim();
     if (query) {
-      window.location.href = `tienda?search=${encodeURIComponent(query)}`;/*+.html */
+      window.location.href = `/tienda.html?search=${encodeURIComponent(query)}`;
     }
   });
 }

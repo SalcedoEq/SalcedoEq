@@ -32,11 +32,10 @@
 <body>
     <!--#############################################################-->
     <!--#############################################################-->
-    <!--#############################################################-->
-    <!-- Scripts -->
-    <script src="./src/products.js"></script>
-    <script type="module" src="./src/main.js"></script>
-    <script type="module" src="./src/store.js"></script>
+    <!--##########################################################    <!-- Scripts -->
+    <script src="/src/products.js"></script>
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/store.js"></script>
     <!-- Header -->
     <header>
         <!--LOGO Y MENU LATERAL-->
@@ -57,8 +56,8 @@
                         fill="currentColor"></path>
                 </svg>
             </button>
-            <a href="/#">
-                <img src="./logos/logo_web.webp" alt="SalcedoEq" class="logo">
+            <a href="/">
+                <img src="/logos/logo_web.webp" alt="SalcedoEq" class="logo">
             </a>
             <svg width="10" height="45" viewBox="0 0 12 45" aria-hidden="true">
                 <path d="M7 50V6H8V40H7Z" fill="currentColor" stroke="none"></path>
@@ -82,7 +81,7 @@
                     <div class="nav-item dropdown">
                         <button class="dropbtn dp-productos" id="btn-productos" aria-haspopup="true"
                             aria-expanded="false" aria-controls="menu-productos">
-                            <a href='/tienda'>Tienda</a>
+                            <a href='/tienda.html'>Tienda</a>
                             <svg class="dropdown-icon di-menu" width="24" height="24" viewBox="0 0 24 24"
                                 aria-hidden="true" fill="currentColor">
                                 <path
@@ -92,9 +91,9 @@
                         </button>
                         <div class="dropdown-content dc-productos" id="menu-productos" role="menu"
                             aria-labelledby="btn-productos">
-                            <a role="menuitem" tabindex="-1" href="/productos/monitor">Monitores</a>
-                            <a role="menuitem" tabindex="-1" href="/productos/esterilizacion">Esterilización</a>
-                            <a role="menuitem" tabindex="-1" href="/productos/imagenes">Ultrasonido</a>
+                            <a role="menuitem" tabindex="-1" href="/tienda.html?category=Monitores">Monitores</a>
+                            <a role="menuitem" tabindex="-1" href="/tienda.html?category=Esterilización">Esterilización</a>
+                            <a role="menuitem" tabindex="-1" href="/tienda.html?category=Ultrasonido">Ultrasonido</a>
                         </div>
                     </div>
                     <!-- PORTAFOLIO -->
@@ -129,7 +128,7 @@
                                 </path>
                             </svg>
                         </button>
-                        <div class="dropdown-content dc-recomendado id=" menu-productos" role="menu"
+                        <div class="dropdown-content dc-recomendado" id="menu-productos" role="menu"
                             aria-labelledby="btn-productos">
                             <a role="menuitem" tabindex="-1" href="/recomendado/top">Top</a>
                             <a role="menuitem" tabindex="-1" href="/recomendado/nuevo">Nuevo</a>
@@ -160,11 +159,6 @@
                             aria-expanded="false" aria-controls="menu-portafolio">
                             <a href="/soporte">Soporte</a>
                         </button>
-                        <!--<div class="dropdown-content dc-consultoria" id="menu-productos" role="menu" aria-labelledby="btn-productos">
-                            <a role="menuitem" tabindex="-1" href="/consultoria/hospital">EE.TT</a>
-                            <a role="menuitem" tabindex="-1" href="/consultoria/clinica">Supervisión</a>
-                            <a role="menuitem" tabindex="-1" href="/consultoria/academico">Capacitación</a>
-                        </div>-->
                     </div>
 
                 </nav>
@@ -222,15 +216,15 @@
         </div>
     </header>
 
-    <login class="login-center">
+    <login class="login-center" aria-hidden="true">
         <div class="login">
             <div class="login-header">
                 <h1 class="login-title">
                     Entrar
                 </h1>
                 <p class="login-description">
-                    Disfruta de tus promociones y el soporte exclusivo de muestra plataforma.
-                    Porfavor, inicia sesion con tus datos de acceso.
+                    Disfruta de tus promociones y el soporte exclusivo de nuestra plataforma.
+                    Por favor, inicia sesión con tus datos de acceso.
                 </p>
             </div>
 
@@ -247,7 +241,7 @@
                 <label class="keep-login">
                     <input type="checkbox">
                     <p>
-                        Mantener sesion iniciada
+                        Mantener sesión iniciada
                     </p>
                 </label>
 
@@ -466,8 +460,8 @@
     <footer class="footer">
         <div class="footer-wrap">
             <div class="footer-logo">
-                <a href="/#">
-                    <img src="./logos/logo_web.webp" alt="SalcedoEq" class="footer-logo-img">
+                <a href="/">
+                    <img src="/logos/logo_web.webp" alt="SalcedoEq" class="footer-logo-img">
                 </a>
             </div>
             <div class="footer-content">
@@ -486,12 +480,12 @@
                         <li><a href="/legal/#accesibility">Accesibilidad</a></li>
                     </ul>
                 </div>
-                <div class="footer-bottom">
-                    <div class="footer-bottom-links">
-                        <span><a href="/inttitucional#nosotros">© 2025 Salcedo Investments</a></span>
-                    </div>
-                    <div class="footer-country">Lima • Perú</div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-links">
+                    <span><a href="/inttitucional#nosotros">© 2025 Salcedo Investments</a></span>
                 </div>
+                <div class="footer-country">Lima • Perú</div>
             </div>
         </div>
     </footer>
