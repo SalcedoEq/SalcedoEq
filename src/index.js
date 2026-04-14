@@ -31,6 +31,39 @@ function carruselChangeMob () {
 /*most frecuent--------------------*/
 
 /* Carousel navigation — infinite loop */
+function renderIndexCarousels() {
+    const products = window.SalcedoProducts || [];
+    const eqTrack = document.getElementById("carousel-eq");
+    const mobTrack = document.getElementById("carousel-mob");
+
+    if (!eqTrack || !mobTrack) return;
+
+    // Selection criteria: First 8 of each globalType
+    const eqProducts = products.filter(p => p.globalType === "Equipamiento").slice(0, 8);
+    const mobProducts = products.filter(p => p.globalType === "Mobiliario").slice(0, 8);
+
+    function createCard(p) {
+        return `
+            <a href="tienda.html?search=${encodeURIComponent(p.name)}" class="carousel-card">
+                <div class="carousel-card-img">
+                    <img src="${p.img}" alt="${p.name}" loading="lazy">
+                </div>
+                <div class="carousel-card-body">
+                    <span class="carousel-card-tag">${p.category}</span>
+                    <h4>${p.name}</h4>
+                    <p>${p.desc || ""}</p>
+                </div>
+                <svg class="carousel-card-arrow" width="20" height="20" viewBox="0 0 20 20">
+                    <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+            </a>
+        `;
+    }
+
+    eqTrack.innerHTML = eqProducts.map(createCard).join("");
+    mobTrack.innerHTML = mobProducts.map(createCard).join("");
+}
+
 function initCarousel(trackId) {
     const track = document.getElementById(trackId);
     if (!track) return;
@@ -76,14 +109,16 @@ function initCarousel(trackId) {
         if (maxScroll <= 2) {
             /* All cards fit, move first to end anyway for loop effect */
             const first = track.firstElementChild;
-            track.appendChild(first);
+            if (first) track.appendChild(first);
             return;
         }
 
         if (track.scrollLeft >= maxScroll - 2) {
             const first = track.firstElementChild;
-            track.appendChild(first);
-            track.scrollLeft = track.scrollLeft - cardW;
+            if (first) {
+                track.appendChild(first);
+                track.scrollLeft = track.scrollLeft - cardW;
+            }
         }
         smoothScroll(cardW, 300);
     }
@@ -95,14 +130,16 @@ function initCarousel(trackId) {
 
         if (maxScroll <= 2) {
             const last = track.lastElementChild;
-            track.insertBefore(last, track.firstElementChild);
+            if (last) track.insertBefore(last, track.firstElementChild);
             return;
         }
 
         if (track.scrollLeft <= 2) {
             const last = track.lastElementChild;
-            track.insertBefore(last, track.firstElementChild);
-            track.scrollLeft = track.scrollLeft + cardW;
+            if (last) {
+                track.insertBefore(last, track.firstElementChild);
+                track.scrollLeft = track.scrollLeft + cardW;
+            }
         }
         smoothScroll(-cardW, 300);
     }
@@ -110,22 +147,30 @@ function initCarousel(trackId) {
     return { scrollRight, scrollLeft };
 }
 
-const carousels = {
-    eq: initCarousel("carousel-eq"),
-    mob: initCarousel("carousel-mob")
-};
+// Global scope initialization
+let carousels = {};
 
-document.querySelectorAll(".carousel-arrow").forEach((arrow) => {
-    arrow.addEventListener("click", () => {
-        const id = arrow.dataset.carousel;
-        const carousel = carousels[id];
-        if (!carousel) return;
+window.addEventListener("DOMContentLoaded", () => {
+    // 1. Render content
+    renderIndexCarousels();
 
-        if (arrow.classList.contains("carousel-arrow-left")) {
-            carousel.scrollLeft();
-        } else {
-            carousel.scrollRight();
-        }
+    // 2. Initialize carousel logic AFTER content is rendered
+    carousels.eq = initCarousel("carousel-eq");
+    carousels.mob = initCarousel("carousel-mob");
+
+    // 3. Bind arrows
+    document.querySelectorAll(".carousel-arrow").forEach((arrow) => {
+        arrow.addEventListener("click", () => {
+            const id = arrow.dataset.carousel;
+            const carousel = carousels[id];
+            if (!carousel) return;
+
+            if (arrow.classList.contains("carousel-arrow-left")) {
+                carousel.scrollLeft();
+            } else {
+                carousel.scrollRight();
+            }
+        });
     });
 });
 /*carousel navigation--------------*/

@@ -220,7 +220,7 @@ header svg:hover {
     transition: background-color 0.15s ease, color 0.15s ease;
     gap: 1rem;
     list-style: none;
-    padding: 0 1rem;
+    padding: 0 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -378,6 +378,7 @@ header svg:hover {
 .close-shearch-menu.active {
     position: fixed;
     right: 45px;
+    height: 45px;
 }
 
 .search-form {

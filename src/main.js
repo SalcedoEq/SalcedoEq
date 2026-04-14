@@ -10,9 +10,9 @@ const closeAppear = document.querySelector(".close-menu-toggle");
 const mobileMenuDisappear = document.querySelector(".mobile-menu-toggle");
 const headerActive = document.querySelector("header");
 
-function updateInerStatus () {
-  if (window.innerWidth <= 768 && !navMenu.classList.contains("inert")){
-    navMenu.setAttribute("inert", ""); 
+function updateInerStatus() {
+  if (window.innerWidth <= 768 && !navMenu.classList.contains("inert")) {
+    navMenu.setAttribute("inert", "");
     openMobileMenu.setAttribute("aria-expanded", "false");
   }
   else {
@@ -23,10 +23,10 @@ function updateInerStatus () {
 }
 
 updateInerStatus();
-window.addEventListener("resize",updateInerStatus);
+window.addEventListener("resize", updateInerStatus);
 
-openMobileMenu.addEventListener("click", () =>{
-  closeMenu ();
+openMobileMenu.addEventListener("click", () => {
+  closeMenu();
   headerActive.classList.add("active");
   navMenu.classList.add("active");
   overlay.classList.add("active");
@@ -36,7 +36,7 @@ openMobileMenu.addEventListener("click", () =>{
   openMobileMenu.setAttribute("aria-expanded", "true");
 });
 
-function closeMenu () {
+function closeMenu() {
   headerActive.classList.remove("active");
   navMenu.classList.remove("active");
   overlay.classList.remove("active");
@@ -65,13 +65,13 @@ closeMobileMenu.addEventListener("click", closeMenu);
 overlay.addEventListener("click", closeMenu);
 
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape"){
+  if (e.key === "Escape") {
     closeMenu();
   }
 });
 
 navIntern.forEach((link) => {
-  link.addEventListener("click",closeMenu);
+  link.addEventListener("click", closeMenu);
 });
 
 /*desplegables----------------------*/
@@ -86,7 +86,7 @@ const dropdownPortafolio = document.querySelector(".dc-portafolio");
 const dropdownRecomendado = document.querySelector(".dc-recomendado");
 const dropdownConsultoria = document.querySelector(".dc-consultoria");
 
-navProducto.addEventListener("click", () =>{
+navProducto.addEventListener("click", () => {
   if (!navProducto.classList.contains("active")) {
     headerActive.classList.add("active");
     navMenu.classList.add("active");
@@ -103,12 +103,12 @@ navProducto.addEventListener("click", () =>{
     navProducto.classList.add("active");
     overlay.classList.add("active");
   }
-  else{
+  else {
     closeMenu();
   }
 });
 
-navPortafolio.addEventListener("click", () =>{
+navPortafolio.addEventListener("click", () => {
   if (!navPortafolio.classList.contains("active")) {
     headerActive.classList.add("active");
     navMenu.classList.add("active");
@@ -125,12 +125,12 @@ navPortafolio.addEventListener("click", () =>{
     navPortafolio.classList.add("active");
     overlay.classList.add("active");
   }
-  else{
+  else {
     closeMenu();
   }
 });
 
-navRecomendado.addEventListener("click", () =>{
+navRecomendado.addEventListener("click", () => {
   if (!navRecomendado.classList.contains("active")) {
     headerActive.classList.add("active");
     navMenu.classList.add("active");
@@ -147,12 +147,12 @@ navRecomendado.addEventListener("click", () =>{
     navRecomendado.classList.add("active");
     overlay.classList.add("active");
   }
-  else{
+  else {
     closeMenu();
   }
 });
 
-navConsultoria.addEventListener("click", () =>{
+navConsultoria.addEventListener("click", () => {
   if (!navConsultoria.classList.contains("active")) {
     headerActive.classList.add("active");
     navMenu.classList.add("active");
@@ -169,7 +169,7 @@ navConsultoria.addEventListener("click", () =>{
     navConsultoria.classList.add("active");
     overlay.classList.add("active");
   }
-  else{
+  else {
     closeMenu();
   }
 });
@@ -178,17 +178,17 @@ navConsultoria.addEventListener("click", () =>{
 
 /* scroll desplegables*/
 const navDerecha = document.querySelector(".nav-der");
-const navIzquierda= document.querySelector(".nav-izq");
+const navIzquierda = document.querySelector(".nav-izq");
 const panelNav = document.querySelector("nav");
 
 function isOverflowing() {
-  
+
   return panelNav.scrollWidth > panelNav.clientWidth;
 }
 
 
-window.addEventListener("resize", () =>{
-  if (isOverflowing()&&!navIzquierda.classList.contains("active")){
+window.addEventListener("resize", () => {
+  if (isOverflowing() && !navIzquierda.classList.contains("active")) {
     navDerecha.classList.add("active");
   }
   else if (!isOverflowing()) {
@@ -197,7 +197,7 @@ window.addEventListener("resize", () =>{
   }
 })
 
-if (isOverflowing()&&!navIzquierda.classList.contains("active")){
+if (isOverflowing() && !navIzquierda.classList.contains("active")) {
   navDerecha.classList.add("active");
 }
 else if (!isOverflowing()) {
@@ -206,16 +206,16 @@ else if (!isOverflowing()) {
 }
 
 navDerecha.addEventListener("click", () => {
-    navIzquierda.classList.add("active");
-    navDerecha.classList.remove("active");
-    panelNav.scrollLeft +=panelNav.scrollWidth-panelNav.clientWidth;
-    document.documentElement.style.setProperty('--nav-translate', (panelNav.clientWidth-panelNav.scrollWidth).toString()+"px");
+  navIzquierda.classList.add("active");
+  navDerecha.classList.remove("active");
+  panelNav.scrollLeft += panelNav.scrollWidth - panelNav.clientWidth;
+  document.documentElement.style.setProperty('--nav-translate', (panelNav.clientWidth - panelNav.scrollWidth).toString() + "px");
 })
 navIzquierda.addEventListener("click", () => {
-    navDerecha.classList.add("active");
-    navIzquierda.classList.remove("active");
-    panelNav.scrollLeft -=panelNav.scrollWidth-panelNav.clientWidth;
-    document.documentElement.style.setProperty('--nav-translate', 0);
+  navDerecha.classList.add("active");
+  navIzquierda.classList.remove("active");
+  panelNav.scrollLeft -= panelNav.scrollWidth - panelNav.clientWidth;
+  document.documentElement.style.setProperty('--nav-translate', 0);
 })
 
 
@@ -231,14 +231,18 @@ navIzquierda.addEventListener("click", () => {
 /*mantener header*/
 let lastScroll = 0;
 /*const header = document.querySelector("header")*/
-window.addEventListener("scroll",()=> {
+window.addEventListener("scroll", () => {
+  if (window.pendingSmoothScroll) {
+    lastScroll = window.scrollY;
+    return;
+  }
   const currentScroll = window.scrollY;
-  if (currentScroll <=0){
+  if (currentScroll <= 0) {
     headerActive.classList.add("activeScroll");
     return;
   }
 
-  if (currentScroll>lastScroll && !headerActive.classList.contains("active")) {
+  if (currentScroll > lastScroll && !headerActive.classList.contains("active")) {
     headerActive.classList.remove("activeScroll");
   }
   else {
@@ -251,30 +255,54 @@ window.addEventListener("scroll",()=> {
 /*header----------------------*/
 
 
-/*search*/
+/*search----------------------------*/
 const openSearch = document.querySelector(".shearch-menu");
 const searchBar = document.querySelector(".search-form");
 const overlaySearch = document.querySelector(".overlaySearch");
 const closeSearch = document.querySelector(".close-shearch-menu");
+const searchInputHeader = document.querySelector(".search-input");
 
-
-openSearch.addEventListener("click", () =>{
-  closeMenu();
-  closeSearch.classList.add("active");
-  headerActive.classList.add("active");
-  searchBar.classList.add("active");
-  hideSearch.classList.add("inactive");
-  overlaySearch.classList.add("active");
-});
-
-closeSearch.addEventListener("click", () =>{
+if (openSearch) {
+  openSearch.addEventListener("click", () => {
     closeMenu();
-});
+    closeSearch.classList.add("active");
+    headerActive.classList.add("active");
+    searchBar.classList.add("active");
+    hideSearch.classList.add("inactive");
+    overlaySearch.classList.add("active");
+  });
+}
 
-overlaySearch.addEventListener("click", () =>{
+if (closeSearch) {
+  closeSearch.addEventListener("click", () => {
     closeMenu();
-});
+  });
+}
 
+if (overlaySearch) {
+  overlaySearch.addEventListener("click", () => {
+    closeMenu();
+  });
+}
+
+if (searchBar) {
+  searchBar.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const query = searchInputHeader.value.trim();
+    if (query) {
+      window.location.href = `tienda?search=${encodeURIComponent(query)}`;/*+.html */
+    }
+  });
+}
+
+// Sync search bar with URL param if on store page
+window.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const searchVal = params.get('search');
+  if (searchVal && searchInputHeader) {
+    searchInputHeader.value = searchVal;
+  }
+});
 /*search----------------------------*/
 /*login----------------------------*/
 const openLogin = document.querySelector(".login-unloged");
@@ -285,8 +313,9 @@ const hideSearch = document.querySelector(".shearch-menu");
 const closeLogin = document.querySelector(".overlayLogin");
 const loginTry = document.querySelector(".login-btn");
 const loginErr = document.querySelector(".login-error");
+const loginForm = document.querySelector(".login-form");
 
-openLogin.addEventListener("click", () =>{
+openLogin.addEventListener("click", () => {
   closeMenu();
   headerActive.classList.add("active");
   loginSystem.classList.add("active");
@@ -299,7 +328,7 @@ openLogin.addEventListener("click", () =>{
   navDerecha.classList.add("inactive");
 });
 
-closeLogin.addEventListener("click", () =>{
+closeLogin.addEventListener("click", () => {
   headerActive.classList.remove("active");
   loginSystem.classList.remove("active");
   openLogin.classList.remove("active");
@@ -313,7 +342,7 @@ closeLogin.addEventListener("click", () =>{
 });
 
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape"){
+  if (e.key === "Escape") {
     headerActive.classList.remove("active");
     loginSystem.classList.remove("active");
     openLogin.classList.remove("active");
@@ -327,8 +356,16 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-loginTry.addEventListener("click", () =>{
-  loginErr.classList.add("active");
+loginTry.addEventListener("click", (e) => {
+  // Use native validation (bubbles)
+  if (!loginForm.checkValidity()) {
+    // Let the browser show native validation tooltips
+    loginForm.reportValidity();
+  } else {
+    // Only show "User not registered" if the form is formally valid
+    e.preventDefault();
+    loginErr.classList.add("active");
+  }
 });
 
 /*login----------------------------*/
@@ -336,14 +373,14 @@ loginTry.addEventListener("click", () =>{
 /*back to top*/
 const backButton = document.querySelector(".back-to-top");
 
-window.addEventListener("scroll",()=> {
+window.addEventListener("scroll", () => {
 
-    if (window.scrollY > 100){
-      backButton.classList.add("active");
-    }
-    else {
-      backButton.classList.remove("active");
-    }
+  if (window.scrollY > 100) {
+    backButton.classList.add("active");
+  }
+  else {
+    backButton.classList.remove("active");
+  }
 })
 
 /*main content*/

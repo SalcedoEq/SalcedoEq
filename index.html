@@ -33,6 +33,7 @@
     <!--#############################################################-->
     <!--#############################################################-->
     <!-- Scripts -->
+    <script src="./src/products.js"></script>
     <script type="module" src="./src/main.js"></script>
     <script type="module" src="./src/index.js"></script>
     <!-- Header -->
@@ -327,10 +328,10 @@
                 <div class="store-prev">
                     <div class="select-prev">
                         <article class="store-item see-equipamiento store-hear-Eq active">
-                            <h3><a href="/tienda">Equipos médicos</a></h3>
+                            <h3><a href="tienda.html?global=Equipamiento">Equipos médicos</a></h3>
                         </article>
                         <article class="store-item see-mobiliario store-hear-Mob">
-                            <h3><a href="/tienda">Mobiliario Médico</a></h3>
+                            <h3><a href="tienda.html?global=Mobiliario">Mobiliario Médico</a></h3>
                         </article>
                     </div>
                     <div class="prev-tienda equipameinto-prev">
@@ -341,62 +342,7 @@
                                 </svg>
                             </button>
                             <div class="carousel-track" id="carousel-eq">
-                                <a href="/tienda#monitores" class="carousel-card">
-                                    <div class="carousel-card-img">
-                                        <img src="./images/products/equipamiento/monitor-paciente.png"
-                                            alt="Monitor de paciente" loading="lazy">
-                                    </div>
-                                    <div class="carousel-card-body">
-                                        <span class="carousel-card-tag">Monitoreo</span>
-                                        <h4>Monitor de signos vitales</h4>
-                                        <p>ECG, SpO2, NIBP, temperatura y más parámetros en tiempo real.</p>
-                                    </div>
-                                    <svg class="carousel-card-arrow" width="20" height="20" viewBox="0 0 20 20">
-                                        <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5" />
-                                    </svg>
-                                </a>
-                                <a href="/tienda#esterilizacion" class="carousel-card">
-                                    <div class="carousel-card-img">
-                                        <img src="./images/products/equipamiento/esterilizador.png"
-                                            alt="Esterilizador autoclave" loading="lazy">
-                                    </div>
-                                    <div class="carousel-card-body">
-                                        <span class="carousel-card-tag">Esterilización</span>
-                                        <h4>Autoclave de mesa</h4>
-                                        <p>Esterilización por vapor a alta presión para instrumental médico.</p>
-                                    </div>
-                                    <svg class="carousel-card-arrow" width="20" height="20" viewBox="0 0 20 20">
-                                        <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5" />
-                                    </svg>
-                                </a>
-                                <a href="/tienda#ultrasonido" class="carousel-card">
-                                    <div class="carousel-card-img">
-                                        <img src="./images/products/equipamiento/ecografo.png" alt="Ecógrafo"
-                                            loading="lazy">
-                                    </div>
-                                    <div class="carousel-card-body">
-                                        <span class="carousel-card-tag">Ultrasonido</span>
-                                        <h4>Ecógrafo portátil</h4>
-                                        <p>Sistema de ultrasonido diagnóstico con sonda multifrecuencia.</p>
-                                    </div>
-                                    <svg class="carousel-card-arrow" width="20" height="20" viewBox="0 0 20 20">
-                                        <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5" />
-                                    </svg>
-                                </a>
-                                <a href="/tienda#emergencia" class="carousel-card">
-                                    <div class="carousel-card-img">
-                                        <img src="./images/products/equipamiento/desfibrilador.png" alt="Desfibrilador"
-                                            loading="lazy">
-                                    </div>
-                                    <div class="carousel-card-body">
-                                        <span class="carousel-card-tag">Emergencia</span>
-                                        <h4>Desfibrilador AED</h4>
-                                        <p>Desfibrilador externo automático para respuesta ante emergencias.</p>
-                                    </div>
-                                    <svg class="carousel-card-arrow" width="20" height="20" viewBox="0 0 20 20">
-                                        <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5" />
-                                    </svg>
-                                </a>
+                                <!-- Dynamic content loaded from SalcedoProducts -->
                             </div>
                             <button class="carousel-arrow carousel-arrow-right" aria-label="Siguiente"
                                 data-carousel="eq">
@@ -415,34 +361,7 @@
                                 </svg>
                             </button>
                             <div class="carousel-track" id="carousel-mob">
-                                <a href="/tienda#camas" class="carousel-card">
-                                    <div class="carousel-card-img">
-                                        <img src="./images/products/mobiliario/cama-hospitalaria.png"
-                                            alt="Cama hospitalaria" loading="lazy">
-                                    </div>
-                                    <div class="carousel-card-body">
-                                        <span class="carousel-card-tag">Hospitalización</span>
-                                        <h4>Cama hospitalaria eléctrica</h4>
-                                        <p>Cama con ajuste eléctrico, barandas laterales y frenos de seguridad.</p>
-                                    </div>
-                                    <svg class="carousel-card-arrow" width="20" height="20" viewBox="0 0 20 20">
-                                        <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5" />
-                                    </svg>
-                                </a>
-                                <a href="/tienda#camillas" class="carousel-card">
-                                    <div class="carousel-card-img">
-                                        <img src="./images/products/mobiliario/camilla-examen.png"
-                                            alt="Camilla de examen" loading="lazy">
-                                    </div>
-                                    <div class="carousel-card-body">
-                                        <span class="carousel-card-tag">Consultorio</span>
-                                        <h4>Camilla de examen clínico</h4>
-                                        <p>Mesa de exploración ajustable con tapizado de alta resistencia.</p>
-                                    </div>
-                                    <svg class="carousel-card-arrow" width="20" height="20" viewBox="0 0 20 20">
-                                        <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5" />
-                                    </svg>
-                                </a>
+                                <!-- Dynamic content loaded from SalcedoProducts -->
                             </div>
                             <button class="carousel-arrow carousel-arrow-right" aria-label="Siguiente"
                                 data-carousel="mob">
