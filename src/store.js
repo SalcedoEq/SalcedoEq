@@ -58,6 +58,16 @@ document.addEventListener("DOMContentLoaded", () => {
         filters.globalType = globalParam.charAt(0).toUpperCase() + globalParam.slice(1).toLowerCase();
     }
 
+    const categoryParam = urlParams.get('category');
+    if (categoryParam) {
+        filters.category = categoryParam;
+    }
+
+    const subcategoryParam = urlParams.get('subcategory');
+    if (subcategoryParam) {
+        filters.subcategory = subcategoryParam;
+    }
+
     const searchParam = urlParams.get('search');
     if (searchParam) {
         filters.search = searchParam;
