@@ -372,7 +372,10 @@ function renderPagination(filteredProducts) {
 
     // Prev Button
     if (currentPage > 1) {
-        navUI.innerHTML += `<li class="page-item"><a class="page-link" href="#" data-page="${currentPage - 1}">Anterior</a></li>`;
+        navUI.innerHTML += `<li class="page-item prev-btn"><a class="page-link" href="#" data-page="${currentPage - 1}">Anterior</a></li>`;
+    } else {
+        // Placeholder for symmetry
+        navUI.innerHTML += `<li class="page-item prev-btn hidden-placeholder" aria-hidden="true"><span class="page-link">Anterior</span></li>`;
     }
 
     // Smart Truncation (Ellipsis logic)
@@ -415,7 +418,10 @@ function renderPagination(filteredProducts) {
 
     // Next Button
     if (currentPage < totalPages) {
-        navUI.innerHTML += `<li class="page-item"><a class="page-link" href="#" data-page="${currentPage + 1}">Siguiente</a></li>`;
+        navUI.innerHTML += `<li class="page-item next-btn"><a class="page-link" href="#" data-page="${currentPage + 1}">Siguiente</a></li>`;
+    } else {
+        // Placeholder for symmetry
+        navUI.innerHTML += `<li class="page-item next-btn hidden-placeholder" aria-hidden="true"><span class="page-link">Siguiente</span></li>`;
     }
 
     // Bind Pagination Events

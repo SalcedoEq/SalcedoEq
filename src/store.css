@@ -281,6 +281,7 @@ option::checkmark {
 
 .cat-list a {
     display: flex;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
@@ -322,9 +323,12 @@ option::checkmark {
 }
 
 .sub-cat-list a {
+    display: flex;
+    width: 100%;
     padding: 0.75rem 1rem;
     font-size: 0.9rem;
     color: var(--main-gray);
+    text-decoration: none;
 }
 
 .sub-cat-list a:hover {
@@ -572,40 +576,63 @@ option::checkmark {
 
 .pagination {
     display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: center;
-}
-
-li::marker {
-    content: none;
-}
-
-.sr-only {
-    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    position: relative;
+    list-style: none;
+    padding: 0;
 }
 
 .page-item {
     border: 1px solid var(--ligth-gray);
     background-color: var(--hover-backgroud);
-    min-width: 32px;
-    height: 32px;
-    padding: 0 10px;
+    min-width: 35px;
+    height: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.page-item .page-link {
+    text-decoration: none;
+    color: var(--main-gray);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+}
+
+.prev-btn, .next-btn {
+    min-width: 100px;
+}
+
+.hidden-placeholder {
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .page-item.active {
     border: 1px solid var(--main-blue);
     background-color: var(--main-blue);
+}
+
+.page-item.active .page-link {
     color: var(--font-footer-color);
 }
 
-.page-item:hover:not(.page-item.disabled) {
-    border: 1px solid var(--main-blue);
-    background-color: var(--main-blue);
-    color: var(--font-footer-color);
+.page-item:hover:not(.disabled):not(.active):not(.hidden-placeholder) {
+    border-color: var(--main-blue);
+    background-color: #f0f0f0;
+}
+
+.page-item:hover:not(.disabled):not(.active):not(.hidden-placeholder) .page-link {
+    color: var(--main-blue);
 }
 
 /*container productos------------------*/
