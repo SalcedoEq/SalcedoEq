@@ -6,8 +6,15 @@ const carruselChangeSeeMob = document.querySelector(".mobiliario-prev");
 const aUpdateEq = document.querySelector(".store-hear-Eq");
 const aUpdateMob = document.querySelector(".store-hear-Mob");
 
-carruselChangeEqHear.addEventListener("mouseenter", carruselChangeEq);
-carruselChangeMobHear.addEventListener("mouseenter", carruselChangeMob);
+if (carruselChangeEqHear && carruselChangeMobHear) {
+    /* Destkop logic */
+    carruselChangeEqHear.addEventListener("mouseenter", carruselChangeEq);
+    carruselChangeMobHear.addEventListener("mouseenter", carruselChangeMob);
+    
+    /* Mobile logic */
+    carruselChangeEqHear.addEventListener("click", carruselChangeEq);
+    carruselChangeMobHear.addEventListener("click", carruselChangeMob);
+}
 
 function carruselChangeEq () {
   carruselChangeSeeEq.classList.remove("inactive");
@@ -21,7 +28,6 @@ function carruselChangeMob () {
   aUpdateEq.classList.remove("active");
   aUpdateMob.classList.add("active");
 }
-
 /*most frecuent--------------------*/
 
 /* Carousel navigation — infinite loop */

@@ -1139,15 +1139,6 @@ header svg:hover {
     padding: .5rem;
 }
 
-.equipameinto-prev.inactive {
-    display: none;
-}
-
-.mobiliario-prev.inactive {
-    display: none;
-}
-
-
 .store-item h3 {
     font-size: var(--font-main-size);
     font-weight: var(--font-light-weigth);
@@ -1160,7 +1151,11 @@ header svg:hover {
     transition: color 0.15s ease;
 }
 
-.store-item a.inactive {
+.equipameinto-prev.inactive {
+    display: none;
+}
+
+.mobiliario-prev.inactive {
     display: none;
 }
 
@@ -1174,7 +1169,6 @@ header svg:hover {
     background: var(--hover-backgroud);
     border-left: 3px solid var(--main-blue);
 }
-
 
 .store-hear-Eq.active a {
     font-weight: var(--font-main-weigth);
