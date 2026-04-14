@@ -200,6 +200,7 @@ nav {
 .nav button:hover {
     color: var(--font-hover);
     background: var(--hover-backgroud);
+    border: 1px solid var(--main-blue);
 }
 
 header svg:hover {
