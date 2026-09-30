@@ -38,8 +38,8 @@
         const list = filtered(), visible = list.slice(0, state.shown);
         chips.querySelectorAll(".chip").forEach((c) => c.setAttribute("aria-pressed", String(c.dataset.cat === state.category)));
         grid.innerHTML = visible.map((p) =>
-            '<article class="card"><div class="pic"><img src="' + esc(p.img) + '" alt="' + esc(p.name) + '" loading="lazy"></div>' +
-            '<div class="body"><span class="cat">' + esc(p.category) + '</span><h3>' + esc(p.name) + '</h3><p>' + esc(p.desc) + '</p>' +
+            '<article class="card"><a class="pic" href="producto.html?id=' + p.id + '"><img src="' + esc(p.img) + '" alt="' + esc(p.name) + '" loading="lazy"></a>' +
+            '<div class="body"><span class="cat">' + esc(p.category) + '</span><h3><a href="producto.html?id=' + p.id + '">' + esc(p.name) + '</a></h3><p>' + esc(p.desc) + '</p>' +
             '<div class="foot"><span class="brandname">' + esc(p.brand) + '</span>' +
             '<a class="btn btn-primary btn-sm" target="_blank" rel="noopener" href="' + wa(p.name) + '">Cotizar</a></div></div></article>').join("");
         count.textContent = list.length === 1 ? "1 equipo" : list.length + " equipos";

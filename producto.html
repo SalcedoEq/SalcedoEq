@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda | Salcedo Equipment</title>
+    <title>Equipo | Salcedo Equipment</title>
     <link rel="shortcut icon" href="./logos/iconos/favicon.ico" />
-    <meta name="description" content="Catálogo de equipos médicos y mobiliario clínico de Salcedo Equipment. Elige tu equipo y cotiza por WhatsApp.">
-    <link rel="canonical" href="https://www.salcedoequip.com/tienda.html">
+    <meta name="description" content="Ficha del equipo y cotización por WhatsApp.">
+    <link rel="canonical" href="https://www.salcedoequip.com/producto.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Salcedo Equipment">
-    <meta property="og:title" content="Tienda | Salcedo Equipment">
-    <meta property="og:description" content="Catálogo de equipos médicos y mobiliario clínico de Salcedo Equipment. Elige tu equipo y cotiza por WhatsApp.">
-    <meta property="og:url" content="https://www.salcedoequip.com/tienda.html">
+    <meta property="og:title" content="Equipo | Salcedo Equipment">
+    <meta property="og:description" content="Ficha del equipo y cotización por WhatsApp.">
+    <meta property="og:url" content="https://www.salcedoequip.com/producto.html">
     <meta property="og:image" content="https://www.salcedoequip.com/logos/iconos/android-chrome-512x512.png">
     <meta name="theme-color" content="#214181">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,13 +21,12 @@
     <link rel="stylesheet" href="./src/home.css">
 </head>
 
-
 <body>
 <header class="top">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Salcedo Equip, inicio"><img src="logos/logo_web.webp" alt="Salcedo Equip, excelencia en cada servicio"></a>
     <nav class="nav" aria-label="Principal">
-      <a href="tienda.html" aria-current="page">Tienda</a>
+      <a href="tienda.html">Tienda</a>
       <a href="index.html#servicios">Consultoría</a>
       <a href="index.html#proceso">Cómo trabajamos</a>
       <a href="index.html#contacto">Soporte</a>
@@ -37,42 +36,33 @@
 </header>
 
 <main>
-  <div class="shop-hero">
+  <section class="detail">
     <div class="wrap">
-      <p class="eyebrow">Tienda</p>
-      <h1>Equipos médicos y mobiliario clínico</h1>
-      <p class="lead">Escoge tu equipo en línea. Lo revisamos y entregamos según tus requerimientos.</p>
-    </div>
-  </div>
-
-  <section class="shop">
-    <div class="wrap">
-      <form class="toolbar" id="toolbar" role="search" onsubmit="return false">
-        <div class="field grow">
-          <label for="q">Buscar</label>
-          <input id="q" type="search" placeholder="Nombre, marca o tipo de equipo" autocomplete="off">
+      <nav class="crumbs" aria-label="Ruta"><a href="tienda.html">Tienda</a> <span aria-hidden="true">/</span> <span id="crumb-cat"></span></nav>
+      <div class="detail-grid" id="detail" hidden>
+        <div class="detail-pic"><img id="d-img" src="" alt=""></div>
+        <div class="detail-info">
+          <span class="cat" id="d-cat"></span>
+          <h1 id="d-name"></h1>
+          <p class="d-brand">Marca: <strong id="d-brand"></strong></p>
+          <p class="d-desc" id="d-desc"></p>
+          <ul class="d-list">
+            <li>Evaluación técnica de especificaciones</li>
+            <li>Instalación en tu institución</li>
+            <li>Capacitación para tu personal</li>
+            <li>Soporte y mantenimiento</li>
+          </ul>
+          <div class="actions">
+            <a class="btn btn-wa" id="d-wa" target="_blank" rel="noopener" href="#">Cotizar por WhatsApp</a>
+            <a class="btn btn-ghost" href="tienda.html">Ver más equipos</a>
+          </div>
         </div>
-        <div class="field">
-          <label for="brand">Marca</label>
-          <select id="brand"><option value="">Todas</option></select>
-        </div>
-        <div class="field">
-          <label for="sort">Ordenar</label>
-          <select id="sort">
-            <option value="az">Nombre A-Z</option>
-            <option value="za">Nombre Z-A</option>
-          </select>
-        </div>
-      </form>
-      <div class="chips" id="chips" role="group" aria-label="Filtrar por categoría"></div>
-      <p class="count" id="count" aria-live="polite"></p>
-      <div class="grid" id="grid"></div>
-      <div class="empty" id="empty" hidden>
-        <h3>No encontramos equipos con esos filtros</h3>
-        <p>Prueba con otra categoría o cuéntanos qué necesitas y te lo conseguimos.</p>
-        <a class="btn btn-wa" href="https://wa.me/51956614346?text=Hola%2C%20busco%20un%20equipo%20que%20no%20encuentro%20en%20la%20tienda" target="_blank" rel="noopener">Pedir por WhatsApp</a>
       </div>
-      <div class="more"><button class="btn btn-ghost" id="more" type="button" hidden>Ver más equipos</button></div>
+      <div class="empty" id="d-missing" hidden>
+        <h3>No encontramos ese equipo</h3>
+        <p>Puede que ya no esté disponible. Mira el resto del catálogo o escríbenos.</p>
+        <a class="btn btn-primary" href="tienda.html">Ir a la tienda</a>
+      </div>
     </div>
   </section>
 </main>
@@ -97,7 +87,7 @@
 </a>
 
 <script src="./src/products.js"></script>
-<script src="./src/tienda.js"></script>
+<script src="./src/producto.js"></script>
 </body>
 
 </html>
