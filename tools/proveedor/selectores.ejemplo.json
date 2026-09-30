@@ -1,13 +1,20 @@
 {
-  "_nota": "Copia a selectores.json y reemplaza por los selectores CSS reales tras correr 'explorar'.",
-  "enlace_producto": "a.product-link",
-  "siguiente": "a.next",
-  "nombre": "h1",
-  "categoria": ".breadcrumb li:nth-last-child(2)",
-  "marca": ".brand",
-  "modelo": ".sku",
-  "precio": ".price",
-  "stock": ".stock",
-  "foto": ".product-image img",
-  "descripcion": ".description"
+  "_nota": "Copia a selectores.json y ajusta. Formato: 'selector' = texto, 'selector@atributo' = atributo, 'xpath=...' tambien vale.",
+  "boton_mas": "button.ver-mas",
+  "tarjeta": ".lista .producto",
+  "enlace": "a@href",
+  "nombre": "h3@title",
+  "modelo": ".etiqueta",
+  "precio": ".precio",
+  "foto": "img@src",
+  "codigo": "a.comprar@onclick",
+  "codigo_regex": "\\('([^']+)'",
+  "detalle": {
+    "nombre": "h1",
+    "codigo": ".codigo",
+    "modelo": ".modelo",
+    "marca": ".marca img@src",
+    "stock": ".stock b",
+    "descripcion": ".descripcion"
+  }
 }

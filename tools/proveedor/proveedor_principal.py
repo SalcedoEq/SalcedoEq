@@ -13,7 +13,8 @@ Uso:
   python tools/proveedor/proveedor_principal.py explorar
 
   # 2) Extraer: recorre el catalogo con los selectores de selectores.json
-  python tools/proveedor/proveedor_principal.py extraer --inicio "https://URL-DEL-PROVEEDOR/CATEGORIA"
+  python tools/proveedor/proveedor_principal.py extraer --inicio "URL-DEL-LISTADO"            # rapido: solo listado
+  python tools/proveedor/proveedor_principal.py extraer --inicio "URL-DEL-LISTADO" --detalle  # + ficha de cada producto
 
 Resultado: tools/proveedor/salida/proveedor.csv
 Usa un ritmo tranquilo (pausas de 2-4 s). Revisa los terminos del proveedor:
@@ -41,7 +42,7 @@ CONFIG = AQUI / "selectores.json"
 SITIO = os.environ.get("PROVEEDOR_URL", "")
 if not SITIO:
     raise SystemExit("Define la variable de entorno PROVEEDOR_URL (direccion inicial del proveedor).")
-CAMPOS = ["url", "nombre", "categoria", "marca", "modelo", "precio", "moneda", "stock", "foto", "descripcion"]
+CAMPOS = ["url", "codigo", "nombre", "marca", "modelo", "precio", "moneda", "stock", "foto", "descripcion"]
 
 
 def ir(page, url):
@@ -100,77 +101,111 @@ def explorar(_args):
     print(f"Listo. Sube la carpeta {SALIDA} (sin credenciales) a Drive o al repo para ajustar los selectores.")
 
 
-def texto(page, sel):
-    if not sel:
+def valor(nodo, spec, regex=None):
+    """spec: 'selector' (texto) o 'selector@atributo'. Admite prefijo 'xpath='."""
+    if not spec:
         return ""
-    el = page.query_selector(sel)
-    return re.sub(r"\s+", " ", el.inner_text()).strip() if el else ""
+    m = re.match(r"^(.*)@([A-Za-z-]+)$", spec)
+    sel, attr = (m.group(1), m.group(2)) if m else (spec, "")
+    el = nodo.query_selector(sel)
+    if not el:
+        return ""
+    v = el.get_attribute(attr) if attr else el.inner_text()
+    v = re.sub(r"\s+", " ", v or "").strip()
+    if regex:
+        m = re.search(regex, v)
+        v = m.group(1) if m else ""
+    return v
 
 
-def atributo(page, sel, attr):
-    el = page.query_selector(sel) if sel else None
-    return (el.get_attribute(attr) or "").strip() if el else ""
+def cargar_todo(page, sel):
+    """Pulsa 'Ver mas productos' hasta que no haya mas (o no aparezcan nuevos)."""
+    boton = sel.get("boton_mas")
+    while boton:
+        antes = len(page.query_selector_all(sel["tarjeta"]))
+        b = page.query_selector(boton)
+        if not b or not b.is_visible():
+            break
+        b.scroll_into_view_if_needed()
+        b.click()
+        pausa()
+        page.wait_for_timeout(1500)
+        despues = len(page.query_selector_all(sel["tarjeta"]))
+        print(f"  cargados {despues} productos")
+        if despues <= antes:
+            break
 
 
-def extraer_producto(page, sel, url):
-    # Respaldo generico: JSON-LD schema.org/Product y metadatos Open Graph.
-    ld = {}
-    for s in page.query_selector_all('script[type="application/ld+json"]'):
-        try:
-            data = json.loads(s.inner_text())
-        except Exception:
-            continue
-        for d in data if isinstance(data, list) else [data]:
-            if isinstance(d, dict) and d.get("@type") == "Product":
-                ld = d
-    oferta = ld.get("offers") or {}
-    if isinstance(oferta, list):
-        oferta = oferta[0] if oferta else {}
-    marca_ld = (ld.get("brand") or {}).get("name", "") if isinstance(ld.get("brand"), dict) else ""
-    foto = atributo(page, sel.get("foto"), "src") or atributo(page, 'meta[property="og:image"]', "content")
-    return {
-        "url": url,
-        "nombre": texto(page, sel.get("nombre")) or ld.get("name", ""),
-        "categoria": texto(page, sel.get("categoria")),
-        "marca": texto(page, sel.get("marca")) or marca_ld,
-        "modelo": texto(page, sel.get("modelo")) or ld.get("sku", ""),
-        "precio": texto(page, sel.get("precio")) or str(oferta.get("price", "")),
-        "moneda": oferta.get("priceCurrency", ""),
-        "stock": texto(page, sel.get("stock")),
-        "foto": urljoin(url, foto) if foto else "",
-        "descripcion": texto(page, sel.get("descripcion")) or ld.get("description", ""),
-    }
+def limpiar_precio(txt):
+    """'US$ 1,430.00 (incluido IGV) ...' -> '1430.00' (primer importe)."""
+    m = re.search(r"([\d.,]+\d)", txt or "")
+    return m.group(1).replace(",", "") if m else ""
+
+
+def leer_tarjetas(page, sel, base):
+    filas = []
+    for t in page.query_selector_all(sel["tarjeta"]):
+        enlace = valor(t, sel.get("enlace"))
+        foto = valor(t, sel.get("foto"))
+        precio = limpiar_precio(valor(t, sel.get("precio")))
+        filas.append({
+            "url": urljoin(base, enlace) if enlace else "",
+            "codigo": valor(t, sel.get("codigo"), sel.get("codigo_regex")),
+            "nombre": valor(t, sel.get("nombre")),
+            "marca": valor(t, sel.get("marca")),
+            "modelo": valor(t, sel.get("modelo")),
+            "precio": precio,
+            "moneda": "USD" if precio else "",
+            "stock": "",
+            "foto": urljoin(base, foto) if foto else "",
+            "descripcion": "",
+        })
+    return filas
+
+
+def completar_detalle(page, fila, sel):
+    d = sel.get("detalle", {})
+    ir(page, fila["url"])
+    for campo in ("codigo", "marca", "modelo", "stock", "descripcion", "nombre"):
+        v = valor(page, d.get(campo), d.get(campo + "_regex"))
+        if campo == "marca" and "/" in v:  # la marca viene como logo: usa el nombre del archivo
+            v = Path(v).stem
+        if campo == "stock":
+            v = "".join(re.findall(r"\d+", v))
+        if campo == "descripcion":
+            v = re.sub(r"^Descripci[oó]n:\s*", "", v)
+        if v:
+            fila[campo] = v
 
 
 def extraer(args):
     if not CONFIG.exists():
-        raise SystemExit(f"Falta {CONFIG.name}: copialo de selectores.ejemplo.json y ajustalo tras 'explorar'.")
+        raise SystemExit(f"Falta {CONFIG.name}: copialo de selectores.ejemplo.json y ajustalo.")
     sel = json.loads(CONFIG.read_text(encoding="utf-8"))
     SALIDA.mkdir(exist_ok=True)
-    filas, vistos, url = [], set(), args.inicio
     with sync_playwright() as p:
         ctx = abrir(p)
         page = ctx.pages[0] if ctx.pages else ctx.new_page()
         ir(page, SITIO)
         input("Inicia sesion en el navegador y luego presiona ENTER aqui... ")
-        paginas = 0
-        while url and paginas < args.max_paginas:
-            ir(page, url)
-            paginas += 1
-            enlaces = [urljoin(url, a.get_attribute("href")) for a in page.query_selector_all(sel["enlace_producto"]) if a.get_attribute("href")]
-            siguiente = page.query_selector(sel["siguiente"]) if sel.get("siguiente") else None
-            url_sig = urljoin(url, siguiente.get_attribute("href")) if siguiente and siguiente.get_attribute("href") else None
-            print(f"Pagina {paginas}: {len(enlaces)} productos")
-            for enlace in enlaces:
-                if enlace in vistos:
+        ir(page, args.inicio)
+        cargar_todo(page, sel)
+        filas = leer_tarjetas(page, sel, page.url)
+        print(f"{len(filas)} productos en el listado")
+        if args.detalle:
+            for i, fila in enumerate(filas[: args.limite or None], 1):
+                if not fila["url"]:
                     continue
-                vistos.add(enlace)
                 pausa()
-                ir(page, enlace)
-                filas.append(extraer_producto(page, sel, enlace))
-            url = url_sig
-            pausa()
+                completar_detalle(page, fila, sel)
+                if i % 25 == 0:
+                    print(f"  detalle {i}/{len(filas)}")
+                    guardar(filas)
         ctx.close()
+    guardar(filas)
+
+
+def guardar(filas):
     ruta = SALIDA / "proveedor.csv"
     with open(ruta, "w", newline="", encoding="utf-8-sig") as f:
         w = csv.DictWriter(f, fieldnames=CAMPOS, quoting=csv.QUOTE_ALL)
@@ -185,7 +220,8 @@ if __name__ == "__main__":
     sub.add_parser("explorar").set_defaults(fn=explorar)
     e = sub.add_parser("extraer")
     e.add_argument("--inicio", required=True, help="URL de la primera pagina de listado")
-    e.add_argument("--max-paginas", type=int, default=50)
+    e.add_argument("--detalle", action="store_true", help="entra a cada producto (lento) para modelo, stock y descripcion")
+    e.add_argument("--limite", type=int, default=0, help="con --detalle: solo los primeros N productos (para probar)")
     e.set_defaults(fn=extraer)
     a = ap.parse_args()
     a.fn(a)
