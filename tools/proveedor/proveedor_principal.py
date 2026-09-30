@@ -29,7 +29,7 @@ import random
 import re
 import time
 from pathlib import Path
-from urllib.parse import urljoin
+from urllib.parse import quote, urljoin
 
 from playwright.sync_api import sync_playwright
 
@@ -207,21 +207,59 @@ def completar_detalle(page, fila, sel):
             fila[campo] = v
 
 
+def esperar_tarjetas(page, sel):
+    """Espera (hasta 2 min) a que aparezcan productos; el sitio a veces tarda."""
+    try:
+        page.wait_for_selector(sel["tarjeta"], timeout=120000)
+    except Exception:
+        print("  (no aparecieron productos a tiempo)")
+
+
+def url_categoria(inicio, categoria):
+    if re.search(r"([?&])c=[^&]*", inicio):
+        return re.sub(r"([?&])c=[^&]*", lambda m: f"{m.group(1)}c={quote(categoria)}", inicio, count=1)
+    return inicio + ("&" if "?" in inicio else "?") + "c=" + quote(categoria)
+
+
 def extraer(args):
     if not CONFIG.exists():
         raise SystemExit(f"Falta {CONFIG.name}: copialo de selectores.ejemplo.json y ajustalo.")
     sel = json.loads(CONFIG.read_text(encoding="utf-8"))
     SALIDA.mkdir(exist_ok=True)
+    filas, vistos = [], set()
+
+    def sumar(nuevas):
+        for f in nuevas:
+            clave = f["codigo"] or f["url"]
+            if clave not in vistos:
+                vistos.add(clave)
+                filas.append(f)
+
     with sync_playwright() as p:
         ctx = abrir(p)
         page = ctx.pages[0] if ctx.pages else ctx.new_page()
         ir(page, SITIO)
         verificar_abierto(page)
         input("Inicia sesion en el navegador y luego presiona ENTER aqui... ")
-        ir(page, args.inicio)
-        cargar_todo(page, sel)
-        filas = leer_tarjetas(page, sel, page.url)
-        print(f"{len(filas)} productos en el listado")
+        if args.por_categoria:
+            # Una categoria a la vez: cada pedido es pequeno y al servidor le cuesta menos.
+            for cat in sel.get("categorias", []):
+                print(f"Categoria: {cat}")
+                ir(page, url_categoria(args.inicio, cat))
+                esperar_tarjetas(page, sel)
+                cargar_todo(page, sel)
+                nuevas = leer_tarjetas(page, sel, page.url)
+                sumar(nuevas)
+                print(f"  {len(nuevas)} en la categoria, {len(filas)} en total")
+                if filas:
+                    guardar(filas)
+                time.sleep(random.uniform(8, 15))
+        else:
+            ir(page, args.inicio)
+            esperar_tarjetas(page, sel)
+            cargar_todo(page, sel)
+            sumar(leer_tarjetas(page, sel, page.url))
+            print(f"{len(filas)} productos en el listado")
         if args.detalle:
             for i, fila in enumerate(filas[: args.limite or None], 1):
                 if not fila["url"]:
@@ -279,6 +317,9 @@ def actualizar(args):
 
 
 def guardar(filas):
+    if not filas:
+        print("Sin productos: no se guarda ningun archivo (asi no pisamos uno bueno).")
+        return
     ruta = SALIDA / "proveedor.csv"
     with open(ruta, "w", newline="", encoding="utf-8-sig") as f:
         w = csv.DictWriter(f, fieldnames=CAMPOS, quoting=csv.QUOTE_ALL)
@@ -294,6 +335,7 @@ if __name__ == "__main__":
     e = sub.add_parser("extraer")
     e.add_argument("--inicio", required=True, help="URL de la primera pagina de listado")
     e.add_argument("--detalle", action="store_true", help="entra a cada producto (lento) para modelo, stock y descripcion")
+    e.add_argument("--por-categoria", action="store_true", help="baja una categoria a la vez (mas liviano para el sitio)")
     e.add_argument("--limite", type=int, default=0, help="con --detalle: solo los primeros N productos (para probar)")
     e.set_defaults(fn=extraer)
     u = sub.add_parser("actualizar", help="refresca solo los equipos que elegiste")
