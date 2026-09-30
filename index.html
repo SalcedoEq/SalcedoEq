@@ -2,638 +2,175 @@
 <html lang="es">
 
 <head>
-    <!--#############################################################-->
-    <!--#############################################################-->
-    <!--#############################################################-->
-    <meta charset="UTF-8"> <!--codificacion-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--configuracion para responsivo-->
-    <title>Salcedo Equipment</title> <!--titulo de la pestaña EDITAR-->
-    <link rel="shortcut icon" href="./logos/iconos/favicon.ico" /> <!--icono de la pstaña-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salcedo Equipment</title>
+    <link rel="shortcut icon" href="./logos/iconos/favicon.ico" />
     <meta name="description"
-        content="Provee soluciones a la medida de tu proyecto: compre equipos médicos, instrumental y mobiliaros, reciba servicios personalizados y soluciónes diseñadas a su medida. FACIL RAPIDO Y SEGURO / OFERTAS">
-    <!--descripcion de la pagina web IMPORTANTE PARA BUSQUEDAS-->
+        content="Equipos médicos, instrumental y mobiliario, servicios de mantenimiento y soluciones a la medida de tu proyecto. Excelencia en cada servicio.">
     <meta name="keywords"
-        content="equipos médicos, equipos biomedicos, equipamiento, instrumental, ingenieria clinica, reparación electronica, , Perú">
-    <link rel="stylesheet" href="./src/style.css">
-
+        content="equipos médicos, equipos biomedicos, equipamiento, instrumental, ingenieria clinica, reparación electronica, Perú">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;display=swap"
-        rel="stylesheet">
-    <!--#############################################################-->
-    <!--#############################################################-->
-    <!--#############################################################-->
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/home.css">
 </head>
 
-
-
 <body>
-    <!--#############################################################-->
-    <!--#############################################################-->
-    <!--##########################################################    <!-- Scripts -->
-    <script src="/src/products.js"></script>
-    <script type="module" src="/src/main.js"></script>
-    <script type="module" src="/src/index.js"></script>
-    <!-- Header -->
-    <header>
-        <!--LOGO Y MENU LATERAL-->
-        <div class="logo-container">
-            <!--menu lateral/resposive-->
-            <button class="icon-btn mobile-menu-toggle" aria-label="Abrir menú" aria-controls="mobile-menu"
-                aria-expanded="false">
-                <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
-                    <path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                </svg>
-            </button>
-            <!--cerrar-->
-            <button class="icon-btn close-menu-toggle" aria-label="Cerrar menú" aria-controls="close-mobile-menu"
-                aria-expanded="false">
-                <svg width="25" height="25" viewBox="0 0 25 25" aria-hidden="true">
-                    <path
-                        d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z"
-                        fill="currentColor"></path>
-                </svg>
-            </button>
-            <a href="/">
-                <img src="/logos/logo_web.webp" alt="SalcedoEq" class="logo">
-            </a>
-            <svg width="10" height="45" viewBox="0 0 12 45" aria-hidden="true">
-                <path d="M7 50V6H8V40H7Z" fill="currentColor" stroke="none"></path>
-            </svg>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Salcedo Equip, inicio"><img src="logos/logo_web.webp" alt="Salcedo Equip, excelencia en cada servicio"></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#catalogo">Tienda</a>
+      <a href="#servicios">Consultoría</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#contacto">Soporte</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="https://wa.me/51956614346" target="_blank" rel="noopener">Cotizar</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Equipamiento biomédico · Perú</p>
+        <h1>Excelencia <span>en cada servicio.</span></h1>
+        <p class="lead">Equipos médicos, mobiliario clínico y mantenimiento para hospitales, clínicas e instituciones académicas. Lo evaluamos, lo instalamos y lo dejamos funcionando.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#catalogo">Ver catálogo</a>
+          <a class="btn btn-ghost" href="https://wa.me/51956614346" target="_blank" rel="noopener">Hablar con un asesor</a>
         </div>
-        <!--NAVEGACION, Y BOTONES-->
-        <div class="header-container">
-            <div class="header-left">
-                <!--mover nav a la izquierda-->
-                <div class="nav-izq-container">
-                    <button class="icon-btn nav-izq nav-scroll" aria-label="menú a la izquierda"
-                        aria-controls="move-menu-left" aria-expanded="false">
-                        <svg width="25" height="25" viewBox="0 0 25 25" aria-hidden="true">
-                            <path d="M8 12L14 6V18L8 12Z" fill="currentColor"></path>
-                        </svg>
-                    </button>
-                </div>
-                <!--DESPLEGABLES-->
-                <nav class="nav" aria-label="Principal">
-                    <!-- TIENDA -->
-                    <div class="nav-item dropdown">
-                        <button class="dropbtn dp-productos" id="btn-productos" aria-haspopup="true"
-                            aria-expanded="false" aria-controls="menu-productos">
-                            <a href='/tienda.html'>Tienda</a>
-                            <svg class="dropdown-icon di-menu" width="24" height="24" viewBox="0 0 24 24"
-                                aria-hidden="true" fill="currentColor">
-                                <path
-                                    d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z">
-                                </path>
-                            </svg>
-                        </button>
-                        <div class="dropdown-content dc-productos" id="menu-productos" role="menu"
-                            aria-labelledby="btn-productos">
-                            <a role="menuitem" tabindex="-1" href="/tienda.html?category=Monitores">Monitores</a>
-                            <a role="menuitem" tabindex="-1" href="/tienda.html?category=Esterilización">Esterilización</a>
-                            <a role="menuitem" tabindex="-1" href="/tienda.html?category=Ultrasonido">Ultrasonido</a>
-                        </div>
-                    </div>
-                    <!-- PORTAFOLIO -->
-                    <div class="nav-item dropdown">
-                        <button class="dropbtn dp-portafolio" id="btn-portafolio" aria-haspopup="true"
-                            aria-expanded="false" aria-controls="menu-portafolio">
-                            <a href="/portafolio">Portafolio</a>
-                            <svg class="dropdown-icon di-portafolio" width="24" height="24" viewBox="0 0 24 24"
-                                aria-hidden="true" fill="currentColor">
-                                <path
-                                    d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z">
-                                </path>
-                            </svg>
-                        </button>
-                        <div class="dropdown-content dc-portafolio" id="menu-productos" role="menu"
-                            aria-labelledby="btn-productos">
-                            <a role="menuitem" tabindex="-1" href="/portafolio/hospital">Hospitales</a>
-                            <a role="menuitem" tabindex="-1" href="/portafolio/clinica">Clinicas</a>
-                            <a role="menuitem" tabindex="-1" href="/portafolio/academico">Academico</a>
-                        </div>
-                    </div>
+        <ul class="tags" aria-label="Lo que incluimos">
+          <li>Venta</li><li>Instalación</li><li>Mantenimiento</li><li>Capacitación</li><li>Reparación</li>
+        </ul>
+      </div>
+      <div class="stage" aria-hidden="true">
+        <div class="ring"></div>
+        <svg class="dots" viewBox="0 0 100 100" fill="none"><g id="dots"></g></svg>
+        <div class="photo"><img src="images/products/equipamiento/monitor-paciente.png" alt=""></div>
+        <svg class="ecg ecgline" viewBox="0 0 400 90" preserveAspectRatio="none"><path d="M0 50 H120 L140 68 L170 14 L200 82 L222 4 L246 58 L262 50 H400"/></svg>
+        <div class="badge">Monitor multiparámetros<small>Listo para cotizar</small></div>
+      </div>
+    </div>
+  </div>
 
-                    <!-- RECOMENDADO -->
-                    <div class="nav-item dropdown">
-                        <button class="dropbtn dp-recomendado" id="btn-recomendado" aria-haspopup="true"
-                            aria-expanded="false" aria-controls="menu-recomendado">
-                            <a href="/recomendado">Recomendado</a>
-                            <svg class="dropdown-icon di-recomendado" width="24" height="24" viewBox="0 0 24 24"
-                                aria-hidden="true" fill="currentColor">
-                                <path
-                                    d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z">
-                                </path>
-                            </svg>
-                        </button>
-                        <div class="dropdown-content dc-recomendado" id="menu-productos" role="menu"
-                            aria-labelledby="btn-productos">
-                            <a role="menuitem" tabindex="-1" href="/recomendado/top">Top</a>
-                            <a role="menuitem" tabindex="-1" href="/recomendado/nuevo">Nuevo</a>
-                        </div>
-                    </div>
-                    <!-- CONSULTORIA -->
-                    <div class="nav-item dropdown">
-                        <button class="dropbtn dp-consultoria" id="btn-v" aria-haspopup="true" aria-expanded="false"
-                            aria-controls="menu-consultoria">
-                            <a href="/consultoria">Consultoria</a>
-                            <svg class="dropdown-icon di-consultoria" width="24" height="24" viewBox="0 0 24 24"
-                                aria-hidden="true" fill="currentColor">
-                                <path
-                                    d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z">
-                                </path>
-                            </svg>
-                        </button>
-                        <div class="dropdown-content dc-consultoria" id="menu-productos" role="menu"
-                            aria-labelledby="btn-productos">
-                            <a role="menuitem" tabindex="-1" href="/consultoria/especificaciones">EE.TT</a>
-                            <a role="menuitem" tabindex="-1" href="/consultoria/supervicion">Supervisión</a>
-                            <a role="menuitem" tabindex="-1" href="/consultoria/capacitacion">Capacitación</a>
-                        </div>
-                    </div>
-                    <!-- SOPORTE -->
-                    <div class="nav-item dropdown">
-                        <button class="dropbtn dp-portafolio" id="btn-portafolio" aria-haspopup="true"
-                            aria-expanded="false" aria-controls="menu-portafolio">
-                            <a href="/soporte">Soporte</a>
-                        </button>
-                    </div>
+  <section id="catalogo">
+    <div class="wrap">
+      <div class="head">
+        <h2>Nuestros productos</h2>
+        <p>Equipos y mobiliario médico. Elige uno y pide tu cotización por WhatsApp.</p>
+      </div>
+      <div class="chips" id="chips" role="group" aria-label="Filtrar por categoría"></div>
+      <div class="grid" id="grid"></div>
+      <div class="more"><a class="btn btn-ghost" href="/tienda.html">Ver todo el catálogo</a></div>
+    </div>
+  </section>
 
-                </nav>
+  <section class="services" id="servicios">
+    <div class="wrap">
+      <div class="head">
+        <h2>Consultoría y servicios</h2>
+        <p>Desde equipamiento médico hasta soluciones de gestión hospitalaria, para renovar y optimizar el funcionamiento de tu institución.</p>
+      </div>
+      <div class="svc">
+        <article><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1L7 17M17 7l2.1-2.1"/></svg></div><h3>Mantenimiento preventivo</h3><p>Evaluación técnica y plan preventivo para evitar fallas.</p></article>
+        <article><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg></div><h3>Mantenimiento correctivo</h3><p>Evaluación técnica y corrección de fallas en tus equipos.</p></article>
+        <article><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></svg></div><h3>Mantenimiento integral</h3><p>Evaluación técnica, preventivo y correctivo en un solo plan.</p></article>
+        <article><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M12 8v6M9 11h6M10 21v-3h4v3"/></svg></div><h3>Procesos clínicos</h3><p>Evaluación técnica e intervención de IPRESS.</p></article>
+        <article><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6a4 4 0 0 0 8 0V3M10 13v2a5 5 0 0 0 10 0v-1"/><circle cx="20" cy="12" r="2"/></svg></div><h3>Compra de equipamiento</h3><p>Evaluación de especificaciones técnicas, instalación y capacitaciones.</p></article>
+        <article><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18V8h18v10M3 14h18M3 18v2M21 18v2M6 8V5h5v3"/></svg></div><h3>Compra de mobiliario</h3><p>Evaluación de especificaciones técnicas e instalación.</p></article>
+        <article><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2-6 4 12 2-6h8"/></svg></div><h3>Reparación de equipos</h3><p>Diagnóstico, reparación y metrología.</p></article>
+        <article><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5" r="2"/><circle cx="18" cy="19" r="2"/><path d="M6 7v4a4 4 0 0 0 4 4h4a4 4 0 0 1 4 4"/></svg></div><h3>Solución personalizada</h3><p>Diseño e implementación de una solución a tu medida.</p></article>
+      </div>
+    </div>
+  </section>
 
-                <!--mover nav a la derecha-->
-                <div class="nav-der-container">
-                    <button class="icon-btn nav-der nav-scroll" aria-label="menú a la derecha"
-                        aria-controls="move-menu-rigth" aria-expanded="false">
-                        <svg width="25" height="25" viewBox="0 0 25 25" aria-hidden="true">
-                            <path d="M16 12L10 18V6L16 12Z" fill="currentColor"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <!--BOTONES-->
-            <div class="header-right">
-                <!--busqueda-->
-                <form class="search-form">
-                    <input class="search-input" type="text" placeholder="Buscar en nuestra tienda">
-                    <button class="icon-btn desktop-only shearch-btn" aria-label="Buscar">
-                        <svg width="24" height="25" viewBox="0 0 25 25" aria-hidden="true">
-                            <path
-                                d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z"
-                                fill="currentColor">
-                        </svg>
-                    </button>
-                </form>
-                <button class="icon-btn desktop-only shearch-menu" aria-label="Buscar">
-                    <svg width="24" height="25" viewBox="0 0 25 25" aria-hidden="true">
-                        <path
-                            d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z"
-                            fill="currentColor" />
-                    </svg>
-                </button>
-                <button class="icon-btn desktop-only close-shearch-menu" aria-label="Buscar">
-                    <svg width="24" height="25" viewBox="0 0 25 25" aria-hidden="true">
-                        <path
-                            d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z"
-                            fill="currentColor" />
-                    </svg>
-                </button>
-                <!-- login -->
-                <button class="icon-btn desktop-only login-unloged" aria-label="Cuenta">
-                    <svg width="25" height="25" viewBox="0 0 25 25" aria-hidden="true">
-                        <path
-                            d="M14 14.252V16.3414C13.3744 16.1203 12.7013 16 12 16C8.68629 16 6 18.6863 6 22H4C4 17.5817 7.58172 14 12 14C12.6906 14 13.3608 14.0875 14 14.252ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM12 11C14.21 11 16 9.21 16 7C16 4.79 14.21 3 12 3C9.79 3 8 4.79 8 7C8 9.21 9.79 11 12 11ZM19 17.5858L21.1213 15.4645L22.5355 16.8787L20.4142 19L22.5355 21.1213L21.1213 22.5355L19 20.4142L16.8787 22.5355L15.4645 21.1213L17.5858 19L15.4645 16.8787L16.8787 15.4645L19 17.5858Z"
-                            fill="currentColor"> </path>
-                    </svg>
-                </button>
-            </div>
-            <div class="overlay">
-            </div>
-            <div class="overlaySearch">
-            </div>
-        </div>
-    </header>
+  <section id="proceso">
+    <div class="wrap">
+      <div class="head"><h2>Cómo trabajamos</h2><p>Un mismo equipo te acompaña desde la evaluación hasta el soporte.</p></div>
+      <ol class="steps">
+        <li><h3>Evaluación técnica</h3><p>Revisamos tus necesidades y las especificaciones del equipo.</p></li>
+        <li><h3>Entrega e instalación</h3><p>Instalamos el equipo y lo dejamos operativo en tu institución.</p></li>
+        <li><h3>Capacitación</h3><p>Tu personal aprende a usarlo y a cuidarlo.</p></li>
+        <li><h3>Soporte y mantenimiento</h3><p>Planes preventivos y correctivos para que siga funcionando.</p></li>
+      </ol>
+    </div>
+  </section>
 
-    <login class="login-center" aria-hidden="true">
-        <div class="login">
-            <div class="login-header">
-                <h1 class="login-title">
-                    Entrar
-                </h1>
-                <p class="login-description">
-                    Disfruta de tus promociones y el soporte exclusivo de nuestra plataforma.
-                    Por favor, inicia sesión con tus datos de acceso.
-                </p>
-            </div>
+  <section class="cta" id="contacto">
+    <div class="wrap">
+      <div>
+        <h2>Cuéntanos qué necesita tu institución</h2>
+        <p>Escríbenos y un asesor te responde con una propuesta a la medida.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:.75rem">
+        <a class="btn btn-wa" href="https://wa.me/51956614346" target="_blank" rel="noopener">WhatsApp +51 956 614 346</a>
+        <a class="btn btn-ghost" href="mailto:logistica@salcedoequip.com">logistica@salcedoequip.com</a>
+      </div>
+    </div>
+    <svg class="ecg-bg ecg" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 H380 L400 44 L430 6 L460 54 L482 2 L506 38 L522 34 H1200"/></svg>
+  </section>
+</main>
 
-            <form class="login-form">
-                <div class="form-group">
-                    <label>Correo</label>
-                    <input type="email" placeholder="usuario123@dominio.com" required>
-                </div>
-                <div class="form-group">
-                    <label>Contraseña</label>
-                    <input type="password" placeholder="********" required>
-                </div>
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="logo" href="#inicio"><img src="logos/logo_web.webp" alt="Salcedo Equip"></a>
+        <p style="margin-top:1rem;max-width:34ch;font-size:.95rem">Equipamiento biomédico, mobiliario clínico y servicios de ingeniería clínica.</p>
+      </div>
+      <div><h4>Contacto</h4><ul><li><a href="https://wa.me/51956614346" target="_blank" rel="noopener">WhatsApp +51 956 614 346</a></li><li>logistica@salcedoequip.com</li><li>Soporte técnico</li></ul></div>
+      <div><h4>Legal</h4><ul><li>Privacidad</li><li>Condiciones de uso</li><li>Accesibilidad</li></ul></div>
+    </div>
+    <div class="legal"><span>© 2025 Salcedo Investments</span><span>Lima • Perú</span></div>
+  </div>
+</footer>
 
-                <label class="keep-login">
-                    <input type="checkbox">
-                    <p>
-                        Mantener sesión iniciada
-                    </p>
-                </label>
+<a class="float-wa" href="https://wa.me/51956614346" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg>
+  <span>Cotizar por WhatsApp</span>
+</a>
 
-                <label class="login-error">
-                    <p>
-                        Usuario no registrado,
-                        <a href="https://wa.me/+51956614346" target="blank">contacte con un asesor</a>
-                    </p>
-                </label>
-
-                <button class="login-btn">INICIAR SESION</button>
-            </form>
-        </div>
-        <div class="overlayLogin">
-        </div>
-    </login>
-
-    <!-- FIN DE HEADER -->
-    <!--#############################################################-->
-    <!--#############################################################-->
-    <!--#############################################################-->
-    <!-- Hero Banner -->
-    <section class="hero-banner" aria-hidden="true">
-        <div class="container">
-            <div class="hero-content">
-                <h2>ERES CLIENTE?</h2>
-                <p>Ingresa a tu intraweb o <a href="https://wa.me/+51956614346" target="blank">contacta con tus
-                        asesores</a></p>
-                <svg class="arrow-icon" width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M7 17L17 7M17 7H7M17 7V17" fill="none" stroke="currentColor" stroke-width="2"></path>
-                </svg>
-            </div>
-        </div>
-    </section>
-
-    <!-- Main Content -->
-    <main>
-        <!-- ELEMTENTO 1 Section? -->
-        <section class="main-banner-portafolio">
-            <div class="container">
-                <h1 class="main-heading">Nuestro portafolio</h1>
-                <p class="main-subtext">Salcedo Equipment provee soluciones a la medida para tus proyectos:
-                    construcción, equipamiento y gestión.</p>
-                <a href="/portafolio"><button class="btn portafolio-button">VER PROYECTOS</button></a>
-            </div>
-            <div class="multilingual-bg">
-                <div class="bg-text">
-                    <span>Equipos medicos</span> <!-- español-->
-                    <span>Dispositivi medici</span> <!-- italiano-->
-                    <span>Medicinski pripomoček</span> <!-- esloveno-->
-                    <span>医疗设备</span> <!-- chino simplificado-->
-                    <span>Medical devices</span> <!-- ingles-->
-                    <span>جهاز طبي</span> <!-- arabe-->
-                    <span>Dispositif médical</span> <!-- frances-->
-                    <span>Alat kesehatan</span> <!-- indonesio-->
-                    <span>Creiamo insieme un business più X</span> <!-- italiano-->
-                    <span>携手共创更智能的 X</span> <!-- chino simplificado-->
-                </div>
-                <div class="bg-text-2">
-                    <span>Equipos medicos</span> <!-- español-->
-                    <span>Dispositivi medici</span> <!-- italiano-->
-                    <span>Medicinski pripomoček</span> <!-- esloveno-->
-                    <span>医疗设备</span> <!-- chino simplificado-->
-                    <span>Medical devices</span> <!-- ingles-->
-                    <span>جهاز طبي</span> <!-- arabe-->
-                    <span>Dispositif médical</span> <!-- frances-->
-                    <span>Alat kesehatan</span> <!-- indonesio-->
-                    <span>Creiamo insieme un business più X</span> <!-- italiano-->
-                    <span>携手共创更智能的 X</span> <!-- chino simplificado-->
-                </div>
-            </div>
-        </section>
-
-        <!-- Mas frecuente Section (tienda) -->
-        <section class="frecuent">
-            <div class="container">
-                <h2 class="section-title">NUESTROS PRODUCTOS</h2>
-                <div class="store-prev">
-                    <div class="select-prev">
-                        <article class="store-item see-equipamiento store-hear-Eq active">
-                            <h3><a href="tienda.html?global=Equipamiento">Equipos médicos</a></h3>
-                        </article>
-                        <article class="store-item see-mobiliario store-hear-Mob">
-                            <h3><a href="tienda.html?global=Mobiliario">Mobiliario Médico</a></h3>
-                        </article>
-                    </div>
-                    <div class="prev-tienda equipameinto-prev">
-                        <div class="carousel-track-wrapper">
-                            <button class="carousel-arrow carousel-arrow-left" aria-label="Anterior" data-carousel="eq">
-                                <svg width="20" height="20" viewBox="0 0 20 20">
-                                    <path d="M12 15L7 10L12 5" fill="none" stroke="currentColor" stroke-width="1.5" />
-                                </svg>
-                            </button>
-                            <div class="carousel-track" id="carousel-eq">
-                                <!-- Dynamic content loaded from SalcedoProducts -->
-                            </div>
-                            <button class="carousel-arrow carousel-arrow-right" aria-label="Siguiente"
-                                data-carousel="eq">
-                                <svg width="20" height="20" viewBox="0 0 20 20">
-                                    <path d="M8 5L13 10L8 15" fill="none" stroke="currentColor" stroke-width="1.5" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="prev-tienda mobiliario-prev inactive">
-                        <div class="carousel-track-wrapper">
-                            <button class="carousel-arrow carousel-arrow-left" aria-label="Anterior"
-                                data-carousel="mob">
-                                <svg width="20" height="20" viewBox="0 0 20 20">
-                                    <path d="M12 15L7 10L12 5" fill="none" stroke="currentColor" stroke-width="1.5" />
-                                </svg>
-                            </button>
-                            <div class="carousel-track" id="carousel-mob">
-                                <!-- Dynamic content loaded from SalcedoProducts -->
-                            </div>
-                            <button class="carousel-arrow carousel-arrow-right" aria-label="Siguiente"
-                                data-carousel="mob">
-                                <svg width="20" height="20" viewBox="0 0 20 20">
-                                    <path d="M8 5L13 10L8 15" fill="none" stroke="currentColor" stroke-width="1.5" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Recommendations Section un-used
-        <section class="recommendations-section">
-            <div class="container">
-                <h2 class="section-title">Recomendado para usted</h2>
-                <div class="recommendations-grid">
-                    <div class="recommendation-card">
-                        <div class="card-icon">
-                            <img src="https://ext.same-assets.com/3701663695/1893125649.svg" alt="AI Agents">
-                        </div>
-                        <div class="card-content">
-                            <span class="card-category">Recomendacion 1</span>
-                            <h3>Recomendacion 1</h3>
-                            <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
-                                <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="recommendation-card">
-                        <div class="card-icon">
-                            <img src="https://ext.same-assets.com/3701663695/619091808.jpeg" alt="Banking">
-                        </div>
-                        <div class="card-content">
-                            <span class="card-category">Recomendacion 2</span>
-                            <h3>Recomendacion 2</h3>
-                            <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
-                                <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="recommendation-card">
-                        <div class="card-icon">
-                            <img src="https://ext.same-assets.com/3701663695/527894770.svg" alt="Hybrid Cloud">
-                        </div>
-                        <div class="card-content">
-                            <span class="card-category">Recomendacion 3</span>
-                            <h3>Recomendacion 3</h3>
-                            <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
-                                <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="recommendation-card">
-                        <div class="card-icon">
-                            <img src="https://ext.same-assets.com/3701663695/2035246228.jpeg" alt="Forrester Report">
-                        </div>
-                        <div class="card-content">
-                            <span class="card-category">Recomendacion 4</span>
-                            <h3>Recomendacion 4</h3>
-                            <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
-                                <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        -->
-
-        <!-- Contact Section -->
-        <section class="contact-section">
-            <div class="container">
-                <div class="contact-content">
-                    <h2><a href="https://wa.me/+51956614346" target="blank">Contactar con Salcedo Equipment</a></h2>
-                    <p>Busque respuestas a preguntas sobre productos, ventas, soporte y todo lo demás en su cuenta con
-                        Salcedo Equipment</p>
-                    <svg class="arrow" width="24" height="24" viewBox="0 0 24 24">
-                        <path d="M7 17L17 7M17 7H7M17 7V17" fill="none" stroke="currentColor" stroke-width="2"></path>
-                    </svg>
-                </div>
-            </div>
-        </section>
-
-        <!-- Servicios mas solicitados un-used
-        <section class="most-section">
-            <div class="container">
-                <h2 class="section-title">Servicios más solicitados - segun rubros</h2>
-                <div class="most-grid">
-                    <div class="most-column">
-                        <h3>Equipamiento médico</h3>
-                        <p>Explora nuestras tiendas, comparte tus requerimeintos y se elaborará un plan ajustado a tus necesidades</p>
-                        <ul class="most-links">
-                            <li><a href="/tienda-equipamiento">Compra de equipos e instrumental médico</a></li>
-                            <li><a href="/tienda-equipamiento">Compra de mobiliario médicos</a></li>
-                            <li><a href="/mantenimiento">Mantenimiento de equipos médicos</a></li>
-                            <li><a href="/mantenimiento#correctivo">Reparacion de equipos médicos</a></li>
-                        </ul>
-                    </div>
-                    <div class="most-column">
-                        <h3>Gestión hospitalaria</h3>
-                        <p>Se realizará un proyecto abordado desde las normativas correpondientes para lograr certificaciones, recategorizaciones y afines</p>
-                        <ul class="most-links">
-                            <li><a href="/manteniento#preventivo">Plan de mantenimiento preventivo</a></li>
-                            <li><a href="/mantenimiento#correctivo">Plan de mantenimiento correctivo</a></li>
-                            <li><a href="/mantenimiento#obsolecencia">Evaluación de obsolecencia</a></li>
-                            <li><a href="/ingenieria-clinica">Evaluación de procesos clínicos</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        -->
-
-        <!-- Consultoria Section -->
-        <section class="consultoria-section">
-            <div class="container">
-                <h2 class="section-title">Consultoría</h2>
-                <p class="section-intro">
-                    Desde <a href="/tienda">equipamiento médico</a> hasta <a href="/ingenieria-clinica">soluciones de
-                        gestion hospitalaria</a> de vanguardia con la extensa
-                    pericia de <a href="/insitucional#nosotros">Salcedo Equipment</a>, Salcedo Investements E.I.R.L.
-                    tiene todo lo necesario para ayudarlo a renovar y optimizar el funcionamiento de su isntitución en
-                    la era de la reestructuracion medica-hospitalaria.
-                </p>
-                <!--estructura tienda-->
-                <div class="consultoria-grid">
-                    <a href="/mantenimiento#preventivo" class="consultoria-card">
-                        <div class="consultoria-icon">
-                            <img src="\images\index-consultoria\preventivo.svg" alt="Mant. preventivo">
-                        </div>
-                        <h3>Plan mant. preventivo</h3>
-                        <p class="consultoria-front">Evaluación técnica + preventivo</p>
-                        <p class="consultoria-back inactive">Tras una primera visita técnica, se podrá elaborar una ruta
-                            de trabajo, en coordinacion con la IPRESS</p>
-
-                        <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
-                            <a href="#">
-                                <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5" />
-                            </a>
-                        </svg>
-                    </a>
-                    <a href="/mantenimiento#correctivo" class="consultoria-card">
-                        <div class="consultoria-icon">
-                            <img src="\images\index-consultoria\correctivo.svg" alt="Mant. correctivo">
-                        </div>
-                        <h3>Plan mant. correctivo</h3>
-                        <p class="consultoria-front">Evaluación técnica + correctivo</p>
-                        <p class="consultoria-back inactive">Tras una primera visita técnica, se podrá elaborar una ruta
-                            de trabajo, en coordinacion con la IPRESS</p>
-                        <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
-                            <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5" />
-                        </svg>
-                    </a>
-                    <a href="/mantenimiento" class="consultoria-card">
-                        <div class="consultoria-icon">
-                            <img src="\images\index-consultoria\integral.svg" alt="Mant. integral">
-                        </div>
-                        <h3>Plan mant. integral</h3>
-                        <p class="consultoria-front">Evaluación técnica + preventivo + correctivo</p>
-                        <p class="consultoria-back inactive">Tras una primera visita técnica, se podrá elaborar una ruta
-                            de trabajo, en coordinacion con la IPRESS</p>
-                        <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
-                            <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5" />
-                        </svg>
-                    </a>
-                    <a href="/ingenieria-clinica" class="consultoria-card">
-                        <div class="consultoria-icon">
-                            <img src="\images\index-consultoria\procesos.svg" alt="Analytics">
-                        </div>
-                        <h3>Procesos clínicos</h3>
-                        <p class="consultoria-front">Evaluación técnica + intervención de IPRESS</p>
-                        <p class="consultoria-back inactive">Tras una primera visita técnica, se podrá elaborar una ruta
-                            de trabajo, en coordinacion con la IPRESS</p>
-                        <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
-                            <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5" />
-                        </svg>
-                    </a>
-                    <a href="/tienda" class="consultoria-card">
-                        <div class="consultoria-icon">
-                            <img src="\images\index-consultoria\device.svg" alt="Equipamiento">
-                        </div>
-                        <h3>Compra de equipamiento médico</h3>
-                        <p class="consultoria-front">Evaluación de EE.TT + instalación + capacitaciones</p>
-                        <p class="consultoria-back inactive">Tras una primera visita técnica, se podrá elaborar una ruta
-                            de trabajo, en coordinacion con la IPRESS</p>
-                        <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
-                            <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5" />
-                        </svg>
-                    </a>
-                    <a href="/tienda" class="consultoria-card">
-                        <div class="consultoria-icon">
-                            <img src="\images\index-consultoria\furniture.svg" alt="Mobiliario">
-                        </div>
-                        <h3>Compra de mobiliario médico</h3>
-                        <p class="consultoria-front">Evaluación de EE.TT + instalación</p>
-                        <p class="consultoria-back inactive">Tras una primera visita técnica, se podrá elaborar una ruta
-                            de trabajo, en coordinacion con la IPRESS</p>
-                        <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
-                            <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5" />
-                        </svg>
-                    </a>
-                    <a href="/mantenimiento#electro-mecanico" class="consultoria-card">
-                        <div class="consultoria-icon">
-                            <img src="\images\index-consultoria\reparacion.svg" alt="Electromecanico">
-                        </div>
-                        <h3>Reparación de equipos médicos</h3>
-                        <p class="consultoria-front">Diagnóstico + reparación + metrología</p>
-                        <p class="consultoria-back inactive">Tras una primera visita técnica, se podrá elaborar una ruta
-                            de trabajo, en coordinacion con la IPRESS</p>
-                        <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
-                            <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5" />
-                        </svg>
-                    </a>
-                    <a href="/formulario#personalizado" class="consultoria-card">
-                        <div class="consultoria-icon">
-                            <img src="\images\index-consultoria\personal.svg" alt="Personalizado">
-                        </div>
-                        <h3>Solución personalizada</h3>
-                        <p class="consultoria-front">Diseño e implementación de una solución a medida</p>
-                        <p class="consultoria-back inactive">Tras una primera visita técnica, se podrá elaborar una ruta
-                            de trabajo, en coordinacion con la IPRESS</p>
-                        <svg class="arrow" width="16" height="16" viewBox="0 0 16 16">
-                            <path d="M7 3L12 8L7 13" fill="none" stroke="currentColor" stroke-width="1.5" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-
-    <!--#############################################################-->
-    <!--#############################################################-->
-    <!--#############################################################-->
-    <!--back to TOP-->
-    <a href="#" class=" back-to-top" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 25 25"
-            aria-hidden="true">
-            <path
-                d="M12 4.83582L5.79291 11.0429L7.20712 12.4571L12 7.66424L16.7929 12.4571L18.2071 11.0429L12 4.83582ZM12 10.4857L5.79291 16.6928L7.20712 18.107L12 13.3141L16.7929 18.107L18.2071 16.6928L12 10.4857Z"
-                fill="currentColor"></path>
-        </svg></a>
-    <!--fin back to TOP-->
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-wrap">
-            <div class="footer-logo">
-                <a href="/">
-                    <img src="/logos/logo_web.webp" alt="SalcedoEq" class="footer-logo-img">
-                </a>
-            </div>
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h4>Contacto</h4>
-                    <ul>
-                        <li><a href="https://wa.me/+51956614346" target="blank">Contactar con Salcedo Equipment</a></li>
-                        <li><a href="/soporte">Soporte técnico</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="/legal/#privacity">Privacidad</a></li>
-                        <li><a href="/legal/#terms">Condiciones de uso</a></li>
-                        <li><a href="/legal/#accesibility">Accesibilidad</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="footer-bottom-links">
-                    <span><a href="/inttitucional#nosotros">© 2025 Salcedo Investments</a></span>
-                </div>
-                <div class="footer-country">Lima • Perú</div>
-            </div>
-        </div>
-    </footer>
-    <!--fin FOOTER-->
-    <!--#############################################################-->
-    <!--#############################################################-->
-    <!--#############################################################-->
+<script>
+const IMG = { MONITOR: "images/products/equipamiento/monitor-paciente.png", AUTOCLAVE: "images/products/equipamiento/esterilizador.png", ECO: "images/products/equipamiento/ecografo.png", DEFI: "images/products/equipamiento/desfibrilador.png", CAMA: "images/products/mobiliario/cama-hospitalaria.png", CAMILLA: "images/products/mobiliario/camilla-examen.png" };
+const PRODUCTS = [
+  { name: "Monitor de paciente multiparámetros", cat: "Monitores", brand: "Mindray", img: IMG.MONITOR, desc: "ECG, SpO2, NIBP, temperatura y más parámetros en tiempo real." },
+  { name: "Autoclave de mesa clase B", cat: "Esterilización", brand: "NING-BO", img: IMG.AUTOCLAVE, desc: "Esterilización por vapor a alta presión para instrumental médico." },
+  { name: "Ecógrafo portátil digital", cat: "Ultrasonido", brand: "EDAN", img: IMG.ECO, desc: "Ultrasonido diagnóstico con sonda multifrecuencia." },
+  { name: "Desfibrilador externo automático", cat: "Emergencia", brand: "Mindray", img: IMG.DEFI, desc: "Respuesta rápida ante emergencias cardíacas." },
+  { name: "Cama hospitalaria eléctrica", cat: "Mobiliario médico", brand: "Salcedo", img: IMG.CAMA, desc: "Ajuste eléctrico de posiciones, barandas y frenos de seguridad." },
+  { name: "Camilla de examen clínico", cat: "Mobiliario médico", brand: "Salcedo", img: IMG.CAMILLA, desc: "Camilla de examen con respaldo regulable y tapizado clínico." }
+];
+const cats = ["Todos", ...new Set(PRODUCTS.map(p => p.cat))];
+const chips = document.getElementById("chips"), grid = document.getElementById("grid");
+function wa(name) { return "https://wa.me/51956614346?text=" + encodeURIComponent("Hola, quiero cotizar: " + name); }
+function render(cat) {
+  grid.innerHTML = "";
+  PRODUCTS.filter(p => cat === "Todos" || p.cat === cat).forEach(p => {
+    const el = document.createElement("article");
+    el.className = "card";
+    el.innerHTML = '<div class="pic"><img src="' + p.img + '" alt="' + p.name + '" loading="lazy"></div>' +
+      '<div class="body"><span class="cat">' + p.cat + '</span><h3>' + p.name + '</h3><p>' + p.desc + '</p>' +
+      '<div class="foot"><span class="brandname">' + p.brand + '</span><a class="btn btn-primary btn-sm" target="_blank" rel="noopener" href="' + wa(p.name) + '">Cotizar</a></div></div>';
+    grid.appendChild(el);
+  });
+  chips.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", String(c.dataset.cat === cat)));
+}
+cats.forEach(c => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.type = "button"; b.dataset.cat = c; b.textContent = c;
+  b.addEventListener("click", () => render(c));
+  chips.appendChild(b);
+});
+render("Todos");
+// puntos del anillo, como en el logo
+(function () {
+  const g = document.getElementById("dots"); let s = "";
+  for (let i = 0; i < 12; i++) { const a = i / 12 * Math.PI * 2; s += '<circle cx="' + (50 + 46.5 * Math.cos(a)).toFixed(2) + '" cy="' + (50 + 46.5 * Math.sin(a)).toFixed(2) + '" r="1.6" fill="var(--surface)" stroke="var(--navy-solid)" stroke-width="1"/>'; }
+  g.innerHTML = s;
+})();
+</script>
 </body>
+
+</html>
