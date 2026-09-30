@@ -1,6 +1,17 @@
 // Base de datos de productos - Salcedo Equipment
 // Solo añadir o remover objetos de esta lista.
-// Campos: name, category, brand, img (ruta de la foto), desc.
+// Campos obligatorios: id (único), name, category, brand, img (foto principal), desc.
+// Campos opcionales (si faltan, la página se adapta):
+//   sku: "1-004-00040"        código del equipo (si falta se usa SE-000id)
+//   price: 67260               número sin símbolos; si falta se muestra "Precio a consultar"
+//   currency: "PEN" | "USD"    igv: true (incluye IGV) | false (más IGV)
+//   stock: 3                   stockDate: "30/09/2026"
+//   badge: "Nuevo"             etiqueta en la esquina de la foto
+//   featured: true             aparece en la portada
+//   photos: ["images/...webp"] fotos adicionales para la galería
+//   warranty: "12 meses"       delivery: "2 a 3 días hábiles en Lima"
+//   docs: [{ name: "Ficha técnica (PDF)", url: "docs/ficha.pdf" }]
+//   specs: [{ title: "Pantalla", items: ["15 pulgadas", "Táctil"] }]
 window.SalcedoProducts = [
     // --- EQUIPAMIENTO MÉDICO ---
     {
