@@ -32,30 +32,55 @@
       <a href="index.html#proceso">Cómo trabajamos</a>
       <a href="index.html#contacto">Soporte</a>
     </nav>
-    <a class="btn btn-primary btn-sm" href="https://wa.me/51956614346" target="_blank" rel="noopener">Cotizar</a>
+    <div class="top-tools">
+      <a class="icon-link" href="tienda.html#buscar" aria-label="Buscar equipos"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></a>
+      <span class="top-phone"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>+51 956 614 346</span></span>
+      <button class="btn btn-primary btn-sm quote-btn" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5h11M9 12h11M9 19h11M4 5h.01M4 12h.01M4 19h.01"/></svg><span class="q-label">Cotización</span><span class="quote-count" hidden>0</span></button>
+    </div>
   </div>
 </header>
 
 <main>
   <section class="detail">
     <div class="wrap">
-      <nav class="crumbs" aria-label="Ruta"><a href="tienda.html">Tienda</a> <span aria-hidden="true">/</span> <span id="crumb-cat"></span></nav>
+      <nav class="crumbs" aria-label="Ruta"><a href="tienda.html">Tienda</a> <span aria-hidden="true">/</span> <a id="crumb-cat" href="tienda.html"></a> <span aria-hidden="true">/</span> <span id="crumb-name"></span></nav>
       <div class="detail-grid" id="detail" hidden>
-        <div class="detail-pic"><img id="d-img" src="" alt=""></div>
+        <div class="gallery">
+          <div class="g-main">
+            <span class="ribbon ribbon-lg" id="d-badge" hidden></span>
+            <img id="d-img" src="" alt="">
+            <button class="g-nav g-prev" type="button" aria-label="Foto anterior" hidden>&#8249;</button>
+            <button class="g-nav g-next" type="button" aria-label="Foto siguiente" hidden>&#8250;</button>
+          </div>
+          <div class="g-thumbs" id="d-thumbs" hidden></div>
+        </div>
         <div class="detail-info">
           <span class="cat" id="d-cat"></span>
           <h1 id="d-name"></h1>
-          <p class="d-brand">Marca: <strong id="d-brand"></strong></p>
+          <p class="d-meta">Marca: <strong id="d-brand"></strong> <span aria-hidden="true">·</span> Código: <strong id="d-sku"></strong></p>
           <p class="d-desc" id="d-desc"></p>
-          <ul class="d-list">
-            <li>Evaluación técnica de especificaciones</li>
-            <li>Instalación en tu institución</li>
-            <li>Capacitación para tu personal</li>
-            <li>Soporte y mantenimiento</li>
-          </ul>
-          <div class="actions">
-            <a class="btn btn-wa" id="d-wa" target="_blank" rel="noopener" href="#">Cotizar por WhatsApp</a>
-            <a class="btn btn-ghost" href="tienda.html">Ver más equipos</a>
+          <div class="d-price">
+            <span class="price" id="d-price"></span>
+            <span class="price-note" id="d-price-note"></span>
+          </div>
+          <p class="stock" id="d-stock" hidden></p>
+          <div class="buy">
+            <div class="qty" role="group" aria-label="Cantidad">
+              <button type="button" id="q-minus" aria-label="Quitar uno">−</button>
+              <input id="q-qty" type="number" min="1" value="1" inputmode="numeric" aria-label="Cantidad">
+              <button type="button" id="q-plus" aria-label="Agregar uno">+</button>
+            </div>
+            <button class="btn btn-primary" type="button" id="d-add">Agregar a cotización</button>
+          </div>
+          <a class="d-wa" id="d-wa" target="_blank" rel="noopener" href="#">O pregunta directo por WhatsApp</a>
+          <ul class="d-list" id="d-list"></ul>
+          <div class="d-docs" id="d-docs" hidden><h2>Documentos</h2><ul id="d-docs-list"></ul></div>
+          <div class="share"><span>Compartir</span>
+            <a id="sh-wa" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg></a>
+            <a id="sh-fb" target="_blank" rel="noopener" aria-label="Compartir en Facebook" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8z"/></svg></a>
+            <a id="sh-in" target="_blank" rel="noopener" aria-label="Compartir en LinkedIn" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 9h4v12H4zM6 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10 9h4v1.7c.6-1 1.9-2 3.8-2 4 0 4.2 2.6 4.2 6V21h-4v-5.5c0-1.4 0-3.2-2-3.2s-2.2 1.5-2.2 3.1V21H10z"/></svg></a>
+            <button type="button" id="sh-copy" aria-label="Copiar enlace"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></button>
+            <span class="copied" id="sh-ok" hidden>Enlace copiado</span>
           </div>
         </div>
       </div>
@@ -64,6 +89,20 @@
         <p>Puede que ya no esté disponible. Mira el resto del catálogo o escríbenos.</p>
         <a class="btn btn-primary" href="tienda.html">Ir a la tienda</a>
       </div>
+    </div>
+  </section>
+
+  <section class="specs" id="d-specs" hidden>
+    <div class="wrap">
+      <h2>Descripción y características</h2>
+      <div class="specs-grid" id="d-specs-body"></div>
+    </div>
+  </section>
+
+  <section class="related" id="d-related" hidden>
+    <div class="wrap">
+      <div class="head"><h2>Productos relacionados</h2></div>
+      <div class="grid" id="d-related-grid"></div>
     </div>
   </section>
 </main>
@@ -88,6 +127,8 @@
 </a>
 
 <script src="./src/products.js"></script>
+<script src="./src/card.js"></script>
+<script src="./src/cotizacion.js"></script>
 <script src="./src/producto.js"></script>
 <script src="src/menu.js"></script>
 </body>
