@@ -42,7 +42,7 @@ CONFIG = AQUI / "selectores.json"
 SITIO = os.environ.get("PROVEEDOR_URL", "")
 if not SITIO:
     raise SystemExit("Define la variable de entorno PROVEEDOR_URL (direccion inicial del proveedor).")
-CAMPOS = ["url", "codigo", "nombre", "marca", "modelo", "precio", "moneda", "stock", "foto", "descripcion"]
+CAMPOS = ["url", "codigo", "nombre", "marca", "modelo", "precio", "moneda", "stock", "foto", "descripcion", "disponible"]
 
 
 def ir(page, url):
@@ -119,7 +119,25 @@ def valor(nodo, spec, regex=None):
 
 
 def cargar_todo(page, sel):
-    """Pulsa 'Ver mas productos' hasta que no haya mas (o no aparezcan nuevos)."""
+    """Carga todo el catalogo. Primero intenta UNA sola solicitud grande usando la
+    propia funcion del sitio ('solicitud_unica' en selectores.json); si no
+    rinde, pulsa 'Ver mas productos' bloque por bloque."""
+    antes = len(page.query_selector_all(sel["tarjeta"]))
+    llamada = sel.get("solicitud_unica")
+    if llamada:
+        try:
+            page.evaluate(llamada.replace("{hasta}", "5000"))
+            page.wait_for_timeout(8000)
+            try:
+                page.wait_for_load_state("networkidle", timeout=30000)
+            except Exception:
+                pass
+        except Exception as e:
+            print(f"Solicitud unica no disponible ({str(e).splitlines()[0]}); uso el boton.")
+        despues = len(page.query_selector_all(sel["tarjeta"]))
+        print(f"Solicitud unica: {antes} -> {despues} productos")
+        if despues > antes:
+            return
     boton = sel.get("boton_mas")
     while boton:
         antes = len(page.query_selector_all(sel["tarjeta"]))
@@ -159,6 +177,7 @@ def leer_tarjetas(page, sel, base):
             "stock": "",
             "foto": urljoin(base, foto) if foto else "",
             "descripcion": "",
+            "disponible": "NO" if re.search(r"agotado", t.inner_text(), re.I) else "SI",
         })
     return filas
 
@@ -205,6 +224,48 @@ def extraer(args):
     guardar(filas)
 
 
+def leer_codigos(ruta):
+    """Codigos elegidos: un CSV con columna 'codigo' o un texto con un codigo por linea."""
+    txt = Path(ruta).read_text(encoding="utf-8-sig")
+    lineas = [l.strip() for l in txt.splitlines() if l.strip()]
+    if lineas and "," in lineas[0] and "codigo" in lineas[0].lower():
+        cab = [c.strip().strip('"').lower() for c in lineas[0].split(",")]
+        i = cab.index("codigo")
+        return {next(csv.reader([l]))[i].strip() for l in lineas[1:]}
+    return {l.strip('", ') for l in lineas if l.strip('", ').lower() != "codigo"}
+
+
+def actualizar(args):
+    """Refresca solo tus equipos: 1 carga del listado + (opcional) ficha de cada uno."""
+    sel = json.loads(CONFIG.read_text(encoding="utf-8"))
+    elegidos = leer_codigos(args.codigos)
+    SALIDA.mkdir(exist_ok=True)
+    with sync_playwright() as p:
+        ctx = abrir(p)
+        page = ctx.pages[0] if ctx.pages else ctx.new_page()
+        ir(page, SITIO)
+        input("Inicia sesion en el navegador y luego presiona ENTER aqui... ")
+        ir(page, args.inicio)
+        cargar_todo(page, sel)
+        todas = {f["codigo"]: f for f in leer_tarjetas(page, sel, page.url)}
+        filas = [todas[c] for c in sorted(elegidos) if c in todas]
+        faltan = sorted(elegidos - set(todas))
+        print(f"{len(filas)} de {len(elegidos)} equipos encontrados")
+        if faltan:
+            print("No aparecen (retirados o cambio de codigo):", ", ".join(faltan))
+        if args.detalle:
+            for fila in filas:
+                pausa()
+                completar_detalle(page, fila, sel)
+        ctx.close()
+    ruta = SALIDA / "actualizacion.csv"
+    with open(ruta, "w", newline="", encoding="utf-8-sig") as f:
+        w = csv.DictWriter(f, fieldnames=CAMPOS, quoting=csv.QUOTE_ALL)
+        w.writeheader()
+        w.writerows(filas)
+    print(f"-> {ruta}")
+
+
 def guardar(filas):
     ruta = SALIDA / "proveedor.csv"
     with open(ruta, "w", newline="", encoding="utf-8-sig") as f:
@@ -223,5 +284,10 @@ if __name__ == "__main__":
     e.add_argument("--detalle", action="store_true", help="entra a cada producto (lento) para modelo, stock y descripcion")
     e.add_argument("--limite", type=int, default=0, help="con --detalle: solo los primeros N productos (para probar)")
     e.set_defaults(fn=extraer)
+    u = sub.add_parser("actualizar", help="refresca solo los equipos que elegiste")
+    u.add_argument("--inicio", required=True, help="URL del listado")
+    u.add_argument("--codigos", required=True, help="archivo con tus codigos (CSV con columna 'codigo' o uno por linea)")
+    u.add_argument("--detalle", action="store_true", help="tambien entra a la ficha de cada uno (stock exacto)")
+    u.set_defaults(fn=actualizar)
     a = ap.parse_args()
     a.fn(a)
