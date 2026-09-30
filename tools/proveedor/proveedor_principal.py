@@ -71,6 +71,15 @@ def abrir(p):
         return p.chromium.launch_persistent_context(**opciones)
 
 
+def verificar_abierto(page):
+    """Si Chrome se cerro solo al abrir, casi siempre es una ventana anterior con el mismo perfil."""
+    if page.is_closed():
+        raise SystemExit(
+            "El navegador se cerro al abrir. Cierra TODAS las ventanas de Chrome que abrio este script "
+            "(las del aviso '--no-sandbox'; revisa tambien el Administrador de tareas) y vuelve a ejecutar."
+        )
+
+
 def pagina_actual(ctx):
     """La pestana abierta mas reciente (por si abres pestanas nuevas)."""
     paginas = [x for x in ctx.pages if not x.is_closed()]
@@ -85,6 +94,7 @@ def explorar(_args):
         ctx = abrir(p)
         page = ctx.pages[0] if ctx.pages else ctx.new_page()
         ir(page, SITIO)
+        verificar_abierto(page)
         print("Inicia sesion en el navegador y ve a la pagina que quieras guardar.")
         n = 0
         while True:
@@ -206,6 +216,7 @@ def extraer(args):
         ctx = abrir(p)
         page = ctx.pages[0] if ctx.pages else ctx.new_page()
         ir(page, SITIO)
+        verificar_abierto(page)
         input("Inicia sesion en el navegador y luego presiona ENTER aqui... ")
         ir(page, args.inicio)
         cargar_todo(page, sel)
@@ -244,6 +255,7 @@ def actualizar(args):
         ctx = abrir(p)
         page = ctx.pages[0] if ctx.pages else ctx.new_page()
         ir(page, SITIO)
+        verificar_abierto(page)
         input("Inicia sesion en el navegador y luego presiona ENTER aqui... ")
         ir(page, args.inicio)
         cargar_todo(page, sel)
