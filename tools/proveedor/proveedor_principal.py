@@ -61,8 +61,21 @@ def pausa():
 
 
 def abrir(p):
-    # Navegador visible y perfil persistente: inicias sesion una sola vez.
-    return p.chromium.launch_persistent_context(str(PERFIL), headless=False, viewport={"width": 1300, "height": 850})
+    # Usa tu Chrome instalado (si existe) con un perfil aparte solo para esto:
+    # inicias sesion una vez y queda guardada. Si no hay Chrome, usa Chromium.
+    opciones = dict(user_data_dir=str(PERFIL), headless=False, viewport=None, args=["--start-maximized"])
+    try:
+        return p.chromium.launch_persistent_context(channel="chrome", **opciones)
+    except Exception:
+        return p.chromium.launch_persistent_context(**opciones)
+
+
+def pagina_actual(ctx):
+    """La pestana abierta mas reciente (por si abres pestanas nuevas)."""
+    paginas = [x for x in ctx.pages if not x.is_closed()]
+    if not paginas:
+        raise SystemExit("La ventana del navegador se cerro. Vuelve a ejecutar y dejala abierta hasta terminar.")
+    return paginas[-1]
 
 
 def explorar(_args):
@@ -77,6 +90,7 @@ def explorar(_args):
             r = input("ENTER = guardar esta pagina | 'q' = salir: ").strip().lower()
             if r == "q":
                 break
+            page = pagina_actual(ctx)
             n += 1
             base = SALIDA / f"pagina_{n:02d}"
             base.with_suffix(".html").write_text(page.content(), encoding="utf-8")
