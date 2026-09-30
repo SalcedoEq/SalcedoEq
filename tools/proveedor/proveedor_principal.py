@@ -289,5 +289,9 @@ if __name__ == "__main__":
     u.add_argument("--codigos", required=True, help="archivo con tus codigos (CSV con columna 'codigo' o uno por linea)")
     u.add_argument("--detalle", action="store_true", help="tambien entra a la ficha de cada uno (stock exacto)")
     u.set_defaults(fn=actualizar)
+    for sp in (sub.choices["explorar"], e, u):
+        sp.add_argument("--salida", help="carpeta donde guardar resultados (por ej. la carpeta de Drive)")
     a = ap.parse_args()
+    if a.salida:
+        SALIDA = Path(a.salida)
     a.fn(a)
