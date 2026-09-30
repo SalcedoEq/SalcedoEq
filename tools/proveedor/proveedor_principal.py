@@ -44,6 +44,18 @@ if not SITIO:
 CAMPOS = ["url", "nombre", "categoria", "marca", "modelo", "precio", "moneda", "stock", "foto", "descripcion"]
 
 
+def ir(page, url):
+    """Abre una URL sin morir si el sitio es lento: espera hasta 2 min y continua."""
+    try:
+        page.goto(url, wait_until="domcontentloaded", timeout=120000)
+    except Exception as e:
+        print(f"Aviso: {url} tardo o fallo ({str(e).splitlines()[0]}). Continuo con lo que haya cargado.")
+    try:
+        page.wait_for_load_state("networkidle", timeout=20000)
+    except Exception:
+        pass
+
+
 def pausa():
     time.sleep(random.uniform(2, 4))
 
@@ -58,7 +70,7 @@ def explorar(_args):
     with sync_playwright() as p:
         ctx = abrir(p)
         page = ctx.pages[0] if ctx.pages else ctx.new_page()
-        page.goto(SITIO)
+        ir(page, SITIO)
         print("Inicia sesion en el navegador y ve a la pagina que quieras guardar.")
         n = 0
         while True:
@@ -125,12 +137,11 @@ def extraer(args):
     with sync_playwright() as p:
         ctx = abrir(p)
         page = ctx.pages[0] if ctx.pages else ctx.new_page()
-        page.goto(SITIO)
+        ir(page, SITIO)
         input("Inicia sesion en el navegador y luego presiona ENTER aqui... ")
         paginas = 0
         while url and paginas < args.max_paginas:
-            page.goto(url)
-            page.wait_for_load_state("networkidle")
+            ir(page, url)
             paginas += 1
             enlaces = [urljoin(url, a.get_attribute("href")) for a in page.query_selector_all(sel["enlace_producto"]) if a.get_attribute("href")]
             siguiente = page.query_selector(sel["siguiente"]) if sel.get("siguiente") else None
@@ -141,8 +152,7 @@ def extraer(args):
                     continue
                 vistos.add(enlace)
                 pausa()
-                page.goto(enlace)
-                page.wait_for_load_state("networkidle")
+                ir(page, enlace)
                 filas.append(extraer_producto(page, sel, enlace))
             url = url_sig
             pausa()
