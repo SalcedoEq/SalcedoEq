@@ -66,3 +66,9 @@ wp-config.php
 # Note: If you wish to whitelist themes,
 # uncomment the next line
 #/wp-content/themes
+
+# Proveedor: sesion, capturas y datos locales
+tools/proveedor/.perfil/
+tools/proveedor/salida/
+tools/proveedor/selectores.json
+__pycache__/

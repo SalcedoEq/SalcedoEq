@@ -1,0 +1,13 @@
+{
+  "_nota": "Copia a selectores.json y reemplaza por los selectores CSS reales tras correr 'explorar'.",
+  "enlace_producto": "a.product-link",
+  "siguiente": "a.next",
+  "nombre": "h1",
+  "categoria": ".breadcrumb li:nth-last-child(2)",
+  "marca": ".brand",
+  "modelo": ".sku",
+  "precio": ".price",
+  "stock": ".stock",
+  "foto": ".product-image img",
+  "descripcion": ".description"
+}
